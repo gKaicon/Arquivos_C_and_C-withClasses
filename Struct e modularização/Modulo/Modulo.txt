@@ -1,0 +1,15 @@
+﻿//funcoes.cpp
+
+    Na classe que tem a main e extensão *.cpp, você vai dar um include do arquivo de assinatura(#include "(nome do arquivo próprio de assinatura).hpp")
+
+    Na classe de funções, você vai incluir as bibliotecas, e colocar as funções que a classe principal vai chamar.
+
+
+//AssinauraFunc.hpp
+       Na classe de assinatura e extensão *.hpp, você vai dar um include do arquivo de funcoes(#include "(nome do arquivo próprio de funções).hpp")
+
+
+
+
+
+    Ex = Escreva um programa que, dados dois números quaisquer informados pelo usuário, calcule a soma, subtração, multiplicação e divisão entre o módulo destes números. Calcule o módulo através de uma função. Seu programa deve estar dividido com o arquivo principal (main.cpp), um cabeçalho para identificar suas funções criadas (.hpp) e a implementação das funções em um arquivo (.cpp).
