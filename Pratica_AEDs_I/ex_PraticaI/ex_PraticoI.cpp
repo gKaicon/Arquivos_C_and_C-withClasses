@@ -31,8 +31,11 @@ int main()
             maior = b[i].saldo;
         }
     }
+    
     for(int i = 0; i < 5; i++){
-        menor = b[0].saldo;
+        if(i = 0){
+            menor = b[i].saldo;
+        }
         if(b[i].saldo < menor){
             menor = b[i].saldo;
         }
