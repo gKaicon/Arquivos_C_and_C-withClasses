@@ -12,3 +12,5 @@ Todos os códigos foram feitos na Linguagem C e C++.
 Foram editados e compilados no Visual Studio Code. 
 Contém exemplos de modularização, Structs, funções. 
 Uso de comunicação entre arquivos.
+
+coment 1
