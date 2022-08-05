@@ -38,6 +38,12 @@ int main() {
         somaFi = somaFi + h[i].numFilho;
     }
     mediaSa = somaFi/20;
-    cout << endl;
+    
+    //média de número de mulheres com salário abaixo de 1000
+    for(int i = 0; i < 20; i++){
+        if(h[i].sexo == 'F' || h[i].sexo == 'f' && h[i].salario <= 1000){
+
+        }
+    }
     return 0;
 }
