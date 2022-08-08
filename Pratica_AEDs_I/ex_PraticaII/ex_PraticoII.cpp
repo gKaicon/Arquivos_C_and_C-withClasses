@@ -39,11 +39,12 @@ int main() {
     }
     mediaSa = somaFi/20;
     
-    //média de número de mulheres com salário abaixo de 1000
+    //percentual de número de mulheres com salário abaixo de 1000
     for(int i = 0; i < 20; i++){
         if(h[i].sexo == 'F' || h[i].sexo == 'f' && h[i].salario <= 1000){
             //comente
         }
     }
+    //maior salário
     return 0;
 }
