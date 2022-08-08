@@ -52,6 +52,10 @@ int main() {
             maiorSa = h[i].salario;
         }
     }
+    cout << "";
+    cout << "";
+    cout << "";
+    cout << "";
     return 0;
 }
 
