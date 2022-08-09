@@ -40,12 +40,14 @@ int main() {
     }
     mediaSa = somaFi/qtdH;
     
-    //percentual de número de mulheres com salário abaixo de 1000
+    //percentual de gimulheres com salário abaixo de 1000
     for(int i = 0; i < qtdH; i++){
         if(h[i].sexo == 'F' || h[i].sexo == 'f' && h[i].salario <= 1000){
             qtdMulher++;
         }
     }
+    percMulher = qtdMulher * 100/qtdH
+
     //maior salário
     for(int i = 0; i < qtdH; i++){
         if(h[i].salario > maiorSa){
