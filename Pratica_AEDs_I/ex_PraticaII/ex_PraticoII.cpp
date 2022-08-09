@@ -15,8 +15,8 @@ int main() {
     UINT CPAGE_DEFAULT = GetConsoleOutputCP();
     SetConsoleOutputCP(CPAGE_UTF8);
 
-    double somaSa = 0, somaFi = 0, mediaSa, mediaFi, maiorSa = 0, percMulher, qtdMulher = 0, qtdH;
-    struct Habitante h[20];
+    double somaSa, somaFi, mediaSa, mediaFi, maiorSa, percMulher, qtdMulher = 0, qtdH;
+    struct Habitante h[5];
     qtdH = 5;
 
     // for(int i = 0; i < qtdH; i++){
@@ -47,7 +47,7 @@ int main() {
 
     h[4].salario = 990.0;
     h[4].idade = 19;
-    h[4].numFilho = 2;
+    h[4].numFilho = 4;
     h[4].sexo = 'M';
 
     h[5].salario = 1990.0;
@@ -55,17 +55,15 @@ int main() {
     h[5].numFilho = 2;
     h[5].sexo = 'M';
 
-
-
     //média de salário da população
     for(int i = 0; i < qtdH; i++){
-        somaSa = somaSa + h[i].salario;
+        somaSa += h[i].salario;
     }
     mediaSa = somaSa/qtdH;
 
     //média de número de filhos da população
     for(int i = 0; i < qtdH; i++){
-        somaFi = somaFi + h[i].numFilho;
+        somaFi += h[i].numFilho;
     }
     mediaFi = somaFi/qtdH;
     
