@@ -1,0 +1,1 @@
+Exercícios 1, 2, 3 realiazdos em sala.
