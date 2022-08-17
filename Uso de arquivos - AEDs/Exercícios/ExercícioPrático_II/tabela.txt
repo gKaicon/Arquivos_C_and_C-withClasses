@@ -1,0 +1,8 @@
+Char - 1Byte(s)
+Int - 4Byte(s)
+Short - 2Byte(s)
+Long - 4Byte(s)
+Float - 4Byte(s)
+Double - 8Byte(s)
+Long Double - 12Byte(s)
+----------------------------
