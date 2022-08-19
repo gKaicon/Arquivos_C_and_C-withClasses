@@ -42,7 +42,7 @@ int main(){
    vet = new int[tam];
 
    cout << "Digite a faixa de valores a ser sorteado: ";
-   cin >> fx;
+   cin >> fx;   
 
    cout << "Digite um número para ser pesquisado no Vetor: ";
    cin >> num;
