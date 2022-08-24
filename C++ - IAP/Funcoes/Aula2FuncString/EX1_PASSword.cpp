@@ -15,7 +15,7 @@ int main()
     cin>>user;
     cin>>senha;
     cin>>senhaC;
-    aut = strcmp(senha, senhaC);
+    aut = strcmp(senha, senhaC); //o retorno dessa função ou é 0 ou é 1, 
     //corpo da impressão
     cout<<"System Authentication\n\n\n";
     cout<<"User: "<<user<<"\n\n";
