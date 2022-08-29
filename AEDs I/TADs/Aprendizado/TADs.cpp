@@ -6,7 +6,6 @@ using namespace std;
 
 #define MAXTAM 5
 
-
 void menu(){
         cout << "TAD Lista com Vetor \n";
         cout << "1. Criar Lista\n";
