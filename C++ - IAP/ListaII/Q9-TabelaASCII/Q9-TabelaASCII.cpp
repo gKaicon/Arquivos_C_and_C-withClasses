@@ -13,7 +13,7 @@ int main(){
     printf("\n\nASCII de 33 até 127\n");
     printf("Decimal\tHexadecimal\tCaracter\n");
     for (i = 33; i <= 127; i++){
-        printf("%d \t%x \t\t%-", i, i, i);
+        printf("%d \t%x \t\t%c", i, i, i);
         printf("\n");
     }
     return 0;

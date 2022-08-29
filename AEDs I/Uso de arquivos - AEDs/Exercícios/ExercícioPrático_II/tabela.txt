@@ -1,4 +1,4 @@
-Char - 1Byte(s)
+		TabelaChar - 1Byte(s)
 Int - 4Byte(s)
 Short - 2Byte(s)
 Long - 4Byte(s)
