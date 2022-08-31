@@ -11,8 +11,8 @@ int main() {
    SetConsoleOutputCP(CPAGE_UTF8);
    system("cls");
  
-   TipoListaTurma lista;
-   TipoItemAluno item;
+   TipoLista lista;
+   TipoItem item;
    int opcao, ret;
 
     do{
@@ -47,7 +47,7 @@ int main() {
                break;
             case 4:
                   cout << "Chave: ";
-                  cin >> item.matricula;
+                  cin >> item.chave;
                   ret = InsereItem(&lista, item); //recebe a lista, e adiciona a chave que também é de tipo int, o ret serve para armazernar o valor
                   if (ret == 1){ //se for true = 1, há a possibilidade de inserção
                      cout << "Número inserido com sucesso!";
@@ -69,8 +69,8 @@ int main() {
             case 6:
                   if (listaCriada){
                      cout << "Chave: ";
-                     cin >> item.matricula;
-                     ret = PesquisaItem(&lista, item.matricula);
+                     cin >> item.chave;
+                     ret = PesquisaItem(&lista, item.chave);
                      if (ret >= 0){
                         cout << "Número encontrado na posição " << ret;
                         Sleep(1000);
@@ -88,8 +88,8 @@ int main() {
             case 7:
                   if (listaCriada){
                      cout << "Chave: ";
-                     cin >> item.matricula;
-                     ret = PesquisaItem(&lista, item.matricula);
+                     cin >> item.chave;
+                     ret = PesquisaItem(&lista, item.chave);
                      if (ret >= 0){
                         cout << "Número encontrado na posição " << ret;
                         Sleep(1000);

@@ -4,62 +4,61 @@
  
 using namespace std;
 
-#define MAXTAM 5
 
 void menu(){
         cout << "TAD Lista com Vetor \n";
-        cout << "1. Cria turma\n";
-        cout << "2. Verifica se a turma está vazia\n";
-        cout << "3. Verifica se a turma está cheia de alunos\n";
-        cout << "4. Cadastra aluno\n";
-        cout << "5. Imprime turma\n";
-        cout << "6. Pesquisa aluno\n";
-        cout << "7. Retira aluno\n";
+        cout << "1. Criar Lista\n";
+        cout << "2. Verifica Lista Vazia\n";
+        cout << "3. Verifica Lista Cheia\n";
+        cout << "4. Insere Item\n";
+        cout << "5. Imprime Lista\n";
+        cout << "6. Pesquisa Item\n";
+        cout << "7. Retira Item\n";
         cout << "0. Sair\n\n";
 }
 
-void CriaTurmaVazia(TipoListaTurma *lista){
+void CriaListaVazia(TipoLista *lista){
     if (!listaCriada){ //se não está criada, ele cria
-        lista->tamanho = 0; //usa o ponteiro para apontar para um membro da estrutura
-        lista->Primeiro = 0;
+        lista->Primeiro = new TipoElemento;
         lista->Ultimo = lista->Primeiro;
-        cout << "Turma criada com sucesso!";
+        lista->Ultimo->prox = NULL;
+        cout << "Lista criada com sucesso!";
         listaCriada = true;
     }
     else{
-        cout << "Turma já existe!";
+        cout << "Lista já existe!";
     }
     Sleep(1500);//comando de espera em milisegundos
 }
 
-int VerificaListaVazia(TipoListaTurma *lista){
+int VerificaListaVazia(TipoLista *lista){
     return (lista->Primeiro == lista->Ultimo);
 }
 
-int VerificaListaCheia(TipoListaTurma *lista){
+int VerificaListaCheia(TipoLista *lista){
     return (lista->Ultimo == MAXTAM);
 }
 
-int TamanhoLista(TipoListaTurma *lista){
+int TamanhoLista(TipoLista *lista){
     return lista->tamanho;
 }
 
-int InsereItem(TipoListaTurma *lista, TipoItemAluno item){
+int InsereItem(TipoLista *lista, TipoItem item){
     if (lista->Ultimo > MAXTAM){
         cout << "Lista cheia!\n";
         return -1;
     }
-    lista->Item[lista->Ultimo].matricula = item.matricula;
+    lista->Item[lista->Ultimo].chave = item.chave;
     lista->tamanho++;
     lista->Ultimo++;
     return 1;
 }
 
-void ImprimeLista(TipoListaTurma lista){
+void ImprimeLista(TipoLista lista){
     if(listaCriada){
         int Aux;
         for (Aux = lista.Primeiro; Aux <= (lista.Ultimo - 1); Aux++){
-            cout << "Matricula: " << lista.Item[Aux].matricula << endl;
+            cout << "Chave: " << lista.Item[Aux].chave << endl;
         }
     }
     else{
@@ -68,16 +67,16 @@ void ImprimeLista(TipoListaTurma lista){
     }
 }
 
-int PesquisaItem(TipoListaTurma *lista, int matricula){
+int PesquisaItem(TipoLista *lista, int chave){
     for (int i = lista->Primeiro; i < lista->Ultimo; i++){
-        if (matricula == lista->Item[i].matricula){
+        if (chave == lista->Item[i].chave){
             return i; // Retorna posição do item encontrado
         }
     }
     return -1;
 }
 
-void RetiraItem(TipoApontador p, TipoListaTurma *lista, TipoItemAluno *item){
+void RetiraItem(TipoApontador p, TipoLista *lista, TipoItem *item){
     int Aux;
     if (VerificaListaVazia(lista) || p > lista->Ultimo){
         cout << "Erro: Posição não existe na lista\n";
