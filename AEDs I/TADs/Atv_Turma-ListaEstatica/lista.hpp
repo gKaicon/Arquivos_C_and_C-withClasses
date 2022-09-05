@@ -6,7 +6,7 @@
 typedef int TipoApontador;
 
 typedef struct TipoItemAluno{
-    char nome[35];
+    char nome;
     int matricula;
     char turma;
     double n1, n2, n3;
@@ -21,7 +21,7 @@ typedef struct TipoListaTurma{
 bool listaCriada = false;
 
 void Menu();
-void CriaListaVazia(TipoListaTurma *lista);                              // Cria uma lista vazia
+void CriaTurmaVazia(TipoListaTurma *lista);                              // Cria uma lista vazia
 int VerificaListaVazia(TipoListaTurma *lista);                           // Retorna TRUE se a lista estiver vazia, FALSE caso contrário
 int VerificaListaCheia(TipoListaTurma *lista);                           // Retorna TRUE se a lista estiver cheia, FALSE caso contrário
 int InsereItem(TipoListaTurma *lista, TipoItemAluno item);                    // Insere ITEM (chave) na lista TipoLista

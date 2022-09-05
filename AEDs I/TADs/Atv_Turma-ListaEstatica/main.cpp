@@ -14,7 +14,6 @@ int main() {
    TipoListaTurma lista;
    TipoItemAluno item;
    int opcao, ret;
-
     do{
         system("cls");
         menu();
@@ -23,38 +22,38 @@ int main() {
 
         switch(opcao){
             case 1:
-                  if (!listaCriada){
-                     CriaListaVazia(&lista); //se a lista não existe, ele cria lista
-                  }
+                  if (!listaCriada)CriaTurmaVazia(&lista); //se a lista não existe, ele cria lista
                break;
             case 2:
-                  if (VerificaListaVazia(&lista)){
-                     cout << "Lista vazia!";
-                  }
-                  else{
-                     cout << "A lista não está vazia ou não foi inicializada.";
-                  }
+                  if (VerificaListaVazia(&lista))cout << "Lista vazia!";
+                  else cout << "A lista não está vazia ou não foi inicializada.";
                   Sleep(3000);
                break;
             case 3:
-                  if (VerificaListaCheia(&lista)){
-                     cout << "Lista cheia!";
-                  }
-                  else{
-                     cout << "A lista não está cheia ou não foi inicializada.";
-                  }
+                  if (VerificaListaCheia(&lista))cout << "Lista cheia!";
+                  else cout << "A lista não está cheia ou não foi inicializada.";
                   Sleep(3000);
                break;
             case 4:
-                  cout << "Chave: ";
+                  cout << "Matricula: ";
                   cin >> item.matricula;
+                  cout << "Nome: ";
+                  cin >> item.nome;
+                  cout << "Nota 1: ";
+                  cin >> item.n1;
+                  cout << "Nota 2: ";
+                  cin >> item.n2;
+                  cout << "Nota 3: ";
+                  cin >> item.n3;
+                  cout << "Turma: ";
+                  cin >> item.turma;
                   ret = InsereItem(&lista, item); //recebe a lista, e adiciona a chave que também é de tipo int, o ret serve para armazernar o valor
                   if (ret == 1){ //se for true = 1, há a possibilidade de inserção
-                     cout << "Número inserido com sucesso!";
+                     cout << "Aluno inserido com sucesso!";
                      Sleep(500);
                   }
                   else if (ret == -1){ //se for -1 é porque a lista tá cheia =
-                     cerr << "ERRO ao inserir o número. Lista cheia.";
+                     cerr << "ERRO ao inserir o Aluno. Lista cheia.";
                      Sleep(3000);
                   }
                   else{ // se for false = 0 é porque não criei a lista
@@ -67,8 +66,8 @@ int main() {
                   Sleep(5000);
                   break;
             case 6:
-                  if (listaCriada){
-                     cout << "Chave: ";
+                  if(listaCriada){
+                     cout << "Matricula: ";
                      cin >> item.matricula;
                      ret = PesquisaItem(&lista, item.matricula);
                      if (ret >= 0){
@@ -91,14 +90,14 @@ int main() {
                      cin >> item.matricula;
                      ret = PesquisaItem(&lista, item.matricula);
                      if (ret >= 0){
-                        cout << "Número encontrado na posição " << ret;
+                        cout << "Aluno encontrado na posição " << ret;
                         Sleep(1000);
                         cout << "\n\nRemovendo...";
                         RetiraItem(ret, &lista, &item);
                         Sleep(1000);
                      }
                      else{
-                        cout << "O número não está na lista.";
+                        cout << "O Aluno não está na lista.";
                         Sleep(1000);
                      }
                   }

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <windows.h>
+#include <string.h>
 #include "lista.hpp"
  
 using namespace std;
@@ -50,6 +51,11 @@ int InsereItem(TipoListaTurma *lista, TipoItemAluno item){
         return -1;
     }
     lista->Item[lista->Ultimo].matricula = item.matricula;
+    lista->Item[lista->Ultimo].nome = item.nome;
+    lista->Item[lista->Ultimo].turma = item.turma;
+    lista->Item[lista->Ultimo].n1 = item.n1;
+    lista->Item[lista->Ultimo].n2 = item.n2;
+    lista->Item[lista->Ultimo].n3 = item.n3;
     lista->tamanho++;
     lista->Ultimo++;
     return 1;
@@ -60,6 +66,12 @@ void ImprimeLista(TipoListaTurma lista){
         int Aux;
         for (Aux = lista.Primeiro; Aux <= (lista.Ultimo - 1); Aux++){
             cout << "Matricula: " << lista.Item[Aux].matricula << endl;
+            cout << "Nome: " << lista.Item[Aux].nome << endl;
+            cout << "Turma: " << lista.Item[Aux].turma << endl;
+            cout << "Nota 1: " << lista.Item[Aux].n1 << endl;
+            cout << "Nota 2: " << lista.Item[Aux].n2 << endl;
+            cout << "Nota 3: " << lista.Item[Aux].n3 << endl;
+            cout << "\n";
         }
     }
     else{
