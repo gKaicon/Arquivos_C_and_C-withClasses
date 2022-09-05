@@ -36,7 +36,7 @@ int VerificaListaVazia(TipoLista *lista){
 }
 
 int VerificaListaCheia(TipoLista *lista){
-    return (lista->Ultimo == MAXTAM);
+    return (lista->Primeiro == lista->Ultimo;
 }
 
 int TamanhoLista(TipoLista *lista){

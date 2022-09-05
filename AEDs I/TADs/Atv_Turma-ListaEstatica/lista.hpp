@@ -6,7 +6,7 @@
 typedef int TipoApontador;
 
 typedef struct TipoItemAluno{
-    char nome;
+    char nome[35];
     int matricula;
     char turma;
     double n1, n2, n3;

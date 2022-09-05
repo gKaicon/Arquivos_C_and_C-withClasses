@@ -11,7 +11,7 @@ int main(){
    system("cls");
    srand(time(NULL));
 
-  //Variaveis
+//Variaveis
    float num[10];
 
 //Ponteiros

@@ -47,11 +47,11 @@ int TamanhoLista(TipoListaTurma *lista){
 
 int InsereItem(TipoListaTurma *lista, TipoItemAluno item){
     if (lista->Ultimo > MAXTAM){
-        cout << "Lista cheia!\n";
+        cout << "Turma cheia!\n";
         return -1;
     }
     lista->Item[lista->Ultimo].matricula = item.matricula;
-    lista->Item[lista->Ultimo].nome = item.nome;
+    strcpy(lista->Item[lista->Ultimo].nome, item.nome);
     lista->Item[lista->Ultimo].turma = item.turma;
     lista->Item[lista->Ultimo].n1 = item.n1;
     lista->Item[lista->Ultimo].n2 = item.n2;
@@ -75,7 +75,7 @@ void ImprimeLista(TipoListaTurma lista){
         }
     }
     else{
-        cout << "Crie a lista primeiramente.";
+        cout << "Crie a Turma primeiramente.";
         Sleep(1000);
     }
 }
@@ -92,7 +92,7 @@ int PesquisaItem(TipoListaTurma *lista, int matricula){
 void RetiraItem(TipoApontador p, TipoListaTurma *lista, TipoItemAluno *item){
     int Aux;
     if (VerificaListaVazia(lista) || p > lista->Ultimo){
-        cout << "Erro: Posição não existe na lista\n";
+        cout << "Erro: Posição não existe na turma\n";
         return;
     }
     *item = lista->Item[p]; // ?

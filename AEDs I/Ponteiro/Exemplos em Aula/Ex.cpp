@@ -5,25 +5,19 @@
 using namespace std;
 
 void preencheVetor(int vet[], int tam, int fx){
-    for(int i = 0; i < tam; i++){
-        vet[i] = rand()%fx;
-    }
+    for(int i = 0; i < tam; i++) vet[i] = rand()%fx;
 }
 
 int pesquisa(int vet[], int tam, int num){
     for(int i = 0; i < tam; i++){    
-        if(num == vet[i]){
-            return 1;
-        }
+        if(num == vet[i]) return 1;
     }
     return 0; 
 }
 
 void exibeVetor(int vet[], int tam){
     cout << "\n\n Vetor: \n";
-    for(int i = 0; i < tam; i++){
-        cout << vet[i] << " - " << &vet[i] << "\n";
-    }
+    for(int i = 0; i < tam; i++) cout << vet[i] << " - " << &vet[i] << "\n";
 }
  
 int main(){

@@ -25,13 +25,13 @@ int main() {
                   if (!listaCriada)CriaTurmaVazia(&lista); //se a lista não existe, ele cria lista
                break;
             case 2:
-                  if (VerificaListaVazia(&lista))cout << "Lista vazia!";
-                  else cout << "A lista não está vazia ou não foi inicializada.";
+                  if (VerificaListaVazia(&lista))cout << "Turma vazia!";
+                  else cout << "A turma não está vazia ou não foi inicializada.";
                   Sleep(3000);
                break;
             case 3:
-                  if (VerificaListaCheia(&lista))cout << "Lista cheia!";
-                  else cout << "A lista não está cheia ou não foi inicializada.";
+                  if (VerificaListaCheia(&lista))cout << "turma cheia!";
+                  else cout << "A turma não está cheia ou não foi inicializada.";
                   Sleep(3000);
                break;
             case 4:
@@ -53,11 +53,11 @@ int main() {
                      Sleep(500);
                   }
                   else if (ret == -1){ //se for -1 é porque a lista tá cheia =
-                     cerr << "ERRO ao inserir o Aluno. Lista cheia.";
+                     cerr << "ERRO ao inserir o Aluno. Turma cheia.";
                      Sleep(3000);
                   }
                   else{ // se for false = 0 é porque não criei a lista
-                     cout << "Crie a lista primeiramente.";
+                     cout << "Crie a turma primeiramente.";
                      Sleep(3000);
                   }
                   break;
@@ -75,18 +75,18 @@ int main() {
                         Sleep(1000);
                      }
                      else{
-                        cout << "O número não está na lista.";
+                        cout << "O número não está na turma.";
                         Sleep(1000);
                      }
                   }
                   else{
-                     cout << "Crie a lista primeiramente.";
+                     cout << "Crie a turma primeiramente.";
                      Sleep(1000);
                   }
                   break;
             case 7:
                   if (listaCriada){
-                     cout << "Chave: ";
+                     cout << "Matricula: ";
                      cin >> item.matricula;
                      ret = PesquisaItem(&lista, item.matricula);
                      if (ret >= 0){
@@ -97,19 +97,18 @@ int main() {
                         Sleep(1000);
                      }
                      else{
-                        cout << "O Aluno não está na lista.";
+                        cout << "O Aluno não está na turma.";
                         Sleep(1000);
                      }
                   }
                   else{
-                     cout << "Crie a lista primeiramente.";
+                     cout << "Crie a turma primeiramente.";
                      Sleep(1000);
                   }
                   break;
             default:
                   break;
             }
-
     } while (opcao != 0);
  
     return 0;
