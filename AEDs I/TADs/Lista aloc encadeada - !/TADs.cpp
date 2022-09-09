@@ -34,60 +34,127 @@ void CriaListaVazia(TipoLista *lista){
 int VerificaListaVazia(TipoLista *lista){
     return (lista->Primeiro == lista->Ultimo);
 }
-
+/*
 int VerificaListaCheia(TipoLista *lista){
-    return (lista->Primeiro == lista->Ultimo;
+    return (lista->Primeiro == lista->Ultimo);
 }
-
+*/
 int TamanhoLista(TipoLista *lista){
     return lista->tamanho;
 }
 
-int InsereItem(TipoLista *lista, TipoItem item){
-    if (lista->Ultimo > MAXTAM){
-        cout << "Lista cheia!\n";
-        return -1;
+void AtualizaUltimo(TipoLista *lista){
+    Apontador aux;
+    aux = lista->Primeiro->prox;
+    while (aux->prox != NULL){
+        aux = aux->prox;
     }
-    lista->Item[lista->Ultimo].chave = item.chave;
-    lista->tamanho++;
-    lista->Ultimo++;
-    return 1;
+    lista->Ultimo = aux;
 }
 
-void ImprimeLista(TipoLista lista){
-    if(listaCriada){
-        int Aux;
-        for (Aux = lista.Primeiro; Aux <= (lista.Ultimo - 1); Aux++){
-            cout << "Chave: " << lista.Item[Aux].chave << endl;
-        }
-    }
-    else{
-        cout << "Crie a lista primeiramente.";
+int InsereListaPrimeiro(TipoLista *lista, TipoItem *item){ //primeira inserção já tendo a lista criada
+    Apontador aux;
+    aux = lista->Primeiro->prox;
+    lista->Primeiro->prox = new TipoElemento;
+    lista->Primeiro->prox->prox = aux;
+    lista->Primeiro->prox->item = *item;
+    lista->tamanho++;
+    AtualizaUltimo(lista);
+}
+
+void InsereListaUltimo(TipoLista *lista, TipoItem *item){ //insere sempre após o ultimo
+    lista->Ultimo->prox = new TipoElemento;
+    lista->Ultimo = lista->Ultimo->prox;
+    lista->Ultimo->prox = NULL;
+    lista->Ultimo->item = *item;
+    lista->Ultimo->prox = NULL;
+    lista->tamanho++;
+}
+
+//insere em qualquer lugar
+
+void ImprimeLista(TipoLista lista){ //lista toda
+    if(VerificaListaVazia(&lista)){
+        cout << "Lista Vazia";
         Sleep(1000);
+        return ;
+    }
+    Apontador aux;
+    aux = lista.Primeiro->prox; 
+    while(aux != NULL){
+        cout << "ID: " << aux->item.chave << endl;
+        cout << "Nome: " << aux->item.nome << endl;
+        aux = aux->prox;
+    }
+}
+
+void ImprimeItem(TipoLista *lista, int chave){
+    Apontador aux;
+    aux = lista->Primeiro->prox;
+    while (aux != NULL){
+        if (aux->item.chave == chave){
+            cout << "ID: " << aux->item.chave << endl;
+            cout << "Nome: " << aux->item.nome << endl;
+            break;
+        }
+        aux = aux->prox;
     }
 }
 
 int PesquisaItem(TipoLista *lista, int chave){
-    for (int i = lista->Primeiro; i < lista->Ultimo; i++){
-        if (chave == lista->Item[i].chave){
-            return i; // Retorna posição do item encontrado
-        }
+    Apontador aux;
+    aux = lista->Primeiro->prox;
+    while (aux != NULL){
+        if (aux->item.chave == chave)return aux->item.chave;
+        aux = aux->prox;
     }
     return -1;
 }
 
-void RetiraItem(TipoApontador p, TipoLista *lista, TipoItem *item){
-    int Aux;
-    if (VerificaListaVazia(lista) || p > lista->Ultimo){
-        cout << "Erro: Posição não existe na lista\n";
-        return;
-    }
-    *item = lista->Item[p]; // ?
+void RemoveListaPrimeiro(TipoLista *lista){
+    if (VerificaListaVazia(lista)) return;
 
-    for (Aux = p; Aux <= lista->Ultimo; Aux++){
-        lista->Item[Aux] = lista->Item[Aux + 1];
-    }
+    Apontador aux;
+    aux = lista->Primeiro->prox;
+    lista->Primeiro->prox = aux->prox;
+    delete aux;
+    lista->tamanho--;
+}
 
-    lista->Ultimo--;
+void RemoveListaUltimo(TipoLista *lista){
+    if (VerificaListaVazia(lista)) return;
+
+    Apontador aux, atual;
+    atual = lista->Primeiro->prox;
+    aux = lista->Ultimo;
+    while (atual->prox != lista->Ultimo)
+    {
+        atual = atual->prox;
+    }
+    atual->prox = NULL;
+    lista->Ultimo = atual;
+    delete aux;
+    lista->tamanho--;
+}
+
+void RemoveItemPorId(TipoLista *lista, int id){
+    if (VerificaListaVazia(lista))  return;
+
+    Apontador aux, anterior, x;
+
+    x = lista->Primeiro;
+
+    while (x != NULL)
+    {
+        if (x->prox->item.id == id)
+        {
+            anterior = x;
+            break;
+        }
+        x = x->prox;
+    }
+    aux = anterior->prox;
+    anterior->prox = aux->prox;
+    delete aux;
     lista->tamanho--;
 }
