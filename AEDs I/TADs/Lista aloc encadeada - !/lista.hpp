@@ -24,13 +24,18 @@ bool listaCriada = false;
 
 
 
-void CriaListaVazia(TipoLista *lista);                              // Cria uma lista vazia
-int VerificaListaVazia(TipoLista *lista);                           // Retorna TRUE se a lista estiver vazia, FALSE caso contrário
-int VerificaListaCheia(TipoLista *lista);                           // Retorna TRUE se a lista estiver cheia, FALSE caso contrário
-int InsereItem(TipoLista *lista, TipoItem item);                    // Insere ITEM (chave) na lista TipoLista
-//void ImprimeLista(TipoLista lista);                                 // Imprime a lista
-//int PesquisaItem(TipoLista *lista, int chave);                      // Pesquisa um ITEM (chave) na lista TipoLista
-//void RetiraItem(TipoApontador p, TipoLista *lista, TipoItem *item); // Remove um item da lista pela sua posição
-//int TamanhoLista(TipoLista *lista);                                 // Retorna o número de itens da lista
+void CriaListaVazia(TipoLista *lista); //cria uma lista vazia
+bool VerificaListaVazia(TipoLista *lista); // verifica a existência de uma lista vazia
+void InsereListaPrimeiro(TipoLista *lista, TipoItem *item); //inserção na primeira posição da lista
+void InsereListaAposElemento(TipoLista *lista, TipoItem *item, int id); //inserção após um elemento especificado
+void InsereListaUltimo(TipoLista *lista, TipoItem *item); //inserção na última posição da lista
+void AtualizaUltimo(TipoLista *lista); //"salva a alteração feita"
+void ImprimeLista(TipoLista lista); //imprime a lista
+int PesquisaItem(TipoLista *lista, int chave); //pesquisa apenas o item
+void ImprimeItem(TipoLista *lista, int id); //imprime um item específico
+void RemoveListaPrimeiro(TipoLista *lista); //remove o primeiro da lista
+void RemoveListaUltimo(TipoLista *lista); //remove o último da lista
+void RemoveItemPorId(TipoLista *lista, int id); //remove pelo id específicado
+int TamanhoLista(TipoLista *lista); // tamanho da lista
 
 #endif
