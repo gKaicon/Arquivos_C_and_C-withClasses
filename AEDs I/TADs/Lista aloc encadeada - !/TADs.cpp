@@ -5,15 +5,22 @@
 using namespace std;
 
 void menu(){
-        cout << "TAD Lista com Vetor \n";
-        cout << "1. Criar Lista\n";
-        cout << "2. Verifica Lista Vazia\n";
-        cout << "3. Verifica Lista Cheia\n";
-        cout << "4. Insere Item\n";
-        cout << "5. Imprime Lista\n";
-        cout << "6. Pesquisa Item\n";
-        cout << "7. Retira Item\n";
-        cout << "0. Sair\n\n";
+
+    cout << "--------------------------------\n";
+    cout << "         Lista Encadeada        \n";
+    cout << "--------------------------------\n";
+    cout << "1. Criar Lista\n";
+    cout << "2. Verifica Lista Vazia\n";
+    cout << "3. Insere Item no início da lista\n";
+    cout << "4. Insere Item no final da lista\n";
+    cout << "5. Insere Item após um elemento X\n";
+    cout << "6. Imprime Lista\n";
+    cout << "7. Pesquisa Item\n";
+    cout << "8. Remove Item do início da lista\n";
+    cout << "9. Remove Item do final da lista\n";
+    cout << "10. Remove Item por ID\n";
+    cout << "11. Tamanho da Lista\n";
+    cout << " 0. Sair\n\n";
 }
 
 void CriaListaVazia(TipoLista *lista){
