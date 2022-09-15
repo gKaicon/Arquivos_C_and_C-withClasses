@@ -4,7 +4,6 @@
  
 using namespace std;
 
-
 void menu(){
         cout << "TAD Lista com Vetor \n";
         cout << "1. Criar Lista\n";
@@ -48,7 +47,7 @@ void AtualizaUltimo(TipoLista *lista){ //faz uma troca dos valores para atualiza
     lista->Ultimo = aux; //quando ele sair do while, o ultimo valor, que fez o while sair, será o último.
 }
 
-int InsereListaPrimeiro(TipoLista *lista, TipoItem *item){ //primeira inserção já tendo a lista criada
+void InsereListaPrimeiro(TipoLista *lista, TipoItem *item){ //primeira inserção já tendo a lista criada
     Apontador aux;
     aux = lista->Primeiro->prox; 
     lista->Primeiro->prox = new TipoElemento; //primeira posição da LISTA, apontando para a última posição recebe um novo ELEMENTO
@@ -66,9 +65,7 @@ void InsereListaUltimo(TipoLista *lista, TipoItem *item){ //insere sempre após 
     lista->tamanho++;
 }
 
-//insere em qualquer lugar
-void InsereListaAposElemento(TipoLista *lista, TipoItem *item, int id)
-{
+void InsereListaAposElemento(TipoLista *lista, TipoItem *item, int id){ //insere em qualquer lugar
     Apontador aux, pAux, x;
     bool find = false; //achou recebe false
     pAux = lista->Primeiro->prox; //o "ponteiro"
@@ -94,7 +91,6 @@ void InsereListaAposElemento(TipoLista *lista, TipoItem *item, int id)
         cout << "Elemento anterior não encontrado na lista.";
     }
 }
-
 
 void ImprimeLista(TipoLista lista){ //lista toda
     if(VerificaListaVazia(&lista)){ //verifica se o endereço da lista é true
@@ -163,16 +159,16 @@ void RemoveItemPorId(TipoLista *lista, int id){
     if (VerificaListaVazia(lista))  return; //verifica se o endereço da lista é true
 
     Apontador aux, anterior, x;
-    x = lista->Primeiro;
+    x = lista->Primeiro; //guarda no x o primeiro lugar da lista
     while (x != NULL){
-        if (x->prox->item.chave == id){
-            anterior = x;
+        if (x->prox->item.chave == id){ //quando for encontrado
+            anterior = x; //anterior vai receber ele
             break;
         }
-        x = x->prox;
+        x = x->prox; //incremento do while
     }
-    aux = anterior->prox;
-    anterior->prox = aux->prox;
-    delete aux;
-    lista->tamanho--;
+    aux = anterior->prox; //quando sair do while, o aux vai receber o último valor(último porque estou apontando para o próximo depois do antepenúltimo)
+    anterior->prox = aux->prox; 
+    delete aux; //deleta o auxiliar
+    lista->tamanho--; //diminuindo a lista
 }

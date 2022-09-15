@@ -22,96 +22,134 @@ int main() {
         cin >> opcao;
 
         switch(opcao){
-            case 1:
-                  if (!listaCriada){
-                     CriaListaVazia(&lista); //se a lista não existe, ele cria lista
-                  }
-               break;
-            case 2:
-                  if (VerificaListaVazia(&lista)){
-                     cout << "Lista vazia!";
-                  }
-                  else{
-                     cout << "A lista não está vazia ou não foi inicializada.";
-                  }
-                  Sleep(3000);
-               break;
-            case 3:
-                  if (VerificaListaCheia(&lista)){
-                     cout << "Lista cheia!";
-                  }
-                  else{
-                     cout << "A lista não está cheia ou não foi inicializada.";
-                  }
-                  Sleep(3000);
-               break;
-            case 4:
-                  cout << "Chave: ";
-                  cin >> item.chave;
-                  ret = InsereItem(&lista, item); //recebe a lista, e adiciona a chave que também é de tipo int, o ret serve para armazernar o valor
-                  if (ret == 1){ //se for true = 1, há a possibilidade de inserção
-                     cout << "Número inserido com sucesso!";
-                     Sleep(500);
-                  }
-                  else if (ret == -1){ //se for -1 é porque a lista tá cheia =
-                     cerr << "ERRO ao inserir o número. Lista cheia.";
-                     Sleep(3000);
-                  }
-                  else{ // se for false = 0 é porque não criei a lista
-                     cout << "Crie a lista primeiramente.";
-                     Sleep(3000);
-                  }
-                  break;
-            case 5:
-                  ImprimeLista(lista);
-                  Sleep(5000);
-                  break;
-            case 6:
-                  if (listaCriada){
-                     cout << "Chave: ";
-                     cin >> item.chave;
-                     ret = PesquisaItem(&lista, item.chave);
-                     if (ret >= 0){
-                        cout << "Número encontrado na posição " << ret;
-                        Sleep(1000);
-                     }
-                     else{
-                        cout << "O número não está na lista.";
-                        Sleep(1000);
-                     }
-                  }
-                  else{
-                     cout << "Crie a lista primeiramente.";
-                     Sleep(1000);
-                  }
-                  break;
-            case 7:
-                  if (listaCriada){
-                     cout << "Chave: ";
-                     cin >> item.chave;
-                     ret = PesquisaItem(&lista, item.chave);
-                     if (ret >= 0){
-                        cout << "Número encontrado na posição " << ret;
-                        Sleep(1000);
-                        cout << "\n\nRemovendo...";
-                        RetiraItem(ret, &lista, &item);
-                        Sleep(1000);
-                     }
-                     else{
-                        cout << "O número não está na lista.";
-                        Sleep(1000);
-                     }
-                  }
-                  else{
-                     cout << "Crie a lista primeiramente.";
-                     Sleep(1000);
-                  }
-                  break;
-            default:
-                  break;
+         case 1:
+            if (!listaCriada)CriaListaVazia(&lista); //se a lista não existe, ele cria lista
+            break;
+         case 2:
+            if (VerificaListaVazia(&lista)) cout << "Lista vazia!"; //apenas verifica se existe e retorna a mensagem
+            else cout << "A lista não está vazia ou não foi inicializada.";
+            Sleep(3000);
+            break;
+         case 3: //inserção no primeiro
+            if (!listaCriada){ //se não foi criada, ele manda criar antes
+                cout << "Crie a lista primeiramente.";
+                Sleep(1000);
+                break;
             }
+            //inserção de dados
+            cout << "ID: ";
+            cin >> item.chave;
+            cout << "Nome: ";
+            cin >> item.nome;
+            InsereListaPrimeiro(&lista, &item); //insere o conteudo todo
+            break;
+        case 4: //inserção no último
+            if (!listaCriada){
+                cout << "Crie a lista primeiramente.";
+                Sleep(1000);
+                break;
+            }
+            //inserção de dados
+            cout << "ID: ";
+            cin >> item.chave;
+            cout << "Nome: ";
+            cin >> item.nome;
+            InsereListaUltimo(&lista, &item); //insere o conteudo todo
+            break;
+        case 5: //inserção após elemento
+            int idInsert;
+            if (!listaCriada){
+                cout << "Crie a lista primeiramente.";
+                Sleep(1000);
+                break;
+            }
+            cout << "Deseja inserir após qual ID? ";
+            cin >> idInsert;
+            cout << "\nDados para inserção:\n";
+            cout << "ID: ";
+            cin >> item.chave;
+            cout << "Nome: ";
+            cin >> item.nome;
 
-    } while (opcao != 0);
- 
+            InsereListaAposElemento(&lista, &item, idInsert);
+            break;
+        case 6: //impressão da lista
+            if (!listaCriada){
+                cout << "Crie a lista primeiramente.";
+                Sleep(1000);
+                break;
+            }
+            ImprimeLista(lista);
+            break;
+        case 7: //pesquisa item
+            int idPesqui;
+            if (!listaCriada){
+                cout << "Crie a lista primeiramente.";
+                Sleep(1000);
+                break;
+            }
+            cout << "Digite o ID do item que deseja pesquisar: ";
+            cin >> idPesqui;
+            ret = PesquisaItem(&lista, idPesqui);
+            if (ret == -1){
+                cout << "Item não encontrado!";
+                Sleep(1500);
+            }
+            ImprimeItem(&lista, ret); //imprime o item
+            system("pause");
+            break;
+        case 8: //remove item do ínicio
+            if (!listaCriada){
+                cout << "Crie a lista primeiramente.";
+                Sleep(1000);
+                break;
+            }
+            RemoveListaPrimeiro(&lista);
+            break;
+        case 9: //remove item do fim
+            if (!listaCriada){
+                cout << "Crie a lista primeiramente.";
+                Sleep(1000);
+                break;
+            }
+            RemoveListaUltimo(&lista);
+            break;
+        case 10: //remove por id
+            int idRemo;
+            if (!listaCriada){
+                cout << "Crie a lista primeiramente.";
+                Sleep(1000);
+                break;
+            }
+            cout << "Digite o ID do item que deseja remover: ";
+            cin >> idRemo;
+            ret = PesquisaItem(&lista, idRemo);
+            if (ret == -1){
+                cout << "Item não encontrado!";
+                Sleep(1000);
+                break;
+            }
+            cout << "\n\nRemovendo...";
+            RemoveItemPorId(&lista, idRemo);
+            Sleep(1000);
+            break;
+        case 11: //Tamanho da lista
+            if (!listaCriada){
+                cout << "Crie a lista primeiramente.";
+                Sleep(1000);
+                break;
+            }
+            cout << "Tamanho da lista: " << TamanhoLista(&lista);
+            Sleep(1500);
+            break;
+        case 0:
+            cout << "Saindo...";
+            Sleep(1000);
+            break;
+        default:
+            break;
+        }
+
+    }while (opcao != 0);
     return 0;
 }

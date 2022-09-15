@@ -25,7 +25,7 @@ bool listaCriada = false;
 
 
 void CriaListaVazia(TipoLista *lista); //cria uma lista vazia
-bool VerificaListaVazia(TipoLista *lista); // verifica a existência de uma lista vazia
+int VerificaListaVazia(TipoLista *lista); // verifica a existência de uma lista vazia
 void InsereListaPrimeiro(TipoLista *lista, TipoItem *item); //inserção na primeira posição da lista
 void InsereListaAposElemento(TipoLista *lista, TipoItem *item, int id); //inserção após um elemento especificado
 void InsereListaUltimo(TipoLista *lista, TipoItem *item); //inserção na última posição da lista
