@@ -51,7 +51,7 @@ void AtualizaUltimo(TipoLista *lista){ //faz uma troca dos valores para atualiza
     while (aux->prox != NULL){ //enquanto for diferente de null, ele irá percorrer
         aux = aux->prox;
     }
-    lista->Ultimo = aux; //quando ele sair do while, o ultimo valor, que fez o while sair, será o último.
+    lista->Ultimo = aux; //quando ele sair do while, o ultimo valor que fez sair do while, será o último.
 }
 
 void InsereListaPrimeiro(TipoLista *lista, TipoItem *item){ //primeira inserção já tendo a lista criada

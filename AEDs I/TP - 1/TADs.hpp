@@ -17,9 +17,10 @@ typedef struct Projeto{
 typedef struct ListaSequencialProjeto{
     Projeto itemProjeto[MAXTAM];
     ApontadorLE primeiro, ultimo;
-    int tamanho = MAXTAM;
+    int tamanho;
 };
 
+//funcionario
 typedef struct Funcionario{
     int numero;             // codigo do funcionario
     char endereco[40];      // endereco do funcionario
@@ -32,7 +33,7 @@ typedef struct Celula{
     Apontador prox;
 };
 
-typedef struct TListaEncadeadaFuncionario{
+typedef struct ListaEncadeadaFuncionario{
     Apontador primeiro;
     Apontador ultimo;
 };

@@ -22,8 +22,6 @@ typedef struct TipoLista{
 
 bool listaCriada = false;
 
-
-
 void CriaListaVazia(TipoLista *lista); //cria uma lista vazia
 int VerificaListaVazia(TipoLista *lista); // verifica a existência de uma lista vazia
 void InsereListaPrimeiro(TipoLista *lista, TipoItem *item); //inserção na primeira posição da lista
