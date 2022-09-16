@@ -46,19 +46,21 @@ int TamanhoLista(TipoListaTurma *lista){
 }
 
 int InsereItem(TipoListaTurma *lista, TipoItemAluno item){
-    if (lista->Ultimo > MAXTAM){
+    if (lista->Ultimo >= MAXTAM){
         cout << "Turma cheia!\n";
         return -1;
     }
-    lista->Item[lista->Ultimo].matricula = item.matricula;
-    strcpy(lista->Item[lista->Ultimo].nome, item.nome);
-    lista->Item[lista->Ultimo].turma = item.turma;
-    lista->Item[lista->Ultimo].n1 = item.n1;
-    lista->Item[lista->Ultimo].n2 = item.n2;
-    lista->Item[lista->Ultimo].n3 = item.n3;
-    lista->tamanho++;
-    lista->Ultimo++;
-    return 1;
+    else{
+        lista->Item[lista->Ultimo].matricula = item.matricula;
+        strcpy(lista->Item[lista->Ultimo].nome, item.nome);
+        lista->Item[lista->Ultimo].turma = item.turma;
+        lista->Item[lista->Ultimo].n1 = item.n1;
+        lista->Item[lista->Ultimo].n2 = item.n2;
+        lista->Item[lista->Ultimo].n3 = item.n3;
+        lista->tamanho++;
+        lista->Ultimo++;
+        return 1;
+    }
 }
 
 void ImprimeLista(TipoListaTurma lista){

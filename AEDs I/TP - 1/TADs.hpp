@@ -17,6 +17,7 @@ typedef struct Projeto{
 typedef struct ListaSequencialProjeto{
     Projeto itemProjeto[MAXTAM];
     ApontadorLE primeiro, ultimo;
+    int tamanho = MAXTAM;
 };
 
 typedef struct Funcionario{
@@ -36,6 +37,9 @@ typedef struct TListaEncadeadaFuncionario{
     Apontador ultimo;
 };
 
+bool listaProjectCriada = false;
+bool listaFuncionarioCriada = false;
+
 /* Funções 
 1. menuProjeto
 2. menufuncionario
@@ -49,7 +53,7 @@ typedef struct TListaEncadeadaFuncionario{
 1.7 retiraProjeto
 
 2.1 crialistaFunc
-2.2 verificaListaCheia
+2.2 verificaListaVazia
 2.3 incluirFunc
     2.3.1 incluirProjetoFunc
     2.3.2 verificaFuncProjeto
@@ -60,9 +64,6 @@ typedef struct TListaEncadeadaFuncionario{
 2.6 qtdFunc
 2.7 imprimirContraCheque
 
-
-listaFuncionario
-listaProjeto
 
 */
 #endif
