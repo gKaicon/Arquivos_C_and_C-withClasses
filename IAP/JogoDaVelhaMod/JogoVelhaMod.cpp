@@ -18,7 +18,6 @@ int main(){
         ImprimeJogo(jogo); 
         do{ 
             // repete até alguém ganhar ou atingir 9 jogadas e dar empate
-
             do{
             // ler coordenadas
                 system("cls");
