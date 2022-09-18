@@ -1,14 +1,12 @@
 #ifndef LISTA_H
 #define LISTA_H
 
+//Projeto
 #define MAXTAM 5
 
 typedef int Chave_Project;
 typedef int ApontadorLE;
 
-typedef struct CelulaApontadorLD *Apontador;
-
-//Projeto
 typedef struct Projeto{
     Chave_Project codigo; // codigo do projeto
     char nome[30];        // nome do projeto
@@ -20,9 +18,11 @@ typedef struct ListaSequencialProjeto{
     int tamanho;
 };
 
-//funcionario
+//Funcionário
+typedef struct Celula *Apontador;
 typedef struct Funcionario{
     int numero;             // codigo do funcionario
+    char nome[40];
     char endereco[40];      // endereco do funcionario
     int dependentes;        // numero de dependentes do funcionario
     ListaSequencialProjeto projeto[5]; // Lista Sequencial que guarda os projetos nos quais o funcionario trabalha
@@ -36,6 +36,7 @@ typedef struct Celula{
 typedef struct ListaEncadeadaFuncionario{
     Apontador primeiro;
     Apontador ultimo;
+    int tamanho;
 };
 
 bool listaProjectCriada = false;

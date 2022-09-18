@@ -76,7 +76,7 @@ int main() {
         case 6: //impressão da lista
             if (!listaCriada){
                 cout << "Crie a lista primeiramente.";
-                Sleep(1000);
+                Sleep(3000);
                 break;
             }
             ImprimeLista(lista);
@@ -85,7 +85,7 @@ int main() {
             int idPesqui;
             if (!listaCriada){
                 cout << "Crie a lista primeiramente.";
-                Sleep(1000);
+                Sleep(2000);
                 break;
             }
             cout << "Digite o ID do item que deseja pesquisar: ";
@@ -131,7 +131,7 @@ int main() {
             }
             cout << "\n\nRemovendo...";
             RemoveItemPorId(&lista, idRemo);
-            Sleep(1000);
+            Sleep(1500);
             break;
         case 11: //Tamanho da lista
             if (!listaCriada){
@@ -140,11 +140,11 @@ int main() {
                 break;
             }
             cout << "Tamanho da lista: " << TamanhoLista(&lista);
-            Sleep(1500);
+            Sleep(2500);
             break;
         case 0:
             cout << "Saindo...";
-            Sleep(1000);
+            Sleep(1500);
             break;
         default:
             break;

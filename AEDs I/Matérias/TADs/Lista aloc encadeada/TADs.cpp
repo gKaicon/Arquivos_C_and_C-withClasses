@@ -34,7 +34,7 @@ void CriaListaVazia(TipoLista *lista){
     else{
         cout << "Lista já existe!";
     }
-    Sleep(1500);//comando de espera em milisegundos
+    Sleep(2500);//comando de espera em milisegundos
 }
 
 int VerificaListaVazia(TipoLista *lista){
@@ -102,7 +102,7 @@ void InsereListaAposElemento(TipoLista *lista, TipoItem *item, int id){ //insere
 void ImprimeLista(TipoLista lista){ //lista toda
     if(VerificaListaVazia(&lista)){ //verifica se o endereço da lista é true
         cout << "Lista Vazia";
-        Sleep(1000);
+        Sleep(2000);
         return ;
     }
     Apontador aux;
@@ -112,6 +112,7 @@ void ImprimeLista(TipoLista lista){ //lista toda
         cout << "Nome: " << aux->item.nome << endl;
         aux = aux->prox;//aux sendo 'incrementado'
     }
+    Sleep(3000);
 }
 
 void ImprimeItem(TipoLista *lista, int chave){ //elemento da lista
