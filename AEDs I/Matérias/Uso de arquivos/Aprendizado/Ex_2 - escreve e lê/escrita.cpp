@@ -23,16 +23,15 @@ int main() {
         cerr << "Erro ao abrir o arquivo";
         return -1;
     }
+    if(filSaida.is_open()){
+        cerr << "Arquivo Aberto \n\n";
+        string nome;
+        cout << "Nome: ";
+        cin >> nome;
 
-    string nome;
-
-    cout << "Nome: ";
-    cin >> nome;
-
-    filSaida << "Nome: " << nome;
-
-    filSaida.close();
-    
+        filSaida << "Nome: " << nome;
+    }
+        filSaida.close();
     cout << endl;
     return 0;
 }

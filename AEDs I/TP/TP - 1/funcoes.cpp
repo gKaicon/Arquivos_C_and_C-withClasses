@@ -21,18 +21,20 @@ void menuProjeto(){
     cout << "1.5 Voltar\n";
 }
 void menuFuncionario(){
-    cout << "2.1 Incluir funcionário\n";
+    cout << "2.1 Opções para funcionário\n";
     cout << "2.2 Listar funcionários\n";
     cout << "2.3 Quantidade de funcionários\n";
     cout << "2.4 Pesquisa Funcionario\n";
     cout << "2.5 Imprimir todos os Contra-Cheque\n";
-    cout << "2. Voltar\n";
+    cout << "2.6 Voltar\n";
 }
 void menuinclusao(){
-    cout << "2.1 Incluir funcionário\n";
-    cout << "    2.1.1 Incluir projeto ao funcionário\n";
-    cout << "    2.1.2 Excluir funcionário sem projeto\n";
-    cout << "    2.1.3 Excluir projeto do funcionário\n";
+    cout << "2.1 Opções para funcionário\n";
+    cout << "    2.1.1 Incluir funcionario\n";
+    cout << "    2.1.2 Incluir projeto ao funcionário\n";
+    cout << "    2.1.3 Excluir funcionário sem projeto\n";
+    cout << "    2.1.4 Excluir projeto do funcionário\n";
+    cout << "    2.1.5 Excluir funcionário por ID\n";
 }
 
 //Projeto
@@ -82,13 +84,18 @@ void listaDeProjetos(ListaSequencialProjeto lista){
         cout << "Lista de projetos não foi criada.";
     }
 }
-int pesquisaProjeto(ListaSequencialProjeto *lista, int chave){
-    for(int i = lista->primeiro; i < lista->ultimo; i++){
-        if(chave == lista->itemProjeto[i].codigo){
-            return i;
+bool pesquisaProjeto(ListaSequencialProjeto lista, int chave){
+    for(int i = lista.primeiro; i < lista.ultimo; i++){
+        if(chave == lista.itemProjeto[i].codigo){
+            cout << "Código do Projeto: " << lista.itemProjeto[i].codigo; // codigo do projeto
+            cout << "Nome do projeto: " << lista.itemProjeto[i].nome;
+            cout << "Horas Trabalhadas: " << lista.itemProjeto[i].horas;
+            cout << "\n";
+            return true;
         }
+        Sleep(3000);
     }
-    return -1;
+    return false;
 }
 void retiraProjeto(ListaSequencialProjeto *lista, ApontadorLE a, Projeto *item){
     int aux;
@@ -129,15 +136,6 @@ int qtdFunc(ListaEncadeadaFuncionario *lista){
     return lista->tamanho;
 }
 
-void AtualizaUltimo(ListaEncadeadaFuncionario *lista){ //faz uma troca dos valores para atualizar o ultimo
-    Apontador aux; //apontador auxiliar
-    aux = lista->primeiro->prox; // a primeira posição
-    while (aux->prox != NULL){ //enquanto for diferente de null, ele irá percorrer
-        aux = aux->prox;
-    }
-    lista->ultimo = aux; //quando ele sair do while, o ultimo valor que fez sair do while, será o último.
-}
-
 void incluirFunc(ListaEncadeadaFuncionario *lista, Funcionario *item){ //insere sempre após o ultimo
     lista->ultimo->prox = new Celula ; //última posição da LISTA, apontando para a última posição recebe um novo ELEMENTO
     lista->ultimo = lista->ultimo->prox; // a última posição da LISTA, recebe o apontador da última posição
@@ -146,7 +144,7 @@ void incluirFunc(ListaEncadeadaFuncionario *lista, Funcionario *item){ //insere 
     lista->tamanho++;
 }
 
-void listaFunc(ListaEncadeadaFuncionario lista){ //lista toda
+void listaDeFunc(ListaEncadeadaFuncionario lista){ //lista toda
     if(VerificaListaVazia(&lista)){ //verifica se o endereço da lista é true
         cout << "Lista Vazia";
         Sleep(1000);
@@ -211,6 +209,21 @@ void RemoveItemPorId(ListaEncadeadaFuncionario *lista, int numero){
     lista->tamanho--; //diminuindo a lista
 }
 
+void removeFuncionarioSemProjeto(ListaEncadeadaFuncionario *lista){
+    int chave, j = 0;
+    bool achou = false;
+    Apontador aux;
+    aux = lista->primeiro->prox;
+    while(aux !=  NULL){
+        for(int i = 0; i < 5;i++){
+            if(aux->item.projeto[i].itemProjeto->codigo == NULL){
+                chave = aux->item.numero;
+                RemoveItemPorId(lista, chave);
+            }
+        }
+        aux = aux->prox;
+    }
+}
 void ImprimirContraCheque(ListaEncadeadaFuncionario lista){
     if (VerificaListaVazia(&lista))return;
 

@@ -1,5 +1,10 @@
 #include <iostream>
 #include <windows.h>
+#include <fstream>
+
+// ifstream - leitura
+// ofstream - escrita
+// cerr - cout só que de console
 
 using namespace std;
 
@@ -15,21 +20,36 @@ int main() {
     UINT CPAGE_DEFAULT = GetConsoleOutputCP();
     SetConsoleOutputCP(CPAGE_UTF8);
 
-    double somaSa, somaFi, mediaSa, mediaFi, maiorSa, percMulher, qtdMulher = 0, qtdH;
-    struct Habitante h[5];
-    qtdH = 5;
+    ofstream escreve;
+    escreve.open("cadastrocarregado.txt");
+    if(!escreve.is_open()){
+        cerr << "Erro ao abrir o arquivo";
+        return -1;
+    }
 
-    // for(int i = 0; i < qtdH; i++){
-    //     cout << "Informe o salário: R$ ";
-    //     cin >> h[i].salario;
-    //     cout << "Informe a idade: ";
-    //     cin >> h[i].idade;
-    //     cout << "Informe a quantidade de filhos: ";
-    //     cin >> h[i].numFilho;
-    //     cout << "Informe o sexo: ";
-    //     cin >> h[i].sexo;
-    // }
-    
+    double somaSa, somaFi, mediaSa, mediaFi, maiorSa, percMulher, qtdMulher = 0, qtdH;
+    struct Habitante h[2];
+    qtdH = 2;
+
+    for(int i = 0; i < qtdH; i++){
+         cout << "Informe o salário: R$ ";
+         cin >> h[i].salario;
+         escreve << h[i].salario << "\n";
+
+         cout << "Informe a idade: ";
+         cin >> h[i].idade;
+         escreve << h[i].idade << "\n";
+
+         cout << "Informe a quantidade de filhos: ";
+         cin >> h[i].numFilho;
+         escreve << h[i].numFilho << "\n";
+
+         cout << "Informe o sexo: ";
+         cin >> h[i].sexo;
+         escreve << h[i].sexo << "\n";
+    }
+    escreve.close();
+    /*
     h[1].salario = 990.0;
     h[1].idade = 19;
     h[1].numFilho = 2;
@@ -54,7 +74,7 @@ int main() {
     h[5].idade = 24;
     h[5].numFilho = 2;
     h[5].sexo = 'M';
-
+*/
     //média de salário da população
     for(int i = 0; i < qtdH; i++){
         somaSa += h[i].salario;

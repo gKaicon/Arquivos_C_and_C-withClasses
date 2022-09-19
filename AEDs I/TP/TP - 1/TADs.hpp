@@ -42,30 +42,45 @@ typedef struct ListaEncadeadaFuncionario{
 bool listaProjectCriada = false;
 bool listaFuncionarioCriada = false;
 
-/* Funções 
-1. menuProjeto
-2. menufuncionario
+void menu(){
+    cout << "CADASTRO\n\n";
+    cout << "1. Projeto\n";
+    cout << "2. Funcionario\n";
+    cout << "0. Sair\n";
+}
+//Menus
+void menuProjeto();
+void menuFuncionario();
+void menuinclusao();
 
-1.1 criaListaProj
-1.2 verificalistaVaziaProj
-1.3 verificaListaCheiaProj
-1.4 incluirNaListaProjeto
-1.5 listaDeProjetos
-1.6 pesquisaProjeto
-1.7 retiraProjeto
+//Projeto
+void criaListaProj(ListaSequencialProjeto *lista);                                  
+bool verificalistaVaziaProj(ListaSequencialProjeto *lista);                         
+bool verificaListaCheiaProj(ListaSequencialProjeto *lista);                         
+bool incluirNaListaProjeto(ListaSequencialProjeto *lista, Projeto item);            //1.1 incluirNaListaProjeto
+void listaDeProjetos(ListaSequencialProjeto lista);                                 //1.2 listaDeProjetos
+bool pesquisaProjeto(ListaSequencialProjeto *lista, int chave);                     //1.3 pesquisaProjeto
+void retiraProjeto(ListaSequencialProjeto *lista, ApontadorLE a, Projeto *item);    //1.4 retiraProjeto
 
-2.1 crialistaFunc
-2.2 verificaListaVazia
+//Funcionario
+void CriaListaFunc(ListaEncadeadaFuncionario *lista);
+int VerificaListaVazia(ListaEncadeadaFuncionario *lista);
+void incluirFunc(ListaEncadeadaFuncionario *lista, Funcionario *item);              //2.1 incluirFunc
+void listaDeFunc(ListaEncadeadaFuncionario lista);                                    //2.2 listaFuncionario
+int qtdFunc(ListaEncadeadaFuncionario *lista);                                      //2.3 qtdFunc
+void pesquisaFunc(ListaEncadeadaFuncionario *lista, int numero);                    //2.4 pesquisaFunc
+void ImprimirContraCheque(ListaEncadeadaFuncionario lista);                         //2.5 imprimirContraCheque
+
+void RemoveItemPorId(ListaEncadeadaFuncionario *lista, int numero);                 //2.1.5 removePorID
+
+
+
+
+/*
 2.3 incluirFunc
     2.3.1 incluirProjetoFunc
     2.3.2 verificaFuncProjeto
     2.3.3 excluirFuncSemProjeto
     2.3.4 excluirProjetoDoFunc
-2.4 pesquisaCodIgual
-2.5 listaFuncionario
-2.6 qtdFunc
-2.7 imprimirContraCheque
-
-
 */
 #endif

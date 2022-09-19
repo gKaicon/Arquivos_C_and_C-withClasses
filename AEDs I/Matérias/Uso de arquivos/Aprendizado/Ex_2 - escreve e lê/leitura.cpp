@@ -23,7 +23,7 @@ int main() {
 
    while (!filVer.eof()){
         getline(filVer, texto);
-        cout << texto << endl;
+       // cout << texto << endl;
     }
 
     return 0;
