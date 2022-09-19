@@ -21,20 +21,16 @@ void menuProjeto(){
     cout << "1.5 Voltar\n";
 }
 void menuFuncionario(){
-    cout << "2.1 Opções para funcionário\n";
-    cout << "2.2 Listar funcionários\n";
-    cout << "2.3 Quantidade de funcionários\n";
-    cout << "2.4 Pesquisa Funcionario\n";
-    cout << "2.5 Imprimir todos os Contra-Cheque\n";
-    cout << "2.6 Voltar\n";
-}
-void menuinclusao(){
-    cout << "2.1 Opções para funcionário\n";
-    cout << "    2.1.1 Incluir funcionario\n";
-    cout << "    2.1.2 Incluir projeto ao funcionário\n";
-    cout << "    2.1.3 Excluir funcionário sem projeto\n";
-    cout << "    2.1.4 Excluir projeto do funcionário\n";
-    cout << "    2.1.5 Excluir funcionário por ID\n";
+    cout << "2.1 Incluir funcionario\n";
+    cout << "2.2 Incluir projeto ao funcionário\n";
+    cout << "2.3 Excluir funcionário sem projeto\n";
+    cout << "2.4 Excluir projeto do funcionário\n";
+    cout << "2.5 Excluir funcionário por ID\n";
+    cout << "2.6 Listar funcionários\n";
+    cout << "2.7 Quantidade de funcionários\n";
+    cout << "2.8 Pesquisa Funcionario\n";
+    cout << "2.9 Imprimir todos os Contra-Cheque\n";
+    cout << "2.10 Voltar\n";
 }
 
 //Projeto
@@ -43,7 +39,7 @@ void criaListaProj(ListaSequencialProjeto *lista){
         lista->tamanho = 0;
         lista->primeiro = 0; //usa o ponteiro para apontar para um membro da estrutura
         lista->ultimo = lista->primeiro;
-        cout << "Lista de projetos criada com sucesso!";
+        cout << "Lista de projetos criada com sucesso!\n";
         listaProjectCriada = true;
     }
     else cout << "Lista de Projetos já existe";
@@ -119,7 +115,7 @@ void CriaListaFunc(ListaEncadeadaFuncionario *lista){
         lista->primeiro = new Celula; //primeira posição da LISTA recebe um novo ELEMENTO
         lista->ultimo = lista->primeiro; //e o ultimo recebe o primeiro, pois se trata se uma lista vazia
         lista->ultimo->prox = NULL; //o apontador de struct prox recebe nulo, para que seja possível a próxima inserção
-        cout << "Lista criada com sucesso!";
+        cout << "Lista de funcionários criada com sucesso!\n";
         listaFuncionarioCriada = true; //lista foi criada
     }
     else{
@@ -210,13 +206,12 @@ void RemoveItemPorId(ListaEncadeadaFuncionario *lista, int numero){
 }
 
 void removeFuncionarioSemProjeto(ListaEncadeadaFuncionario *lista){
-    int chave, j = 0;
-    bool achou = false;
+    int chave;
     Apontador aux;
     aux = lista->primeiro->prox;
     while(aux !=  NULL){
         for(int i = 0; i < 5;i++){
-            if(aux->item.projeto[i].itemProjeto->codigo == NULL){
+            if(aux->item.projeto[i].itemProjeto->codigo == NULL){ // fazer função para apagar, sugestão qtd de projeyo
                 chave = aux->item.numero;
                 RemoveItemPorId(lista, chave);
             }
@@ -224,6 +219,7 @@ void removeFuncionarioSemProjeto(ListaEncadeadaFuncionario *lista){
         aux = aux->prox;
     }
 }
+
 void ImprimirContraCheque(ListaEncadeadaFuncionario lista){
     if (VerificaListaVazia(&lista))return;
 

@@ -1,15 +1,16 @@
 #ifndef LISTA_H
 #define LISTA_H
 
+using namespace std;
+
 //Projeto
 #define MAXTAM 5
 
-typedef int Chave_Project;
 typedef int ApontadorLE;
 
 typedef struct Projeto{
-    Chave_Project codigo; // codigo do projeto
-    char nome[30];        // nome do projeto
+    int codigo; // codigo do projeto
+    char nome[40];        // nome do projeto
     int horas;            // numero de horas trabalhas no projeto
 };
 typedef struct ListaSequencialProjeto{
@@ -19,15 +20,16 @@ typedef struct ListaSequencialProjeto{
 };
 
 //Funcionário
-typedef struct Celula *Apontador;
 typedef struct Funcionario{
     int numero;             // codigo do funcionario
-    char nome[40];
+    char nome[40];          // nome do funcionario
     char endereco[40];      // endereco do funcionario
     int dependentes;        // numero de dependentes do funcionario
     ListaSequencialProjeto projeto[5]; // Lista Sequencial que guarda os projetos nos quais o funcionario trabalha
 } Funcionario;
 
+
+typedef struct Celula *Apontador;
 typedef struct Celula{
     Funcionario item;
     Apontador prox;
@@ -42,13 +44,8 @@ typedef struct ListaEncadeadaFuncionario{
 bool listaProjectCriada = false;
 bool listaFuncionarioCriada = false;
 
-void menu(){
-    cout << "CADASTRO\n\n";
-    cout << "1. Projeto\n";
-    cout << "2. Funcionario\n";
-    cout << "0. Sair\n";
-}
 //Menus
+void menu();
 void menuProjeto();
 void menuFuncionario();
 void menuinclusao();
