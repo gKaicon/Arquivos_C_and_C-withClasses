@@ -121,27 +121,27 @@ int main()
          listaDeProjetos(listaProj);
          break;
       case 12: //pesquisar
-         int num;
+         int numP;
          cout << "Digite o número do projeto que deseja encontrar: ";
-         cin >> num;
-         pesquisaProjeto(listaProj, num);
+         cin >> numP;
+         pesquisaProjeto(listaProj, numP);
          break;
       case 13: //retirar
-         int idRemo;
-         char ret;
+         int idRemov;
+         char reti;
          listaDeProjetos(listaProj);
          cout << "\n\nDigite o número do projeto que deseja remover: ";
-         cin >> idRemo;
+         cin >> idRemov;
          do
          {
             cout << "Tem certeza? (s/n)";
-            cin >> ret;
-         } while (ret != 's' || ret != 'n');
-         if (ret == 's')
+            cin >> reti;
+         } while (reti != 's' || ret != 'n');
+         if (reti == 's')
          {
             cout << "\n\nRemovendo...";
             Sleep(1500);
-            retiraProjeto(&listaProj, idRemo, &proj);
+            retiraProjeto(&listaProj, idRemov, &proj);
          }
          break;
       case 14:

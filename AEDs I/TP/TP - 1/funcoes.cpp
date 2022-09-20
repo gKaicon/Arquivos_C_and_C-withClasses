@@ -7,7 +7,7 @@ using namespace std;
 #define MAXTAM 5
 
 void menu(){
-
+    cout << "\n\nPROJETOS\n\n";
     cout << "1 Incluir funcionario\n";
     cout << "2 Incluir projeto ao funcionário\n";
     cout << "3 Excluir funcionário sem projeto\n";
@@ -21,7 +21,7 @@ void menu(){
     cout << "11 Listar projetos\n";
     cout << "12 Pesquisar projeto por id\n";
     cout << "13 Retirar projeto\n";
-    cout << "Sair";
+    cout << "15 Sair";
 }
 
 //Projeto
