@@ -46,9 +46,6 @@ bool listaFuncionarioCriada = false;
 
 //Menus
 void menu();
-void menuProjeto();
-void menuFuncionario();
-void menuinclusao();
 
 //Projeto
 void criaListaProj(ListaSequencialProjeto *lista);                                  

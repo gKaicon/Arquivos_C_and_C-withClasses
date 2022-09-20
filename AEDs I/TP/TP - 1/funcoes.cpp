@@ -7,30 +7,21 @@ using namespace std;
 #define MAXTAM 5
 
 void menu(){
-    cout << "CADASTRO\n\n";
-    cout << "1. Projeto\n";
-    cout << "2. Funcionario\n";
-    cout << "0. Sair\n";
-}
 
-void menuProjeto(){
-    cout << "1.1 Incluir na lista projeto\n";
-    cout << "1.2 Listar projetos\n";
-    cout << "1.3 Pesquisar projeto por id\n";
-    cout << "1.4 Retirar projeto\n";
-    cout << "1.5 Voltar\n";
-}
-void menuFuncionario(){
-    cout << "2.1 Incluir funcionario\n";
-    cout << "2.2 Incluir projeto ao funcionário\n";
-    cout << "2.3 Excluir funcionário sem projeto\n";
-    cout << "2.4 Excluir projeto do funcionário\n";
-    cout << "2.5 Excluir funcionário por ID\n";
-    cout << "2.6 Listar funcionários\n";
-    cout << "2.7 Quantidade de funcionários\n";
-    cout << "2.8 Pesquisa Funcionario\n";
-    cout << "2.9 Imprimir todos os Contra-Cheque\n";
-    cout << "2.10 Voltar\n";
+    cout << "1 Incluir funcionario\n";
+    cout << "2 Incluir projeto ao funcionário\n";
+    cout << "3 Excluir funcionário sem projeto\n";
+    cout << "4 Excluir projeto do funcionário\n";
+    cout << "5 Excluir funcionário por ID\n";
+    cout << "6 Listar funcionários\n";
+    cout << "7 Quantidade de funcionários\n";
+    cout << "8 Pesquisa Funcionario\n";
+    cout << "9 Imprimir todos os Contra-Cheque\n";
+    cout << "10 Incluir na lista projeto\n";
+    cout << "11 Listar projetos\n";
+    cout << "12 Pesquisar projeto por id\n";
+    cout << "13 Retirar projeto\n";
+    cout << "Sair";
 }
 
 //Projeto
