@@ -23,7 +23,7 @@ int main()
    do
    {
       menu(); //menu
-      cout << "Opção: ";
+      cout << "\nOpção: ";
       cin >> op;
       switch (op)
       {
@@ -34,19 +34,17 @@ int main()
             Sleep(1000);
             break;
          }
-         else
-         { //inserção de dados
+          //inserção de dados
             cout << "Numero: ";
-            func.numero = (listaFunc.ultimo->item.numero) + 1; //evitar números repetidos
+            cin >> func.numero;
             cout << "Nome: ";
-            cin.getline(func.nome, 40);
+            for(int i = 0; i < 2 ; i++)cin.getline(func.nome, 40);
             cout << "Endereço: ";
-            cin.getline(func.endereco, 40);
+            cin >> func.endereco;
             cout << "Número de dependentes: ";
             cin >> func.dependentes;
             incluirFunc(&listaFunc, &func); //insere o conteudo todo
-            break;
-         }
+         break;
       case 2: //Incluir projeto ao funcionário - !
          break;
       case 3: //excluir funcionario sem projeto

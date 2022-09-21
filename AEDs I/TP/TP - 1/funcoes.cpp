@@ -178,6 +178,15 @@ void pesquisaFunc(ListaEncadeadaFuncionario *lista, int numero){ //elemento da l
     }
 }
 
+void CadastraProjetos(ListaEncadeadaFuncionario *lista) // Função para realizar o cadastro dos projetos
+{
+    Projeto proj;
+    Apontador ptr;
+    int cod;
+    int ret;
+}
+
+
 void RemoveItemPorId(ListaEncadeadaFuncionario *lista, int numero){
     if (VerificaListaVazia(lista))  return; //verifica se o endereço da lista é true
 
