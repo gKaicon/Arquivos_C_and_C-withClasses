@@ -19,9 +19,9 @@ void menu(){
     cout << " 8. Remove Item do início da lista\n";
     cout << " 9. Remove Item do final da lista\n";
     cout << "10. Remove Item por ID\n";
-    cout << "11. Tamanho da Lista\n";
+    cout << "11. Inverte Lista - Lista 5\n";
     cout << "12. Concatena Alternadamente - Lista 4\n";
-    cout << "13. Inverte Lista - Lista 5\n";
+    cout << "13. Tamanho da Lista\n";
     cout << " 0. Sair\n\n";
 }
 
@@ -213,21 +213,22 @@ void ConcatenaAlternado(TipoLista *lista1, TipoLista *lista2, TipoLista *lista4)
 }
 
 //Questão 4 - ! Não consegui fazer, ela não funciona
-void InverteLista(TipoLista *lista, TipoLista *lista5){ //lista toda
+void InverteLista(TipoLista *lista){ //lista toda
     if(VerificaListaVazia(lista)){ //verifica se o endereço da lista é true
         cout << "Lista Vazia";
         Sleep(2000);
         return ;
     }
+    TipoLista lista5;
     Apontador pri, atual, ultimo;
     atual = lista->Primeiro->prox; //pri recebe a primeira posição
     pri = lista->Primeiro->prox; //atual recebe o ultimo
-    while(pri->prox != ultimo->prox){
-        while (atual->prox != NULL){ //enquanto o primeiro for diferente do ultimo
-            atual = atual->prox; //irá percorrer a lista
-        }
+    ultimo = NULL;
+    while (atual->prox != ultimo->prox){ //enquanto o primeiro for diferente do ultimo
+        atual = atual->prox; //irá percorrer a lista
         ultimo->prox = atual->prox; //quando sair da lista, significa que o pri se tornou o último
-        InsereListaUltimo(lista5, &ultimo->item);
+        InsereListaPrimeiro(&lista5, &ultimo->item);
     }
-    Sleep(3000);
+    ImprimeLista(lista5);
+    Sleep(5000);
 }

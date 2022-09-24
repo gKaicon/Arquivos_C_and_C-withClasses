@@ -38,6 +38,6 @@ void RemoveItemPorId(TipoLista *lista, int id); //remove pelo id específicado
 int TamanhoLista(TipoLista *lista); // tamanho da lista
 void Concatena(TipoLista *lista1, TipoLista *lista2, TipoLista *lista3);
 void ConcatenaAlternado(TipoLista *lista1, TipoLista *lista2, TipoLista *lista4);
-void InverteLista(TipoLista *lista, TipoLista *lista5);
+void InverteLista(TipoLista *lista);
 
 #endif

@@ -43,6 +43,8 @@ int main() {
 
     Desempilha(&pilha, &item);
 
+    cout << endl << endl;
+
     ExibePilha(&pilha);
     cout << endl << endl;
 

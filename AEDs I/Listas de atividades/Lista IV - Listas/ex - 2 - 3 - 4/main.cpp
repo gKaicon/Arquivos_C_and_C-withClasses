@@ -12,7 +12,7 @@ int main() {
    SetConsoleOutputCP(CPAGE_UTF8);
    system("cls");
  
-   TipoLista lista1, lista2, lista3, lista4, lista5;
+   TipoLista lista1, lista2, lista3, lista4;
    TipoItem item;
    int opcao, ret;
     
@@ -24,8 +24,6 @@ int main() {
     CriaListaVazia(&lista3);//lista concatenada
     cout << "\nLista 4 criada - ";
     CriaListaVazia(&lista4);//lista concatenada alternadamente
-    cout << "\nLista 5 criada - ";
-    CriaListaVazia(&lista5);//lista inversa
     
     
     for(int i = 0; i < 5; i++){
@@ -33,7 +31,7 @@ int main() {
         strcpy(item.nome, "Gabriel lista 1 - " + i);
         InsereListaUltimo(&lista1, &item);
     }
-    cout << "Lista 1 com inserções concluidas\n";
+    cout << "\nLista 1 com inserções concluidas\n";
     for(int i = 0; i < 5; i++){
         item.chave = i+1;
         strcpy(item.nome, "Gabriel lista 2 - " + i);
@@ -56,7 +54,6 @@ int main() {
             if (VerificaListaVazia(&lista2)) cout << "Lista 2 vazia!\t"; //apenas verifica se existe e retorna a mensagem
             if (VerificaListaVazia(&lista3)) cout << "Lista 3 vazia!\t"; //apenas verifica se existe e retorna a mensagem
             if (VerificaListaVazia(&lista4)) cout << "Lista 4 vazia!\t"; //apenas verifica se existe e retorna a mensagem
-            if (VerificaListaVazia(&lista5)) cout << "Lista 5 vazia!\t"; //apenas verifica se existe e retorna a mensagem
             else cout << "Não há listas vazias, ou não foram inicializadas";
             Sleep(3000);
             break;
@@ -133,7 +130,6 @@ int main() {
             if(opI == 2) ImprimeLista(lista2);
             if(opI == 3) ImprimeLista(lista3);
             if(opI == 4) ImprimeLista(lista4);
-            if(opI == 5) ImprimeLista(lista5);
             Sleep(4000);
             break;
         case 7: //pesquisa item
@@ -206,7 +202,20 @@ int main() {
             }
             Sleep(1500);
             break;
-        case 11: //Tamanho da lista
+        case 11:
+            int opInver;
+            cout << "Qual lista deseja inverter?\nLista 1\nLista 2\nLista 3\nLista 4\n Opção: ";
+            cin >> opInver;
+            if(opInver == 1)InverteLista(&lista1);
+            if(opInver == 2)InverteLista(&lista2);
+            if(opInver == 3)InverteLista(&lista3);
+            if(opInver == 4)InverteLista(&lista4);
+            Sleep(5000);
+            break;
+        case 12: //Concatena Alternado
+            ConcatenaAlternado(&lista1, &lista2, &lista4);
+            break;
+        case 13: //Tamanho da lista
             int op;
             cout << "Qual lista deseja ver o tamanho?\nLista 1\nLista 2\nLista 3\nLista 4\nLista 5\n Opção: ";
             cin >> op;
@@ -214,26 +223,13 @@ int main() {
             if(op==2)cout << "Tamanho da lista: " << TamanhoLista(&lista2);
             if(op==3)cout << "Tamanho da lista: " << TamanhoLista(&lista3);
             if(op==4)cout << "Tamanho da lista: " << TamanhoLista(&lista4);
-            if(op==5)cout << "Tamanho da lista: " << TamanhoLista(&lista5);
             Sleep(2500);
-            break;
-        case 12: //Concatena Alternado
-            ConcatenaAlternado(&lista1, &lista2, &lista4);
-            break;
-        case 13:
-            int opInver;
-            cout << "Qual lista deseja ver inverter?\nLista 1\nLista 2\nLista 3\nLista 4\n Opção: ";
-            cin >> opInver;
-            if(opInver == 1)InverteLista(&lista1, &lista5);
-            if(opInver == 2)InverteLista(&lista2, &lista5);
-            if(opInver == 3)InverteLista(&lista3, &lista5);
-            if(opInver == 4)InverteLista(&lista4, &lista5);
-            ImprimeLista(lista5);
-            Sleep(5000);
             break;
         case 0:
             cout << "Saindo...";
             Sleep(1500);
+            break;
+        default:
             break;
         }
     }while (opcao != 0);
