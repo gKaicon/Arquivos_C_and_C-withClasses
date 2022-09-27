@@ -32,9 +32,3 @@ int main()
     verificaArquivo(nomeTexto);
     return 0;
 }
-
-/*
-Fa¸ca um programa que verifique a existˆencia de um arquivo no diret´orio com base no nome
-fornecido pelo usu´ario. Exemplo: o usu´ario informou o nome “teste.txt”, vocˆe deve verificar se
-existe este arquivo e retornar uma resposta positiva ou negativa.
-*/
