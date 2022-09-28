@@ -1,155 +1,63 @@
-#include <iostream>
-#include <windows.h>
-#include "TADs.hpp"
-#include "funcoes.cpp"
+#include "sistema.cpp"
 
 using namespace std;
 
-int main()
-{
-   UINT CPAGE_UTF8 = 65001;
-   UINT CPAGE_DEFAULT = GetConsoleOutputCP();
-   SetConsoleOutputCP(CPAGE_UTF8);
+int main(){
+    UINT CPAGE_UTF8 = 65001;
+    UINT CPAGE_DEFAULT = GetConsoleOutputCP();
+    SetConsoleOutputCP(CPAGE_UTF8);
+    HANDLE colors = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(colors, 2); // Define a cor verde para o texto
 
-   Projeto proj;
-   ListaSequencialProjeto listaProj;
-   Funcionario func;
-   ListaEncadeadaFuncionario listaFunc;
-   criaListaProj(&listaProj);
-   CriaListaFunc(&listaFunc);
-   system("cls");
 
-   int op;
-   do
-   {
-      menu(); //menu
-      cout << "\nOpção: ";
-      cin >> op;
-      switch (op)
-      {
-      case 1: //Incluir
-         if (!listaFuncionarioCriada)
-         {
-            cout << "Crie a lista de funcionários primeiramente.";
-            Sleep(1000);
-            break;
-         }
-          //inserção de dados
-            cout << "Numero: ";
-            cin >> func.numero;
-            cout << "Nome: ";
-            for(int i = 0; i < 2 ; i++)cin.getline(func.nome, 40);
-            cout << "Endereço: ";
-            cin >> func.endereco;
-            cout << "Número de dependentes: ";
-            cin >> func.dependentes;
-            incluirFunc(&listaFunc, &func); //insere o conteudo todo
-         break;
-      case 2: //Incluir projeto ao funcionário - !
-         break;
-      case 3: //excluir funcionario sem projeto
-         //removeFuncionarioSemProjeto(&listaFunc);
-         break;
-      case 4: //excluir projeto do funcionario
-         break;
-      case 5: //Excluir funcionario por ID
-         int idRemo;
-         char ret;
-         listaDeFunc(listaFunc);
-         cout << "\n\n";
-         cout << "Digite o número do Funcionario que deseja remover: ";
-         cin >> idRemo;
+    ListaEncadeada listaEncadeada;
+    CriaListaEncadeadaVazia(&listaEncadeada);
 
-         do
-         {
-            cout << "Tem certeza? (s/n)";
-            cin >> ret;
-         } while (ret != 's' || ret != 'n');
+    bool carregouComSucesso = carregaArquivo(&listaEncadeada);
 
-         if (ret == 's')
-         {
-            cout << "\n\nRemovendo...";
-            Sleep(1500);
-            RemoveItemPorId(&listaFunc, idRemo);
-            break;
-         }
-         if (ret == 'n')
-         {
-            break;
-         }
-      case 6: //lista
-         cout << "\t\t\t\tFUNCIONÁRIOS\n\n";
-         listaDeFunc(listaFunc);
-         break;
-      case 7: //qtd de funcionarios
-         int qtd;
-         qtd = qtdFunc(&listaFunc);
-         cout << "Há um total de " << qtd << " funcionários.";
-         break;
-      case 8: //pesquisa por numero
-         int num;
-         cout << "Digite o número do funcionário: ";
-         cin >> num;
-         pesquisaFunc(&listaFunc, num);
-         break;
-      case 9: //impressão contra-cheques
-         ImprimirContraCheque(listaFunc);
-         break;
+    if (!carregouComSucesso){
+        cout << "Houve problemas ao carregar os funcionarios do arquivo: " << fileName;
+        system("pause");
+    }
 
-      case 10: //incluir
-         if (!listaProjectCriada)
-         {
-            cout << "Crie a lista de Projetos primeiramente.";
-            Sleep(1000);
+    int opcao;
+    do{
+        menu();
+        cout << "Opção: ";
+        cin >> opcao;
+        system("cls");
+
+        switch (opcao){
+        case 1:
+            incluiNovoFuncionario(&listaEncadeada);
             break;
-         }
-         if (listaProjectCriada)
-         { //inserção de dados
-            cout << "Código: ";
-            proj.codigo = (listaProj.itemProjeto->codigo) + 1; //evitar números repetidos
-            cout << "Nome: ";
-            cin.getline(proj.nome, 40);
-            cout << "Horas: ";
-            proj.horas = 0;
-            incluirNaListaProjeto(&listaProj, proj);
+        case 2:
+            ImprimeListaFunc(&listaEncadeada);
+            incluiNovosProjetos(&listaEncadeada);
             break;
-         }
-      case 11: //listarProjetos
-         cout << "\t\t\tPROJETOS\n\n";
-         listaDeProjetos(listaProj);
-         break;
-      case 12: //pesquisar
-         int numP;
-         cout << "Digite o número do projeto que deseja encontrar: ";
-         cin >> numP;
-         pesquisaProjeto(listaProj, numP);
-         break;
-      case 13: //retirar
-         int idRemov;
-         char reti;
-         listaDeProjetos(listaProj);
-         cout << "\n\nDigite o número do projeto que deseja remover: ";
-         cin >> idRemov;
-         do
-         {
-            cout << "Tem certeza? (s/n)";
-            cin >> reti;
-         } while (reti != 's' || ret != 'n');
-         if (reti == 's')
-         {
-            cout << "\n\nRemovendo...";
-            Sleep(1500);
-            retiraProjeto(&listaProj, idRemov, &proj);
-         }
-         break;
-      case 14:
-         break;
-      }
-      if (op == 0)
-      {
-         cout << "Saindo...";
-         Sleep(1500);
-      }
-   } while (op != 0);
-   return 0;
+        case 3:
+            ImprimeListaFunc(&listaEncadeada);
+            excluiProjetos(&listaEncadeada);
+            break;
+        case 4:
+            excluiFuncionariosSemProjetos(&listaEncadeada);
+            break;
+        case 5:
+            consultaFuncionario(&listaEncadeada);
+            break;
+        case 6:
+            imprimeContraCheque(&listaEncadeada);
+            break;
+        case 7:
+            ImprimeListaFunc(&listaEncadeada);
+        }
+
+    }while (opcao != OPCAO_SAIDA);
+
+    bool salvouComSucesso = salvaArquivo(&listaEncadeada);
+
+    if (!salvouComSucesso){
+        cout << "Houve problemas ao salvar os funcionarios no arquivo: " << fileName;
+    }
+    return 0;
 }
