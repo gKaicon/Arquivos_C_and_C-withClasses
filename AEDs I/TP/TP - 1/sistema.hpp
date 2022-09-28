@@ -10,7 +10,7 @@
 
 using namespace std;
 
-/////////////////////////////////// LISTA SEQUENCIAL ///////////////////////////////////////
+// LISTA SEQUENCIAL
 typedef struct Projeto{
     int id;        // codigo do projeto
     char nome[30]; // nome do projeto
@@ -24,7 +24,7 @@ typedef struct ListaSequencial{
 };
 
 
-/////////////////////////////////// LISTA ENCADEADA ///////////////////////////////////////
+// LISTA ENCADEADA
 typedef struct Funcionario{
     int id;                    //id do funcionário
     char nome[100];            //nome do funcionário
@@ -51,7 +51,6 @@ typedef struct ListaEncadeada{ //Lista de encadeada
 void menu();
 
 // FUNÇÕES DA LISTA SEQUENCIAL
-
 void CriaListaSequencialVazia(ListaSequencial *lista);
 bool ListaSequencialEstaVazia(ListaSequencial *lista);
 bool ListaSequencialEstaCheia(ListaSequencial *lista);
@@ -63,8 +62,8 @@ bool RemoveProjetoPorId(ListaSequencial *lista, int id);
 bool RemoveProjeto(ListaSequencial *lista, Projeto projeto);
 int IndiceDeProjeto(ListaSequencial *lista, Projeto projeto);
 int TamanhoListaSequencial(ListaSequencial *lista);
-// FUNÇÕES DA LISTA ENCADEADA
 
+// FUNÇÕES DA LISTA ENCADEADA
 void CriaListaEncadeadaVazia(ListaEncadeada *lista);
 bool ListaEncadeadaEstaVazia(ListaEncadeada *lista);
 void InsereListaEncadeadaUltimo(ListaEncadeada *lista, Funcionario *funcionario);
