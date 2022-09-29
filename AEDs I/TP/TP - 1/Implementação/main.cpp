@@ -59,5 +59,7 @@ int main(){
     if (!salvouComSucesso){
         cout << "Houve problemas ao salvar os funcionarios no arquivo: " << fileName;
     }
+    cout << "Saindo...";
+    Sleep(2000);
     return 0;
 }

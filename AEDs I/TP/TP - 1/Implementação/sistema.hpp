@@ -23,7 +23,6 @@ typedef struct ListaSequencial{
     bool listaSequencialCriada = false; //variavel booleana para criação de listas
 };
 
-
 // LISTA ENCADEADA
 typedef struct Funcionario{
     int id;                    //id do funcionário
@@ -47,8 +46,6 @@ typedef struct ListaEncadeada{ //Lista de encadeada
     bool listaEncadeadaCriada = false; //variavel booleana para indicar se a lsita foi criada ou não
 };
 
-
-void menu();
 
 // FUNÇÕES DA LISTA SEQUENCIAL
 void CriaListaSequencialVazia(ListaSequencial *lista);
@@ -74,6 +71,7 @@ void AtualizaUltimo(ListaEncadeada *lista);
 int TamanhoListaEncadeada(ListaEncadeada *lista);
 
 // FUNÇÕES DO SISTEMA 
+void menu();
 void incluiNovoFuncionario(ListaEncadeada *lista);
 Funcionario *criaFuncionario();
 void incluiNovosProjetos(ListaEncadeada *lista);
@@ -93,46 +91,5 @@ void imprimeContraCheque(ListaEncadeada *lista);
 bool carregaArquivo(ListaEncadeada *lista);
 bool salvaArquivo(ListaEncadeada *lista);
 
-/*
-void ImprimeProjeto(Projeto projeto);
-void CriaListaSequencialVazia(ListaSequencial *lista);         // Cria uma lista vazia
-bool ListaSequencialEstaVazia(ListaSequencial *lista);         // Retorna TRUE se a lista estiver vazia, FALSE caso contrário
-bool ListaSequencialEstaCheia(ListaSequencial *lista);         // Retorna TRUE se a lista estiver cheia, FALSE caso contrário
-bool InsereProjeto(ListaSequencial *lista, Projeto projeto);   // Insere Projeto na lista ListaSequencial
-void ImprimeListaSequencial(ListaSequencial *lista);           // Imprime a lista
-Projeto *PesquisaProjetoPorID(ListaSequencial *lista, int id); // Pesquisa um Projeto via ID na lista ListaSequencial
-bool RemoveProjetoPorId(ListaSequencial *lista, int id);       // Remove um Projeto da lista via ID
-bool RemoveProjeto(ListaSequencial *lista, Projeto projeto);   // Remove um Projeto da lista
-int IndeceDe(ListaSequencial *lista, Projeto projeto);         // Retorna o indice do projeto na lista, -1 se não tiver o projeto
-int TamanhoListaSequencial(ListaSequencial *lista);            // Retorna o número de itens da lista
-
-
-void ImprimeFuncionario(Funcionario *funcionario);
-void CriaListaEncadeadaVazia(ListaEncadeada *lista); //sem retorno, apenas cria uma lista vazia com uma celula
-bool ListaEncadeadaEstaVazia(ListaEncadeada *lista); //true = lista com celula sem item, e false = lista com uma celula com item
-void InsereListaEncadeadaUltimo(ListaEncadeada *lista, Funcionario *funcionario); //sem retorno, apenas inserir no final da lista
-Funcionario *PesquisaFuncionario(ListaEncadeada *lista, int id); //retorna um funcionario, de acordo com o id informado
-void RemoveFuncionario(ListaEncadeada *lista, Funcionario funcionario); //remover o funcionario, que é passado no parametro
-void AtualizaUltimo(ListaEncadeada *lista); //atualiza o apontador ultimo na lista
-int TamanhoListaEncadeada(ListaEncadeada *lista); //retorna a quantidade de funcionarios inseridos até o momento
-
-
-
-bool carregaArquivo(ListaEncadeada *lista); //carregar e inserir na lista os funcionários cadastrados anteriormente
-void menu(); //menu criado
-void incluiNovoFuncionario(ListaEncadeada *lista);//feito para adicionar o funcionario retornado na função criaFuncionario
-Funcionario *criaFuncionario();//exibe um menu de criação de funcionário, que retorna um funcionario
-void incluiNovosProjetos(ListaEncadeada *lista); //incluir mais projetos para o funcionario
-Funcionario *pegaFuncionarioPorID(ListaEncadeada *lista); //retorna um funcionario de acordo com o ID
-void incluiNovoProjeto(Funcionario *funcionario); //inclui ao funcionario o projeto
-void criaProjeto(ListaSequencial *lista, Projeto *projeto); //adiciona projetos na lista sequencial
-void excluiProjetos(ListaEncadeada *lista); //exclui projetos de um funcionario
-void excluiFuncionariosSemProjetos(ListaEncadeada *lista); //exclui funcionarios sem projetos
-void consultaFuncionario(ListaEncadeada *lista); //procura funcionario na lista
-void imprimeContraCheque(ListaEncadeada *lista); //imprime o contracheque com os os descontos já realizados
-int totalHorasSemanais(ListaSequencial lista); //retorna as horas semanais
-double calculaSalarioBruto(Funcionario *funcionario); //retorna o salário bruto sem os descontos
-bool salvaArquivo(ListaEncadeada *lista); //salva o arquivo ao fim das operações
-*/
 
 #endif

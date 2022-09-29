@@ -262,12 +262,16 @@ void incluiNovosProjetos(ListaEncadeada *lista){
     }
 }
 
-Funcionario *FuncionarioPorID(ListaEncadeada *lista){
-    int idFuncionario;
-    cout << "ID do Funcionário: ";
-    cin >> idFuncionario;
-    Funcionario *funcionario = PesquisaFuncionario(lista, idFuncionario);
-    return funcionario;
+void criaProjeto(ListaSequencial *lista, Projeto *projeto){
+    cout << "Cadastro de Novo Projeto" << endl;
+    cout << "ID: ";
+    cin >> projeto->id;
+    cin.ignore();
+    cout << "Nome: ";
+    cin.getline(projeto->nome, 30);
+    cout << "Horas Trabalhadas: ";
+    cin >> projeto->horas;
+    cin.ignore();
 }
 
 void incluiNovoProjeto(Funcionario *funcionario){
@@ -282,16 +286,12 @@ void incluiNovoProjeto(Funcionario *funcionario){
     Sleep(1000);
 }
 
-void criaProjeto(ListaSequencial *lista, Projeto *projeto){
-    cout << "Cadastro de Novo Projeto" << endl;
-    cout << "ID: ";
-    cin >> projeto->id;
-    cin.ignore();
-    cout << "Nome: ";
-    cin.getline(projeto->nome, 30);
-    cout << "Horas Trabalhadas: ";
-    cin >> projeto->horas;
-    cin.ignore();
+Funcionario *FuncionarioPorID(ListaEncadeada *lista){
+    int idFuncionario;
+    cout << "ID do Funcionário: ";
+    cin >> idFuncionario;
+    Funcionario *funcionario = PesquisaFuncionario(lista, idFuncionario);
+    return funcionario;
 }
 
 void excluiProjetos(ListaEncadeada *lista){
