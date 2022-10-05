@@ -124,7 +124,7 @@ int main() {
             break;
         case 6: //impressão da lista
             int opI;
-            cout << "Qual lista deseja imprimir?\nLista 1\nLista 2\nLista 3\nLista 4\nLista 5\n Opção: ";
+            cout << "Qual lista deseja imprimir?\nLista 1\nLista 2\nLista 3\nLista 4\n Opção: ";
             cin >> opI;
             if(opI == 1) ImprimeLista(lista1);
             if(opI == 2) ImprimeLista(lista2);
@@ -217,7 +217,7 @@ int main() {
             break;
         case 13: //Tamanho da lista
             int op;
-            cout << "Qual lista deseja ver o tamanho?\nLista 1\nLista 2\nLista 3\nLista 4\nLista 5\n Opção: ";
+            cout << "Qual lista deseja ver o tamanho?\nLista 1\nLista 2\nLista 3\nLista 4\n Opção: ";
             cin >> op;
             if(op==1)cout << "Tamanho da lista: " << TamanhoLista(&lista1);
             if(op==2)cout << "Tamanho da lista: " << TamanhoLista(&lista2);

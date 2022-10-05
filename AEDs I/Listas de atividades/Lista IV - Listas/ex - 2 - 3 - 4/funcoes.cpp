@@ -37,7 +37,7 @@ void CriaListaVazia(TipoLista *lista){
     else{
         cout << "Lista já existe!";
     }
-    Sleep(2500);//comando de espera em milisegundos
+    Sleep(1500);//comando de espera em milisegundos
 }
 
 int VerificaListaVazia(TipoLista *lista){
@@ -212,7 +212,7 @@ void ConcatenaAlternado(TipoLista *lista1, TipoLista *lista2, TipoLista *lista4)
     }
 }
 
-//Questão 4 - ! Não consegui fazer, ela não funciona
+//Questão 4
 void InverteLista(TipoLista *lista){ //lista toda
     if(VerificaListaVazia(lista)){ //verifica se o endereço da lista é true
         cout << "Lista Vazia";
@@ -220,14 +220,11 @@ void InverteLista(TipoLista *lista){ //lista toda
         return ;
     }
     TipoLista lista5;
-    Apontador pri, atual, ultimo;
-    atual = lista->Primeiro->prox; //pri recebe a primeira posição
-    pri = lista->Primeiro->prox; //atual recebe o ultimo
-    ultimo = NULL;
-    while (atual->prox != ultimo->prox){ //enquanto o primeiro for diferente do ultimo
-        atual = atual->prox; //irá percorrer a lista
-        ultimo->prox = atual->prox; //quando sair da lista, significa que o pri se tornou o último
-        InsereListaPrimeiro(&lista5, &ultimo->item);
+    Apontador aux, ult;
+    aux = lista->Primeiro->prox; //pri recebe a primeira posição
+    while (aux != NULL){ //enquanto o primeiro for diferente do ultimo
+        InsereListaPrimeiro(&lista5, &aux->item);
+        aux = aux->prox; //irá percorrer a lista
     }
     ImprimeLista(lista5);
     Sleep(5000);
