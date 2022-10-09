@@ -1,73 +1,64 @@
-#include <iostream>
-#include <fstream>
-#include <windows.h>
-#include "pilha.cpp"
-#include "listaSequencial.cpp"
+#include "sistema.hpp"
 #include "sistema.cpp"
+#include "funcoesTADs.cpp"
 
-using namespace std;
-
-int main(int argc, char const *argv[])
-{
-    UINT UTF8 = 65001;
-    SetConsoleOutputCP(UTF8);
+int main(){
+    UINT CPAGE_UTF8 = 65001;
+    UINT CPAGE_DEFAULT = GetConsoleOutputCP();
+    SetConsoleOutputCP(CPAGE_UTF8);
+    HANDLE colors = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(colors, 2); // Define a cor verde para o texto
 
     ListaSequencial lista;
-    Lista_Inicializa(&lista);
+    CriaListaVazia(&lista);
 
     bool carregouComSucesso = carregaArquivo(&lista);
 
-    if (!carregouComSucesso)
-    {
-        cout << "Houve problemas ao carregar os funcionarios do arquivo: " << NOME_ARQUIVO << endl;
+    if (!carregouComSucesso)    {
+        cout << "ERRO ao carregar os Pedidos do arquivo: " << NOME_ARQUIVO;
         system("pause");
         system("cls");
     }
-
-    cout.precision(2); // Deixa os números com 2 casas após a virgula
-    cout << fixed;
-
-    iniciaProdutos(); // Cadastra os Produtos no Cardápio
+    formataDecimal();
+    insereProdutos();
 
     Pilha mochila;
-    Pilha_Inicializa(&mochila);
+    InicializaPilha(&mochila);
 
     int opcao;
-    do
-    {
-        menu();
+    do{
+        Menu();
         cin >> opcao;
         cin.ignore();
         system("cls");
-        switch (opcao)
-        {
-        case 1:
-            incluirPedido(&lista);
-            break;
-        case 2:
-            listarPedidos(lista);
-            break;
-        case 3:
-            verCardapio();
-            break;
-        case 4:
-            consultarPedido(lista);
-            break;
-        case 5:
-            imprimirListaEntrega(&mochila, lista);
-            break;
-        case 6:
-            lancarEntrega(&mochila, &lista);
-            break;
+        switch (opcao){
+            case 1:
+                incluirPedido(&lista);
+                break;
+            case 2:
+                listarPedidos(lista);
+                break;
+            case 3:
+                verCardapio();
+                break;
+            case 4:
+                consultarPedido(lista);
+                break;
+            case 5:
+                imprimirListaEntrega(&mochila, lista);
+                break;
+            case 6:
+                lancarEntrega(&mochila, &lista);
+                break;
         }
         system("cls");
     } while (opcao != OPCAO_SAIDA);
 
     bool salvouComSucesso = salvaArquivo(&lista);
 
-    if (!salvouComSucesso)
-    {
-        cout << "Houve problemas ao salvar os funcionarios no arquivo: " << NOME_ARQUIVO << endl;
-    }
+    if (!salvouComSucesso)cout << "ERRO ao salvar os pedidos no arquivo: " << NOME_ARQUIVO;
+    
+    cout << "Saindo...";
+    Sleep(2000);
     return 0;
 }
