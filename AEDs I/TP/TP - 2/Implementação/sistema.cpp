@@ -57,14 +57,14 @@ void adicionaCardapio(int codigo, char nome[], double valor){
 }
 
 void insereProdutos(){  // Cadastra os Produtos no Cardápio/Menu
-    adicionaCardapio(1, "Açaí 300ml", 12.50);
-    adicionaCardapio(2, "Açaí 500ml", 15.50);
-    adicionaCardapio(3, "Açaí 750ml", 18.50);
-    adicionaCardapio(4, "Hamburguer Assado", 8.50);
+    adicionaCardapio(1, "Açaí Copo 300ml", 12.50);
+    adicionaCardapio(2, "Açaí Copo 500ml", 15.50);
+    adicionaCardapio(3, "Açaí Copo 750ml", 18.50);
+    adicionaCardapio(4, "Hambúrguer Assado", 8.50);
     adicionaCardapio(5, "Fritas", 6.50);
-    adicionaCardapio(6, "Refrigerante 2L", 11.00);
-    adicionaCardapio(7, "Coxinha de Frango com catupiry", 4.00);
-    adicionaCardapio(8, "Torta de Frango com catupiry", 5.00);
+    adicionaCardapio(6, "Refrigerante 3L", 13.50);
+    adicionaCardapio(7, "Coxinha de Frango com catupiry", 4.50);
+    adicionaCardapio(8, "Torta de Frango com catupiry", 6.50);
     adicionaCardapio(9, "Pão de Queijo", 2.50);
     adicionaCardapio(10, "Café 200ml", 0.50);
 }
@@ -171,10 +171,9 @@ void listarPedidos(ListaSequencial listaSequencial){ // 2° opção
         imprimeLista(listaSequencial);
         system("pause");
     }
-    else{
-        cout << "Nenhum pedido cadastrado\n";
-        Sleep(1000);
-    }
+    else cout << "Nenhum pedido cadastrado\n";
+
+    Sleep(1000);
 }
 
 void verCardapio(){ // 3° opção
@@ -207,17 +206,13 @@ void consultarPedido(ListaSequencial listaSequencial){
         cout << "Pedido não encontrado\n";
         Sleep(1000);
     }
-    else{
-        cout << "Nenhum pedido cadastrado\n";
+    else cout << "Nenhum pedido cadastrado\n";
         Sleep(1000);
-    }
 }
 
 void listaParaPilha(Pilha *pilha, ListaSequencial listaSequencial){
-    InicializaPilha(pilha); // Cria uma pilha
-    for (int i = 0; i < TamanhoLista(listaSequencial); i++){
-        Empilha(pilha, listaSequencial.pedidos[i]); // a pilha e a lista possuem pedidos, o que torna possível a conversão
-    }
+    InicializaPilha(pilha); // Cria uma pilha para receber os pedidos
+    for (int i = 0; i < TamanhoLista(listaSequencial); i++) Empilha(pilha, listaSequencial.pedidos[i]); // a pilha e a lista possuem pedidos, o que torna possível a conversão
 }
 
 void imprimirListaEntrega(Pilha *pilha, ListaSequencial listaSequencial){ // 5° opção

@@ -1,7 +1,5 @@
 #include "sistema.hpp"
-
 //------------------------------------------TADs Pilha---------------------------------------------------
-
 void InicializaPilha(Pilha *pilha){
     pilha->topo = 0;
 }
@@ -51,6 +49,9 @@ void imprimePedido(Pedido pedido){
     cout << "Distância: " << pedido.distancia << " km\n";
 }
 
+int TamanhoPilha(Pilha pilha){
+    return pilha.topo;
+}
 
 Pilha OrdenaPilha(Pilha pilha){ //vou chamar essa pilha do paramentro de parametroPilha nos comentários
     Pilha auxPilha;
@@ -75,9 +76,7 @@ Pedido TopoPilha(Pilha pilha){
     return pilha.pedidos[pilha.topo - 1];
 }
 
-int TamanhoPilha(Pilha pilha){
-    return pilha.topo;
-}
+
 
 //------------------------------------------TADs Lista-----------------------------------------------------
 
