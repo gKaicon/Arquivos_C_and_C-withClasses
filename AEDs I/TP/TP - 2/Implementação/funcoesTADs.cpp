@@ -58,7 +58,7 @@ Pilha OrdenaPilha(Pilha pilha){ //vou chamar essa pilha do paramentro de paramet
     InicializaPilha(&auxPilha);
 
     while (!PilhaVazia(pilha)){
-        Pedido pedido = TopoPilha(pilha); //pega o topo da parametroPilha
+        Pedido pedido = TopoPilha(pilha); //pega o topo da parametroPilha e armazena na variavel pedido
         Desempilha(&pilha); //desempilha da parametroPilha
 
         //enquanto o topo da auxPilha tiver a distancia menor que a distancia do pedido da parametroPilha
@@ -66,8 +66,7 @@ Pilha OrdenaPilha(Pilha pilha){ //vou chamar essa pilha do paramentro de paramet
             Empilha(&pilha, TopoPilha(auxPilha)); //empilha na pilhaparametro o que tá no topo da pilha auxiliar
             Desempilha(&auxPilha);//removo o ultimo item da pilha auxiliar
         }//não vai sair do laço enquanto, o pedido for maior que o topo da auxiliar
-
-        Empilha(&auxPilha, pedido);
+        Empilha(&auxPilha, pedido); //quando sair significa que achou um valor maior, aí no meio do laço os itens menores são empilhados novamente
     }
     return auxPilha;
 }
@@ -76,10 +75,7 @@ Pedido TopoPilha(Pilha pilha){
     return pilha.pedidos[pilha.topo - 1];
 }
 
-
-
 //------------------------------------------TADs Lista-----------------------------------------------------
-
 void CriaListaVazia(ListaSequencial *lista){
     if (!lista->listaCriada){
         lista->listaCriada = true;
@@ -97,7 +93,6 @@ bool VerificaListaCheia(ListaSequencial lista){
 
 bool inserirLista(ListaSequencial *lista, Pedido pedido){
     if (!lista->listaCriada || VerificaListaCheia(*lista)) return false;
-
     lista->pedidos[lista->tamanho] = pedido;
     lista->tamanho++;
     return true;
@@ -113,7 +108,6 @@ void imprimeLista(ListaSequencial lista){
 bool RemoveIdLista(ListaSequencial *lista, int id){
     if (VerificaListaVazia(*lista))return false;
     for (int i = id; i < lista->tamanho; i++)lista->pedidos[i] = lista->pedidos[i + 1];
-    
     lista->tamanho--;
     return true;
 }
@@ -123,11 +117,8 @@ bool ListaRemove(ListaSequencial *lista, Pedido pedido){
         cout << "Erro: Lista está vazia\n";
         return false;
     }
-
     int indice = procuraIndice(*lista, pedido);
-
     if (indice == -1)return false;
-
     return RemoveIdLista(lista, indice);
 }
 

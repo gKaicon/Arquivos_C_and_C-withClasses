@@ -94,5 +94,4 @@ void listaParaPilha(Pilha *pilha, ListaSequencial listaSequencial);         // R
 void imprimirListaEntrega(Pilha *pilha, ListaSequencial listaSequencial);   // 5° - Após a troca de lista para pilha, ele imprime a pilha de entregas
 void lancarEntrega(Pilha *pilha, ListaSequencial *listaSequencial);         // 6° - Entrega o pedido que tá no topo, que é o de menor distancia
 
-
 #endif

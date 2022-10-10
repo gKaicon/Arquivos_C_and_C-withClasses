@@ -70,33 +70,45 @@ void insereProdutos(){  // Cadastra os Produtos no Cardápio/Menu
 }
 
 void Menu(){
-    cout << "*********************************************************************\n";
-    cout << "**                       PÁGINA DE PEDIDOS                         **\n";
-    cout << "*********************************************************************\n";
-    cout << "**                                                                 **\n";
-    cout << "**                           DELIVERY                              **\n";
-    cout << "**                                                                 **\n";
-    cout << "*********************************************************************\n";
-    cout << "**                                                                 **\n";
-    cout << "**                  1. Incluir pedido                              **\n";
-    cout << "**                                                                 **\n";
-    cout << "**                  2. Listar pedidos                              **\n";
-    cout << "**                                                                 **\n";
-    cout << "**                  3. Ver o menu                                  **\n";
-    cout << "**                                                                 **\n";
-    cout << "**                  4. Consultar pedido                            **\n";
-    cout << "**                                                                 **\n";
-    cout << "**                  5. Imprimir lista de entregas                  **\n";
-    cout << "**                                                                 **\n";
-    cout << "**                  6. Lançar entrega                              **\n";
-    cout << "**                                                                 **\n";
-    cout << "**                  7. Sair                                        **\n";
-    cout << "**                                                                 **\n";
-    cout << "*********************************************************************\n";
-    cout << "**                                                                 **\n";
-    cout << "*********************************************************************\n";
+    formataDecimal();
+    insereProdutos();
+    cout << " *********************************************************************\n";
+    cout << " **                       PÁGINA DE PEDIDOS                         **\n";
+    cout << " *********************************************************************\n";
+    cout << " **                                                                 **\n";
+    cout << " **                           DELIVERY                              **\n";
+    cout << " **                                                                 **\n";
+    cout << " *********************************************************************\n";
+    cout << " **                                                                 **\n";
+    cout << " **                  1. Incluir pedido                              **\n";
+    cout << " **                                                                 **\n";
+    cout << " **                  2. Listar pedidos                              **\n";
+    cout << " **                                                                 **\n";
+    cout << " **                  3. Ver o menu                                  **\n";
+    cout << " **                                                                 **\n";
+    cout << " **                  4. Consultar pedido                            **\n";
+    cout << " **                                                                 **\n";
+    cout << " **                  5. Imprimir lista de entregas                  **\n";
+    cout << " **                                                                 **\n";
+    cout << " **                  6. Lançar entrega                              **\n";
+    cout << " **                                                                 **\n";
+    cout << " **                  7. Sair                                        **\n";
+    cout << " **                                                                 **\n";
+    cout << " *********************************************************************\n";
+    cout << " **                                                                 **\n";
+    cout << " *********************************************************************\n";
     cout << "\n\nOpção: ";
 }   
+
+bool verificaCodigoProduto(int codigoProduto){ // Verifica se existe produto com o código
+    if (codigoProduto < 1 || codigoProduto > MAX_PRODUTOS_CARDAPIO){
+        cout << "Não existe nenhum produto com esse código\n";
+        Sleep(1000);
+        system("cls");
+        return false;
+    }
+    return true;
+}
 
 void incluirPedido(ListaSequencial *listaSequencial){ //1° opção
     if (!VerificaListaCheia(*listaSequencial)){
@@ -115,16 +127,6 @@ void incluirPedido(ListaSequencial *listaSequencial){ //1° opção
     Sleep(1000);
 }
 
-bool verificaCodigoProduto(int codigoProduto){ // Verifica se existe produto com o código
-    if (codigoProduto < 1 || codigoProduto > MAX_PRODUTOS_CARDAPIO){
-        cout << "Não existe nenhum produto com esse código\n";
-        Sleep(1000);
-        system("cls");
-        return false;
-    }
-    return true;
-}
-
 void insereProdutos(Pedido *pedido){
     int opcao = 1;
     do{
@@ -135,14 +137,11 @@ void insereProdutos(Pedido *pedido){
             cin >> codigoProduto;
             cin.ignore();
             if (verificaCodigoProduto(codigoProduto)){
-
                 pedido->codprodutos[pedido->totalprodutos] = codigoProduto;
                 Produto produtoCardapio = menu[codigoProduto - 1];
-                cout << produtoCardapio.nome << " adicionado(a) ao Pedido\n";
-                
-                //incrementos
-                pedido->totalprodutos++;
-                pedido->valorPedido += produtoCardapio.valor;
+                cout << produtoCardapio.nome << " adicionado(a) ao Pedido\n";//mensagem de confirmação
+                pedido->totalprodutos++; //incremento no total de pedidos
+                pedido->valorPedido += produtoCardapio.valor; //adição ao valor do pedido
                 Sleep(1000);
                 system("cls");
             }
@@ -172,7 +171,6 @@ void listarPedidos(ListaSequencial listaSequencial){ // 2° opção
         system("pause");
     }
     else cout << "Nenhum pedido cadastrado\n";
-
     Sleep(1000);
 }
 
@@ -212,7 +210,7 @@ void consultarPedido(ListaSequencial listaSequencial){
 
 void listaParaPilha(Pilha *pilha, ListaSequencial listaSequencial){
     InicializaPilha(pilha); // Cria uma pilha para receber os pedidos
-    for (int i = 0; i < TamanhoLista(listaSequencial); i++) Empilha(pilha, listaSequencial.pedidos[i]); // a pilha e a lista possuem pedidos, o que torna possível a conversão
+    for (int i = 0; i < TamanhoLista(listaSequencial); i++) Empilha(pilha, listaSequencial.pedidos[i]); //pilha e lista possuem pedido, sendo possível a conversão
 }
 
 void imprimirListaEntrega(Pilha *pilha, ListaSequencial listaSequencial){ // 5° opção
@@ -229,7 +227,7 @@ void imprimirListaEntrega(Pilha *pilha, ListaSequencial listaSequencial){ // 5°
     }
 }
 
-void lancarEntrega(Pilha *pilha, ListaSequencial *listaSequencial){ // 6°
+void lancarEntrega(Pilha *pilha, ListaSequencial *listaSequencial){ // 6° opção
     listaParaPilha(pilha, *listaSequencial);
     *pilha = OrdenaPilha(*pilha);
     Pedido pedido = TopoPilha(*pilha);

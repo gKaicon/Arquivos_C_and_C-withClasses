@@ -11,27 +11,22 @@ int main(){
 
     ListaSequencial lista;
     CriaListaVazia(&lista);
-
-    bool carregouComSucesso = carregaArquivo(&lista);
-
-    if (!carregouComSucesso)    {
-        cout << "ERRO ao carregar os Pedidos do arquivo: " << NOME_ARQUIVO;
-        system("pause");
-        system("cls");
-    }
-    formataDecimal();
-    insereProdutos();
-
     Pilha mochila;
     InicializaPilha(&mochila);
 
-    int opcao;
+    int op;
+    bool carregouComSucesso = carregaArquivo(&lista);
+    if (!carregouComSucesso){
+        cout << "ERRO ao carregar os Pedidos do arquivo: " << NOME_ARQUIVO;
+        system("pause");
+    }
+
     do{
         Menu();
-        cin >> opcao;
+        cin >> op;
         cin.ignore();
         system("cls");
-        switch (opcao){
+        switch (op){
             case 1:
                 incluirPedido(&lista);
                 break;
@@ -52,12 +47,10 @@ int main(){
                 break;
         }
         system("cls");
-    } while (opcao != OPCAO_SAIDA);
+    } while (op != OPCAO_SAIDA);
 
     bool salvouComSucesso = salvaArquivo(&lista);
-
     if (!salvouComSucesso)cout << "ERRO ao salvar os pedidos no arquivo: " << NOME_ARQUIVO;
-    
     cout << "Saindo...";
     Sleep(2000);
     return 0;
