@@ -86,7 +86,8 @@ void Menu();                                                                //Me
 //Funções exigidas
 void incluirPedido(ListaSequencial *listaSequencial);                       // 1° - Incluir pedido na lista
 bool verificaCodigoProduto(int codigoProduto);                              // Verificar se existe o código do produto que está sendo inserido no pedido
-void insereProdutos(Pedido *pedido);                                        // Incluir o Produto dentro do pedido
+void insereProdutos(Pedido *pedido);                                        // Cria o Pedido
+void criaItemPedido(Pedido *pedido);                                        // Incluir o Produto dentro do pedido criado
 void listarPedidos(ListaSequencial listaSequencial);                        // 2° - Lista os pedidos na ordem em foram pedidos
 void verCardapio();                                                         // 3° - Mostra o cardápio
 void consultarPedido(ListaSequencial listaSequencial);                      // 4° - Consulta um pedido específico com a função imprimePedido
