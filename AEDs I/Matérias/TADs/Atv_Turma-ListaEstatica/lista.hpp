@@ -21,13 +21,13 @@ typedef struct TipoListaTurma{
 bool listaCriada = false;
 
 void Menu();
-void CriaTurmaVazia(TipoListaTurma *lista);                              // Cria uma lista vazia
-int VerificaListaVazia(TipoListaTurma *lista);                           // Retorna TRUE se a lista estiver vazia, FALSE caso contrário
-int VerificaListaCheia(TipoListaTurma *lista);                           // Retorna TRUE se a lista estiver cheia, FALSE caso contrário
-int InsereItem(TipoListaTurma *lista, TipoItemAluno item);                    // Insere ITEM (chave) na lista TipoLista
-void ImprimeLista(TipoListaTurma lista);                                 // Imprime a lista
-int PesquisaItem(TipoListaTurma *lista, int chave);                      // Pesquisa um ITEM (chave) na lista TipoLista
-void RetiraItem(TipoApontador p, TipoListaTurma *lista, TipoItemAluno *item); // Remove um item da lista pela sua posição
-int TamanhoLista(TipoListaTurma *lista);                                 // Retorna o número de itens da lista
+void CriaTurmaVazia(TipoListaTurma *lista);                                     // Cria uma lista vazia
+int VerificaListaVazia(TipoListaTurma *lista);                                  // Retorna TRUE se a lista estiver vazia, FALSE caso contrário
+int VerificaListaCheia(TipoListaTurma *lista);                                  // Retorna TRUE se a lista estiver cheia, FALSE caso contrário
+int InsereItem(TipoListaTurma *lista, TipoItemAluno item);                      // Insere ITEM (chave) na lista TipoLista
+void ImprimeLista(TipoListaTurma lista);                                        // Imprime a lista
+int PesquisaItem(TipoListaTurma *lista, int chave);                             // Pesquisa um ITEM (chave) na lista TipoLista
+void RetiraItem(TipoApontador p, TipoListaTurma *lista, TipoItemAluno *item);   // Remove um item da lista pela sua posição
+int TamanhoLista(TipoListaTurma *lista);                                        // Retorna o número de itens da lista
 
 #endif
