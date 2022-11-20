@@ -6,13 +6,11 @@
 
 using namespace std;
 
-typedef struct Triagem
-{
+typedef struct Triagem{
     char respostas[18] = {'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N'};
 };
 
-typedef struct Paciente
-{
+typedef struct Paciente{
     string nome;
     string endereco;
     unsigned int idade;
@@ -22,16 +20,14 @@ typedef struct Paciente
     bool atendido;
 };
 
-typedef struct Medico
-{
+typedef struct Medico{
     string nome;
     string especialidade;
     string crm;
     bool disponivel = false;
 };
 
-typedef struct Atendimento
-{
+typedef struct Atendimento{
     Medico *medico;
     Paciente paciente;
     tm data_inicio;
@@ -40,14 +36,12 @@ typedef struct Atendimento
 
 typedef struct Celula *Apontador;
 
-typedef struct Celula
-{
+typedef struct Celula{
     Atendimento item;
     Apontador prox;
 };
 
-typedef struct FilaPrioridadeDinamica
-{
+typedef struct FilaPrioridadeDinamica{
     Apontador inicio;
     int tamanho;
 };

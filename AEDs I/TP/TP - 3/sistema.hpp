@@ -27,13 +27,14 @@ void cadastraMedicos(Hospital *hospital);
 
 void menu();
 
+Paciente cadastro_Paciente();
 void novoAtendimento(Hospital *hospital);
-Paciente cadastraPaciente();
-void realizaTriagem(Paciente *paciente);
+
+void realizarTriagem(Paciente *paciente);
 void mostraUrgencia(Paciente paciente);
 void mostraPrevisaoAtendimento(Paciente paciente);
 
-void atualiza(Hospital *hospital);
+void atualizaMedicoPaciente(Hospital *hospital);
 
 void exibeAtendimentos(Hospital hospital);
 

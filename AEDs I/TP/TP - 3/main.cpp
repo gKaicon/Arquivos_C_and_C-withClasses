@@ -1,10 +1,11 @@
 #include "sistema.cpp"
 
-int main(int argc, char const *argv[])
-{
-    UINT UTF8 = 65001;
-    SetConsoleOutputCP(UTF8);
-
+int main(){
+    UINT CPAGE_UTF8 = 65001;
+    UINT CPAGE_DEFAULT = GetConsoleOutputCP();
+    SetConsoleOutputCP(CPAGE_UTF8);
+    HANDLE colors = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(colors, 2); // Define a cor verde para o texto
     srand(time(NULL));
 
     Hospital hospital;
@@ -12,37 +13,32 @@ int main(int argc, char const *argv[])
     inicializaFila(&hospital.fila_de_espera);
 
     int opcao;
-    do
-    {
+    do{
+        atualizaMedicoPaicente(&hospital);
         menu();
         cin >> opcao;
         cin.ignore();
-
         system("cls");
-
-        switch (opcao)
-        {
-        case 1:
-            novoAtendimento(&hospital);
-            break;
-
-        case 2:
-            atualiza(&hospital);
-            break;
-
-        case 3:
-            exibeAtendimentos(hospital);
-            break;
-
-        case 4:
-            exibeFilaEspera(hospital);
-            break;
-
-        case 5:
-            exibeRelatorio(hospital);
-            break;
+        switch (opcao){
+            case 1:
+                novoAtendimento(&hospital);
+                break;
+            case 2:
+                exibeAtendimentos(hospital);
+                break;
+            case 3:
+                exibeFilaEspera(hospital);
+                break;
+            case 4:
+                exibeRelatorio(hospital);
+                break;
+            case 5:
+                system("cls");
+                cout << "Saindo..." << endl;
+                Sleep(1000);
+                break;
         }
-    } while (opcao != OPCAO_SAIDA);
+    }while (opcao != OPCAO_SAIDA);
 
     return 0;
 }
