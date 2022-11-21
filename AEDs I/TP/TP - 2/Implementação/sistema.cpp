@@ -112,19 +112,22 @@ bool verificaCodigoProduto(int codigoProduto){ // Verifica se existe produto com
 
 void incluirPedido(ListaSequencial *listaSequencial){ //1° opção
     if (!VerificaListaCheia(*listaSequencial)){
-        Pedido *pedido;
-        pedido->codigo = ++codigoPedido;
-        insereProdutos(pedido);
-        cout << "Distância para entrega (km): ";
-        cin >> pedido->distancia;
-        system("cls");
-        bool incluido = inserirLista(listaSequencial, *pedido);
-
+        Pedido pedido;
+        criaItemPedido(&pedido);
+        bool incluido = inserirLista(listaSequencial, pedido);
         if (incluido)cout << "Pedido incluido com sucesso\n";
         else cout << "ERRO ao incluir pedido.\n";
     }
     else cout << "Máximo de pedidos atingido\n";
     Sleep(1000);
+}
+
+void criaItemPedido(Pedido *pedido){ //criei isso pra alterar o pedido, que seria um objeto criado na função anterior
+    pedido->codigo = ++codigoPedido;
+    insereProdutos(pedido);//pedido aqui é um ponteiro então posso passar direto
+    cout << "Distância para entrega (km): ";
+    cin >> pedido->distancia;
+    system("cls");
 }
 
 void insereProdutos(Pedido *pedido){
@@ -183,7 +186,7 @@ void verCardapio(){ // 3° opção
         cout << "\tValor do produto: R$" << produto.valor << endl;
         cout << '\n';
     }
-    system("pause");
+    //system("pause");
 }
 
 void consultarPedido(ListaSequencial listaSequencial){
