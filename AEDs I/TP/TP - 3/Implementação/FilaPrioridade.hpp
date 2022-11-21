@@ -13,8 +13,8 @@ using namespace std;
 typedef struct Triagem{
     char respostas[18] = {'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N'};
 };
-//unsigned vai ser utilizado para evitar que usuarios digitem valores negativos
 
+//unsigned vai ser utilizado para evitar que usuarios digitem valores negativos
 typedef struct Paciente{
     string nome;
     string endereco;

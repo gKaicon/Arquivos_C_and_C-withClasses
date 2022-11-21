@@ -77,7 +77,6 @@ Paciente cadastro_Paciente(){ // perguntas para criação um novo paciente
 
 void realizarTriagem(Paciente *paciente){
     Triagem triagem;
-
     cout << "#######################################################" << endl;
     cout << "#                                                     #" << endl;
     cout << "#                      TRIAGEM                        #" << endl;
