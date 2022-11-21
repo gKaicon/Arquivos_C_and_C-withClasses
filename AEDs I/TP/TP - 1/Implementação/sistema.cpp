@@ -348,7 +348,7 @@ void ImprimeListaFunc(ListaEncadeada *lista){
         ImprimeFuncionario(aux->item);
         aux = aux->prox;//aux sendo 'incrementado'
     }
-    Sleep(5000);
+    Sleep(10000);
 }
 
 void consultaFuncionario(ListaEncadeada *lista){
@@ -400,12 +400,12 @@ void imprimeContraCheque(ListaEncadeada *lista){
             cout << "\nDesconto do INSS: " << descontoINSS;
             cout << "\nDesconto de Imposto de renda: " << descontoIR;
             cout << "\nSalário líquido: " << salarioLiquido;
-            cout << "\n";
+            cout << "\n\n";
             aux = aux->prox;
         }
     }
     else  cout << "Erro: Nenhum Funcionário cadastrado" << endl;
-    Sleep(2000);
+    Sleep(5000);
 }
 
 ////////////////////////////// MANIPULAÇÃO DE ARQUIVOS /////////////////////////////////////////
