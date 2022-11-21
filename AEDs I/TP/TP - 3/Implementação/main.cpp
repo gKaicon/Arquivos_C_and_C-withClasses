@@ -8,13 +8,12 @@ int main(){
     SetConsoleTextAttribute(colors, 2); // Define a cor verde para o texto
     srand(time(NULL));
 
-    Hospital hospital;
-    cadastraMedicos(&hospital);
-    inicializaFila(&hospital.fila_de_espera);
-
     int opcao;
+    Hospital hospital;
+    iniciaMedicos(&hospital);
+    inicializaFila(&hospital.fila_de_espera);
     do{
-        atualizaMedicoPaicente(&hospital);
+        atualizaMedicoPaciente(&hospital);
         menu();
         cin >> opcao;
         cin.ignore();
@@ -39,6 +38,5 @@ int main(){
                 break;
         }
     }while (opcao != OPCAO_SAIDA);
-
     return 0;
 }

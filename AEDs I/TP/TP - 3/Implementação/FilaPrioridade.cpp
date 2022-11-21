@@ -1,4 +1,4 @@
-#include "FilaPrioridadeDinamica.hpp"
+#include "FilaPrioridade.hpp"
 
 using namespace std;
 
@@ -32,7 +32,7 @@ void enfileira(FilaPrioridadeDinamica *fila, Atendimento item){
         }
         else{
             anterior->prox = cel; // o valor antes de atual, vai receber como próximo a célula
-            cel->prox = atual; //recebe null
+            cel->prox = atual; //o apontador prox recebe null, para realizar a próxima inserção
         }
     }
     fila->tamanho++;
@@ -43,7 +43,7 @@ void desenfileira(FilaPrioridadeDinamica *fila, Atendimento *item){
         cout << "Fila vazia!" << endl;
         return;
     }
-
+    //a remoção é feita no inicio da fila
     Apontador aux = fila->inicio;
     *item = aux->item;
     fila->inicio = aux->prox;
@@ -73,27 +73,15 @@ void imprimeFila(FilaPrioridadeDinamica *fila){
         cout << "\n";
         aux = aux->prox;
     }
-    cout << endl;
+    cout << "\n";
 }
 
 void mostraUrgencia(Paciente paciente){
     string urgencia;
-    switch (paciente.prioridade){
-        case 0:
-            urgencia = "Vermelho";
-            break;
-        case 1:
-            urgencia = "Laranja";
-            break;
-        case 2:
-            urgencia = "Amarelo";
-            break;
-        case 3:
-            urgencia = "Verde";
-            break;
-        case 4:
-            urgencia = "Azul";
-            break;
-    }
+    if(paciente.prioridade == 0) urgencia = "Vermelho";
+    if(paciente.prioridade == 1) urgencia = "Laranja";
+    if(paciente.prioridade == 2) urgencia = "Amarelo";
+    if(paciente.prioridade == 3) urgencia = "Verde";
+    if(paciente.prioridade == 4) urgencia = "Azul";
     cout << "Urgência: " << urgencia << endl;
 }
