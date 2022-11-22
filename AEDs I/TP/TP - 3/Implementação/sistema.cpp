@@ -2,35 +2,34 @@
 
 void iniciaMedicos(Hospital *hospital){
     Medico medico;
+    hospital->medicos_registrados = 5;
+    hospital->medicos_disponiveis = 5;
     medico.disponivel = true;
 
     medico.nome = "Paulo Muzy";
     medico.especialidade = "Cardiologia";
-    medico.crm = "623146242-42";
+    medico.crm = "783856242-42";
     hospital->medicos[0] = medico;
 
     medico.nome = "Renato Cariani";
     medico.especialidade = "Nutrição";
-    medico.crm = "823517331-94";
+    medico.crm = "156717331-94";
     hospital->medicos[1] = medico;
 
     medico.nome = "Marco Antônio";
     medico.especialidade = "Clinico Geral";
-    medico.crm = "742417418-33";
+    medico.crm = "853217418-33";
     hospital->medicos[2] = medico;
 
     medico.nome = "Pedro Braga";
     medico.especialidade = "Infectologia";
-    medico.crm = "423123701-14";
+    medico.crm = "145723701-14";
     hospital->medicos[3] = medico;
 
     medico.nome = "Antônio Augusto";
     medico.especialidade = "Neurologia";
-    medico.crm = "140134505-51";
-    hospital->medicos[4] = medico;
-
-    hospital->medicos_registrados = 5;
-    hospital->medicos_disponiveis = 5;
+    medico.crm = "856234505-51";
+    hospital->medicos[4] = medico;  
 }
 
 void menu(){
@@ -168,7 +167,6 @@ void atualizaMedicoPaciente(Hospital *hospital){
                 time_t data_atual = chrono::system_clock::to_time_t(chrono::system_clock::now());
                 atendimento.data_inicio = *localtime(&data_atual); // Data de início recebe a data atual na forma da struct tm
                 unsigned int tempo_atendimento;
-                
                 // Cálculo do tempo de atendimento com a variação, com base na urgência
                 if(atendimento.paciente.prioridade == 0) tempo_atendimento = 50 + (rand() % 21) - 10;
                 if(atendimento.paciente.prioridade == 1) tempo_atendimento = 20 + (rand() % 11) - 5;
@@ -215,10 +213,10 @@ void novoAtendimento(Hospital *hospital){
  
     for (Paciente p : lista_pacientes){ // Percorre a lista de pacientes, pelo conteúdo existente
         Atendimento novoAte; //cria um novo atendimento
-        novoAte.paciente = p; 
-        enfileira(&hospital->fila_de_espera, novoAte);//enfileira esse paciente cadastrado lá
+        novoAte.paciente = p; //coloca o paciente no atendimento
+        enfileira(&hospital->fila_de_espera, novoAte);//enfileira esse paciente cadastrado lá na fila de espera
     }
-    atualizaMedicoPaciente(hospital);
+    atualizaMedicoPaciente(hospital); //insere os pacientes que estão na fila de espera, e atualiza os atendimentos
 }
 
 void exibeAtendimentos(Hospital hospital){

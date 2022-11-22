@@ -51,15 +51,12 @@ typedef struct FilaPrioridadeDinamica{
     int tamanho;
 };
 
-// Função do Paciente
-void mostraUrgencia(Paciente paciente);
-
-// Funções da fila
 void inicializaFila(FilaPrioridadeDinamica *fila);
 bool verificaFilaVazia(FilaPrioridadeDinamica *fila);
 void enfileira(FilaPrioridadeDinamica *fila, Atendimento item);
 void desenfileira(FilaPrioridadeDinamica *fila, Atendimento *item);
 void esvaziaFila(FilaPrioridadeDinamica *fila);
 void imprimeFila(FilaPrioridadeDinamica *fila);
+void mostraUrgencia(Paciente paciente);
 
 #endif
