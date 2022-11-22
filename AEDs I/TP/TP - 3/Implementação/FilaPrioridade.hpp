@@ -57,6 +57,5 @@ void enfileira(FilaPrioridadeDinamica *fila, Atendimento item);
 void desenfileira(FilaPrioridadeDinamica *fila, Atendimento *item);
 void esvaziaFila(FilaPrioridadeDinamica *fila);
 void imprimeFila(FilaPrioridadeDinamica *fila);
-void mostraUrgencia(Paciente paciente);
 
 #endif

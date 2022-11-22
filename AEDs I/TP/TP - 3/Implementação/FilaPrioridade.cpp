@@ -66,7 +66,11 @@ void imprimeFila(FilaPrioridadeDinamica *fila){
     Apontador aux = fila->inicio;
     while (aux != NULL) {
         cout << "Paciente: " << aux->item.paciente.nome << endl;
-        mostraUrgencia(aux->item.paciente);
+        if(aux->item.paciente.prioridade == 0) cout << "Urgência: Vermelho\n";
+        if(aux->item.paciente.prioridade == 1) cout << "Urgência: Laranja\n";
+        if(aux->item.paciente.prioridade == 2) cout << "Urgência: Amarelo\n";
+        if(aux->item.paciente.prioridade == 3) cout << "Urgência: Verde\n";
+        if(aux->item.paciente.prioridade == 4) cout << "Urgência: Azul\n"; 
         cout << "Endereço: " << aux->item.paciente.endereco << endl;
         cout << "Idade: " << aux->item.paciente.idade << endl;
         cout << "Sexo: " << (aux->item.paciente.sexo == 1 ? "Masculino" : "Feminino") << endl;
@@ -74,14 +78,4 @@ void imprimeFila(FilaPrioridadeDinamica *fila){
         aux = aux->prox;
     }
     cout << "\n";
-}
-
-void mostraUrgencia(Paciente paciente){
-    string urgencia;
-    if(paciente.prioridade == 0) urgencia = "Vermelho";
-    if(paciente.prioridade == 1) urgencia = "Laranja";
-    if(paciente.prioridade == 2) urgencia = "Amarelo";
-    if(paciente.prioridade == 3) urgencia = "Verde";
-    if(paciente.prioridade == 4) urgencia = "Azul";
-    cout << "Urgência: " << urgencia << endl;
 }

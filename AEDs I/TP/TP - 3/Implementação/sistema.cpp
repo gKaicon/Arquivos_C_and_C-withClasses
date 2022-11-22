@@ -34,26 +34,28 @@ void iniciaMedicos(Hospital *hospital){
 
 void menu(){
     system("cls");
-    cout << "#######################################################" << endl;
-    cout << "#                                                     #" << endl;
-    cout << "#              Unidade de Pronto Atendimento          #" << endl;
-    cout << "#                                                     #" << endl;
-    cout << "#######################################################" << endl;
-    cout << "#                                                     #" << endl;
-    cout << "#               1 - Novo Atendimento                  #" << endl;
-    cout << "#                                                     #" << endl;
-    cout << "#               2 - Exibir Atendimentos               #" << endl;
-    cout << "#                                                     #" << endl;
-    cout << "#               3 - Exibir Fila de Espera             #" << endl;
-    cout << "#                                                     #" << endl;
-    cout << "#               4 - Exibir Relatório                  #" << endl;
-    cout << "#                                                     #" << endl;
-    cout << "#               5 - Sair                              #" << endl;
-    cout << "#                                                     #" << endl;
-    cout << "#######################################################" << endl;
-    cout << "#                                                     #" << endl;
-    cout << "#                                                     #" << endl;
-    cout << "#######################################################" << endl;
+    cout << "********************************************************" << endl;
+    cout << "********************************************************" << endl;
+    cout << "**                                                    **" << endl;
+    cout << "**              UNIDADE DE PRONTO ATENDIMENTO         **" << endl;
+    cout << "**                                                    **" << endl;
+    cout << "********************************************************" << endl;
+    cout << "********************************************************" << endl;
+    cout << "**                                                    **" << endl;
+    cout << "**               1 - Novo Atendimento                 **" << endl;
+    cout << "**                                                    **" << endl;
+    cout << "**               2 - Exibir Atendimentos              **" << endl;
+    cout << "**                                                    **" << endl;
+    cout << "**               3 - Exibir Fila de Espera            **" << endl;
+    cout << "**                                                    **" << endl;
+    cout << "**               4 - Exibir Relatório                 **" << endl;
+    cout << "**                                                    **" << endl;
+    cout << "**               5 - Sair                             **" << endl;
+    cout << "**                                                    **" << endl;
+    cout << "********************************************************" << endl;
+    cout << "**                                                    **" << endl;
+    cout << "********************************************************" << endl;
+    cout << "********************************************************" << endl;
     cout << "Opção: ";
 }
 
@@ -76,32 +78,35 @@ Paciente cadastro_Paciente(){ // perguntas para criação um novo paciente
 
 void realizarTriagem(Paciente *paciente){
     Triagem triagem;
-    cout << "#######################################################" << endl;
-    cout << "#                                                     #" << endl;
-    cout << "#                      TRIAGEM                        #" << endl;
-    cout << "#                                                     #" << endl;
-    cout << "#######################################################" << endl;
-    cout << "#                                                     #" << endl;
-    cout << "#  01 - Comprometimento das vias aérias?              #" << endl;
-    cout << "#  02 - Respiração ineficaz?                          #" << endl;
-    cout << "#  03 - Choque?                                       #" << endl;
-    cout << "#  04 - Não responde a estímulos?                     #" << endl;
-    cout << "#  05 - Em convulção?                                 #" << endl;
-    cout << "#  06 - Dor severa?                                   #" << endl;
-    cout << "#  07 - Grande hemorragia incontrolável?              #" << endl;
-    cout << "#  08 - Alteração do estado de consciência?           #" << endl;
-    cout << "#  09 - Temperatura maior ou igual a 39°C?            #" << endl;
-    cout << "#  10 - Trauma craniano severo?                       #" << endl;
-    cout << "#  11 - Dor moderada?                                 #" << endl;
-    cout << "#  12 - Pequena hemorragia incontrolável?             #" << endl;
-    cout << "#  13 - Vômito percistente?                           #" << endl;
-    cout << "#  14 - Temperatura entre 38°C  e 39°C?               #" << endl;
-    cout << "#  15 - É idoso ou grávida?                           #" << endl;
-    cout << "#  16 - Dor leve?                                     #" << endl;
-    cout << "#  17 - Náusea?                                       #" << endl;
-    cout << "#  18 - Temperatura entre 37°C e 38°C?                #" << endl;
-    cout << "#                                                     #" << endl;
-    cout << "#######################################################" << endl;
+    cout << "*********************************************************" << endl;
+    cout << "*********************************************************" << endl;
+    cout << "**                                                     **" << endl;
+    cout << "**                      TRIAGEM                        **" << endl;
+    cout << "**                                                     **" << endl;
+    cout << "*********************************************************" << endl;
+    cout << "*********************************************************" << endl;
+    cout << "**                                                     **" << endl;
+    cout << "**   01 - Comprometimento das vias aérias?             **" << endl;
+    cout << "**   02 - Respiração ineficaz?                         **" << endl;
+    cout << "**   03 - Choque?                                      **" << endl;
+    cout << "**   04 - Não responde a estímulos?                    **" << endl;
+    cout << "**   05 - Em convulção?                                **" << endl;
+    cout << "**   06 - Dor severa?                                  **" << endl;
+    cout << "**   07 - Grande hemorragia incontrolável?             **" << endl;
+    cout << "**   08 - Alteração do estado de consciência?          **" << endl;
+    cout << "**   09 - Temperatura maior ou igual a 39°C?           **" << endl;
+    cout << "**   10 - Trauma craniano severo?                      **" << endl;
+    cout << "**   11 - Dor moderada?                                **" << endl;
+    cout << "**   12 - Pequena hemorragia incontrolável?            **" << endl;
+    cout << "**   13 - Vômito percistente?                          **" << endl;
+    cout << "**   14 - Temperatura entre 38°C  e 39°C?              **" << endl;
+    cout << "**   15 - É idoso ou grávida?                          **" << endl;
+    cout << "**   16 - Dor leve?                                    **" << endl;
+    cout << "**   17 - Náusea?                                      **" << endl;
+    cout << "**   18 - Temperatura entre 37°C e 38°C?               **" << endl;
+    cout << "**                                                     **" << endl;
+    cout << "*********************************************************" << endl;
+    cout << "*********************************************************" << endl;
     cout << "Dado o menu acima responda as perguntas apenas com S(sim) e N(não) de acordo com o número da pergunta.\n\n";
 
     bool urgencia_encontrada = false;
@@ -121,15 +126,6 @@ void realizarTriagem(Paciente *paciente){
         paciente->prioridade = 4; //ser não foi encontrada nenhuma urgencia, ele espera mais tempo
     }
     paciente->triagem = triagem; //respostas inseridas nos dados do usuario
-}
-
-void mostraPrevisaoAtendimento(Paciente paciente){
-    if(paciente.prioridade == 0) cout << "Previsão de Atendimento Imediato\n";
-    if(paciente.prioridade == 1) cout << "Previsão de Atendimento em até 10 minutos\n";
-    if(paciente.prioridade == 2) cout << "Previsão de Atendimento em até 60 minutos\n";
-    if(paciente.prioridade == 3) cout << "Previsão de Atendimento em até 120 minutos\n";
-    if(paciente.prioridade == 4) cout << "Previsão de Atendimento em até 240 minutos\n";
-    system("pause");
 }
 
 void atualizaMedicoPaciente(Hospital *hospital){
@@ -191,18 +187,25 @@ void novoAtendimento(Hospital *hospital){
     int opcao;
     do{
         system("cls");
-        cout << "#######################################################" << endl;
-        cout << "#                                                     #" << endl;
-        cout << "#                   Novo Atendimento                  #" << endl;
-        cout << "#                                                     #" << endl;
-        cout << "#######################################################" << endl;
+        cout << "*******************************************************" << endl;
+        cout << "*******************************************************" << endl;
+        cout << "**                                                   **" << endl;
+        cout << "**                   Novo Atendimento                **" << endl;
+        cout << "**                                                   **" << endl;
+        cout << "*******************************************************" << endl;
+        cout << "*******************************************************" << endl;
 
         Paciente paciente = cadastro_Paciente();
         realizarTriagem(&paciente);
         lista_pacientes.push_back(paciente); // Adiciona o novo paciente na lista
         system("cls");
-        mostraUrgencia(paciente);
-        mostraPrevisaoAtendimento(paciente);
+        if(paciente.prioridade == 0) cout << "Urgência: Vermelho \tPrevisão de Atendimento Imediato\n";
+        if(paciente.prioridade == 1) cout << "Urgência: Laranja \tPrevisão de Atendimento em até 10 minutos\n";
+        if(paciente.prioridade == 2) cout << "Urgência: Amarelo \tPrevisão de Atendimento em até 60 minutos\n";
+        if(paciente.prioridade == 3) cout << "Urgência: Verde \tPrevisão de Atendimento em até 120 minutos\n";
+        if(paciente.prioridade == 4) cout << "Urgência: Azul \tPrevisão de Atendimento em até 240 minutos\n";
+        system("pause");
+        system("cls");
         do{
             system("cls");
             cout << "\nDeseja realizar um novo atendimento?\n1 - Sim\n2 - Não\nOpção: ";
@@ -224,7 +227,11 @@ void exibeAtendimentos(Hospital hospital){
         for (Atendimento atendimento : hospital.atendimentos_em_execucao){
             cout << "\nMédico: " << atendimento.medico->nome;
             cout << "\nPaciente: " << atendimento.paciente.nome << endl;
-            mostraUrgencia(atendimento.paciente);
+            if(atendimento.paciente.prioridade == 0) cout << "Urgência: Vermelho\n";
+            if(atendimento.paciente.prioridade == 1) cout << "Urgência: Laranja\n";
+            if(atendimento.paciente.prioridade == 2) cout << "Urgência: Amarelo\n";
+            if(atendimento.paciente.prioridade == 3) cout << "Urgência: Verde\n";
+            if(atendimento.paciente.prioridade == 4) cout << "Urgência: Azul\n"; 
             cout << "\nInício: " << put_time(&atendimento.data_inicio, "%d/%m/%Y %H:%M:%S");               // converte a struct tm em string
             cout << "\nPrevisão de Término: " << put_time(&atendimento.data_termino, "%d/%m/%Y %H:%M:%S") << endl << endl; // converte a struct tm em string
         }
@@ -235,21 +242,25 @@ void exibeAtendimentos(Hospital hospital){
 }
 
 void exibeFilaEspera(Hospital hospital){
-    cout << "#######################################################" << endl;
-    cout << "#                                                     #" << endl;
-    cout << "#                     Fila de Espera                  #" << endl;
-    cout << "#                                                     #" << endl;
-    cout << "#######################################################" << endl;
+    cout << "********************************************************" << endl;
+    cout << "********************************************************" << endl;
+    cout << "**                                                    **" << endl;
+    cout << "**                     Fila de Espera                 **" << endl;
+    cout << "**                                                    **" << endl;
+    cout << "********************************************************" << endl;
+    cout << "********************************************************" << endl;
     imprimeFila(&hospital.fila_de_espera);
     system("pause");
 }
 
 void exibeRelatorio(Hospital hospital){
-    cout << "#######################################################" << endl;
-    cout << "#                                                     #" << endl;
-    cout << "#                      Relatório                      #" << endl;
-    cout << "#                                                     #" << endl;
-    cout << "#######################################################" << endl;
+    cout << "********************************************************" << endl;
+    cout << "********************************************************" << endl;
+    cout << "**                                                    **" << endl;
+    cout << "**                      Relatório                     **" << endl;
+    cout << "**                                                    **" << endl;
+    cout << "********************************************************" << endl;
+    cout << "********************************************************" << endl;
     cout << "\nQuantidade de atendimentos em andamento: " << hospital.atendimentos_em_execucao.size();
     cout << "\nQuantidade de médicos registrados: " << hospital.medicos_registrados;
     cout << "\nQuantidade de médicos disponíveis: " << hospital.medicos_disponiveis;

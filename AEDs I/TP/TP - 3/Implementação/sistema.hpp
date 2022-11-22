@@ -19,7 +19,6 @@ void iniciaMedicos(Hospital *hospital);
 void menu();
 Paciente cadastro_Paciente();
 void realizarTriagem(Paciente *paciente);
-void mostraPrevisaoAtendimento(Paciente paciente);
 void atualizaMedicoPaciente(Hospital *hospital);
 void novoAtendimento(Hospital *hospital);
 void exibeAtendimentos(Hospital hospital);
