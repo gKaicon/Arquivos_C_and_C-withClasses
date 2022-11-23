@@ -71,6 +71,7 @@ Paciente cadastro_Paciente(){ // perguntas para criação um novo paciente
     do{
         cout << "Opções: \n1 - Masculino\n2 - Feminino\nSexo: ";
         cin >> paciente.sexo;
+        cin.ignore();
     }while (paciente.sexo != 1 && paciente.sexo != 2);
     system("cls");
     return paciente; //retorna o "objeto" paciente
