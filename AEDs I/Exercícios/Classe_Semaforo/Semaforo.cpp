@@ -6,21 +6,12 @@
 using namespace std;
 
 class Semaforo{
-    private:
-        int cor;
     public:
     Semaforo(){
     }
-    int getCor(){
-        return cor;
-    }
-    void setCor(int cor){
-        this->cor = cor;
-    }
-
-    void corSemaforo(){
+    void corSemaforo(int cor){
         HANDLE colors = GetStdHandle(STD_OUTPUT_HANDLE);
-        switch (cor){
+        switch(cor){
             case 0:
                 system("cls");
                 SetConsoleTextAttribute(colors, 15);
@@ -44,8 +35,8 @@ class Semaforo{
                 cout << "# ########################### #" << endl;
                 cout << "# ########################### #" << endl;
                 cout << "# ########################### #" << endl;
+                cout << "#                             #" << endl;
                 SetConsoleTextAttribute(colors, 2);
-                cout << "#                             #" << endl;
                 cout << "# ########################### #" << endl;
                 cout << "# ########################### #" << endl;
                 cout << "# ########################### #" << endl;
@@ -55,9 +46,11 @@ class Semaforo{
                 cout << "# ########################### #" << endl;
                 cout << "# ########################### #" << endl;
                 cout << "# ########################### #" << endl;
+                SetConsoleTextAttribute(colors, 15);
                 cout << "#                             #" << endl;
                 cout << "###############################" << endl;
                 cout << "###############################" << endl;
+                cout << "SIGA!";
                 break;
             case 1:
                 system("cls");
@@ -72,8 +65,8 @@ class Semaforo{
                 cout << "# ########################### #" << endl;
                 cout << "# ########################### #" << endl;
                 cout << "# ########################### #" << endl;
+                cout << "#                             #" << endl;
                 SetConsoleTextAttribute(colors, 14);
-                cout << "#                             #" << endl;
                 cout << "# ########################### #" << endl;
                 cout << "# ########################### #" << endl;
                 cout << "# ########################### #" << endl;
@@ -83,8 +76,8 @@ class Semaforo{
                 cout << "# ########################### #" << endl;
                 cout << "# ########################### #" << endl;
                 cout << "# ########################### #" << endl;
-                cout << "#                             #" << endl;
                 SetConsoleTextAttribute(colors, 15);
+                cout << "#                             #" << endl;
                 cout << "# ########################### #" << endl;
                 cout << "# ########################### #" << endl;
                 cout << "# ########################### #" << endl;
@@ -97,13 +90,15 @@ class Semaforo{
                 cout << "#                             #" << endl;
                 cout << "###############################" << endl;
                 cout << "###############################" << endl;
+                cout << "ATENÇÃO!";
                 break;
             case 2:
             system("cls");
+            SetConsoleTextAttribute(colors, 15);
+                cout << "###############################" << endl;
+                cout << "###############################" << endl;
+                cout << "#                             #" << endl;
                 SetConsoleTextAttribute(colors, 4);
-                cout << "###############################" << endl;
-                cout << "###############################" << endl;
-                cout << "#                             #" << endl;
                 cout << "# ########################### #" << endl;
                 cout << "# ########################### #" << endl;
                 cout << "# ########################### #" << endl;
@@ -111,8 +106,8 @@ class Semaforo{
                 cout << "# ########################### #" << endl;
                 cout << "# ########################### #" << endl;
                 cout << "# ########################### #" << endl;
-                cout << "#                             #" << endl;
                 SetConsoleTextAttribute(colors, 15);
+                cout << "#                             #" << endl;
                 cout << "# ########################### #" << endl;
                 cout << "# ########################### #" << endl;
                 cout << "# ########################### #" << endl;
@@ -123,7 +118,6 @@ class Semaforo{
                 cout << "# ########################### #" << endl;
                 cout << "# ########################### #" << endl;
                 cout << "#                             #" << endl;
-                SetConsoleTextAttribute(colors, 15);
                 cout << "# ########################### #" << endl;
                 cout << "# ########################### #" << endl;
                 cout << "# ########################### #" << endl;
@@ -136,6 +130,7 @@ class Semaforo{
                 cout << "#                             #" << endl;
                 cout << "###############################" << endl;
                 cout << "###############################" << endl;
+                cout << "PARE!";
                 break;
         }
     }

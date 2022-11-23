@@ -10,13 +10,13 @@ int main() {
     UINT CPAGE_DEFAULT = GetConsoleOutputCP();
     SetConsoleOutputCP(CPAGE_UTF8);
     srand(time(NULL));
-    Semaforo s1;
-    s1.corSemaforo(s1.setColor(0));
-    Sleep(1500);
-    s1.corSemaforo(1);
-    Sleep(1500);
+    Semaforo s1;    
     s1.corSemaforo(2);
-    Sleep(1500);
+    Sleep(2000);
+    s1.corSemaforo(1);
+    Sleep(2000);
+    s1.corSemaforo(0);
+    Sleep(2000);
     cout << endl;
     return 0;
 }
