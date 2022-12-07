@@ -1,0 +1,6 @@
+1. Revisão
+
+a. Concatenar duas listas
+b. Dividir em dois a lista
+c. Intercalar duas listas
+d. Inverter
