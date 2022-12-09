@@ -16,6 +16,7 @@ void Menu()
     cout << "3. Intercalar lista em dois\n";
     cout << "4. Inverter lista em dois\n";
     cout << "0. Sair\n\n";
+    cout << "Opção: ";
 }
 
 int main()
@@ -25,8 +26,7 @@ int main()
     SetConsoleOutputCP(CPAGE_UTF8);
 
     TipoLista lista, lista2, lista3, lista4, lista5, lista6, lista7;
-    TipoItem item;
-    int opcao, ret, id;
+    int opcao;
     CriaListaVazia(&lista);
     CriaListaVazia(&lista2);
     CriaListaVazia(&lista3);
@@ -41,28 +41,51 @@ int main()
     do{
         system("cls");
         Menu();
-        cout << "Opção: ";
         cin >> opcao;
-
         switch (opcao){
-        case 1:
-            break;
-        case 2:
-            break;
-        case 3:
-            break;
-        case 4:
-            break;
-
-        case 0:
-            cout << "Saindo...";
-            Sleep(1000);
-            break;
-        default:
-            break;
-        }
-
+            case 1:
+                cout << "\nLista 1" << endl;
+                ImprimeLista(lista);
+                cout << "\n\nLista 2" << endl;
+                ImprimeLista(lista2);
+                concatenarLista(&lista, &lista2, &lista3);
+                cout << "\n\nLista 3" << endl;
+                ImprimeLista(lista3);
+                system("PAUSE");
+                break;
+            case 2:
+                cout << "Lista 3" << endl;
+                ImprimeLista(lista3);
+                DividirEmDois(&lista3, &lista4, &lista5);
+                cout << "Lista 4" << endl;
+                ImprimeLista(lista4);
+                cout << "Lista 5" << endl;
+                ImprimeLista(lista5);
+                system("PAUSE");
+                break;
+            case 3:
+                cout << "Lista 1" << endl;
+                ImprimeLista(lista);
+                cout << "Lista 2" << endl;
+                ImprimeLista(lista2);
+                intercalarLista(&lista, &lista2, &lista6);
+                cout << "Lista 6" << endl;
+                ImprimeLista(lista6);
+                system("PAUSE");
+                break;
+            case 4:
+                cout << "Lista 3" << endl;
+                ImprimeLista(lista3);
+                InverteLista(&lista3, &lista7);
+                cout << "Lista 7" << endl;
+                ImprimeLista(lista7);
+                system("PAUSE");
+                break;
+            case 0:
+                cout << "Saindo...";
+                Sleep(1000);
+                break;
+            }
     } while (opcao != 0);
-
     return 0;
 }

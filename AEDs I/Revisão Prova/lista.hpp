@@ -35,7 +35,6 @@ void RemoveListaPrimeiro(TipoLista *lista);
 void RemoveListaUltimo(TipoLista *lista);
 void RemoveItemPorId(TipoLista *lista, int id);
 int TamanhoLista(TipoLista *lista);
-void adicionaLista(TipoLista *lista, int codigo, char nome[30]);
 void insereLista(TipoLista *lista);
 void concatenarLista(TipoLista *lista1, TipoLista *lista2, TipoLista *lista3);
 void DividirEmDois(TipoLista *lista3, TipoLista *lista4, TipoLista *lista5);

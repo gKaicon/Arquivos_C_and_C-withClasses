@@ -1,5 +1,6 @@
 #include <iostream>
 #include <windows.h>
+#include <time.h>
 #include "lista.hpp"
 
 using namespace std;
@@ -11,8 +12,8 @@ void CriaListaVazia(TipoLista *lista)
     lista->primeiro->prox = NULL;
     lista->primeiro->ant = NULL;
     lista->tamanho = 0;
-    cout << "Lista criada com sucesso!";
-    Sleep(1500);
+    cout << "Lista criada com sucesso!" << endl;
+    //Sleep(1000);
 }
 
 bool VerificaListaVazia(TipoLista *lista)
@@ -81,11 +82,12 @@ void ImprimeLista(TipoLista lista)
     aux = lista.primeiro->prox;
     while (aux != NULL)
     {
-        cout << "ID: " << aux->item.id << endl;
-        cout << "Nome: " << aux->item.nome << endl;
+        cout << "\tID: " << aux->item.id << endl;
+        cout << "\tNome: " << aux->item.nome << endl;
         aux = aux->prox;
     }
-    system("PAUSE");
+    cout << "Tamanho da Lista: " << TamanhoLista(&lista) << endl;
+    //system("PAUSE");
 }
 
 int PesquisaItem(TipoLista *lista, int chave)
@@ -204,42 +206,135 @@ void ImprimeItem(TipoLista *lista, int id)
     }
 }
 
-void adicionaLista(TipoLista *lista, int codigo, char nome[30]){
-    lista->primeiro->prox->item.id = codigo;
-    strcpy(lista->primeiro->prox->item.nome, nome);
-}
-
 void insereLista(TipoLista *lista){
-    adicionaLista(lista, 1, "João");
-    adicionaLista(lista, 2, "Maria");
-    adicionaLista(lista, 3, "Carlos");
-    adicionaLista(lista, 4, "Eduardo");
-    adicionaLista(lista, 5, "Gabriel");
-    adicionaLista(lista, 6, "Marcelo");
-    adicionaLista(lista, 7, "Amanda");
-    adicionaLista(lista, 8, "Kaicon");
+    TipoItem item;
+    int n, x;
+    for(int i = 0; i < 8; i++){
+        srand(time(NULL));
+        x = rand()%5;
+        item.id = i + x;
+        n = rand()%16;
+            if(n ==  1){
+                Sleep(300);
+                srand(time(NULL));
+                strcpy(item.nome, "Eduardo");
+                InsereListaUltimo(lista, &item);
+            }
+            if(n ==  2){
+                Sleep(300);
+                srand(time(NULL));
+                strcpy(item.nome, "João");
+                InsereListaUltimo(lista, &item);
+            }
+            if(n ==  3){
+                Sleep(300);
+                srand(time(NULL));
+                strcpy(item.nome, "João Emanuell");
+                InsereListaUltimo(lista, &item);
+            }
+            if(n ==  4){
+                Sleep(300);
+                srand(time(NULL));
+                strcpy(item.nome, "Gabriel Káicon");
+                InsereListaUltimo(lista, &item);
+            }
+            if(n ==  5){
+                Sleep(300);
+                srand(time(NULL));
+                strcpy(item.nome, "Amanda Soares");
+                InsereListaUltimo(lista, &item);
+            }
+            if(n ==  6){
+                Sleep(300);
+                srand(time(NULL));
+                strcpy(item.nome, "Marcelo");
+                InsereListaUltimo(lista, &item);
+            }
+            if(n ==  7){
+                Sleep(300);
+                srand(time(NULL));
+                strcpy(item.nome, "Maria José");
+                InsereListaUltimo(lista, &item);
+            }
+            if(n ==  8){
+                Sleep(300);
+                srand(time(NULL));
+                strcpy(item.nome, "Maria");
+                InsereListaUltimo(lista, &item);
+            }
+            if(n ==  9){
+                Sleep(300);
+                srand(time(NULL));
+                strcpy(item.nome, "José Maria");
+                InsereListaUltimo(lista, &item);
+            }
+            if(n ==  10){
+                Sleep(300);
+                srand(time(NULL));
+                strcpy(item.nome, "Carlos");
+                InsereListaUltimo(lista, &item);
+            }
+            if(n ==  11){
+                Sleep(300);
+                srand(time(NULL));
+                strcpy(item.nome, "João Gabriel");
+                InsereListaUltimo(lista, &item);
+            }
+            if(n ==  12){
+                Sleep(300);
+                srand(time(NULL));
+                strcpy(item.nome, "Maria Eduarda");
+                InsereListaUltimo(lista, &item);
+            }
+            if(n ==  13){        
+                Sleep(300);
+                srand(time(NULL));
+                strcpy(item.nome, "Mário");
+                InsereListaUltimo(lista, &item);
+            }
+            if(n ==  14){
+                Sleep(300);
+                srand(time(NULL));
+                strcpy(item.nome, "Mickey");
+                InsereListaUltimo(lista, &item);
+            }
+            if(n ==  15){
+                Sleep(300);
+                srand(time(NULL));
+                strcpy(item.nome, "Carlos Eduardo");
+                InsereListaUltimo(lista, &item);
+            }
+            if(n ==  16){
+                Sleep(300);
+                srand(time(NULL));
+                strcpy(item.nome, "Márcia");
+                InsereListaUltimo(lista, &item);
+            }
+    }
 }
 
 void concatenarLista(TipoLista *lista1, TipoLista *lista2, TipoLista *lista3){
     Apontador aux;
     TipoItem item;
     aux = lista1->primeiro->prox;
-    while(aux->prox != NULL){
+    while(aux != NULL){
         item = aux->item;
         InsereListaUltimo(lista3, &item);
         aux = aux->prox;
     }
     aux = lista2->primeiro->prox;
-    while(aux->prox != NULL){
+    while(aux != NULL){
         item = aux->item;
         InsereListaUltimo(lista3, &item);
         aux = aux->prox;
     }
+
 }
 
 void DividirEmDois(TipoLista *lista3, TipoLista *lista4, TipoLista *lista5){
     Apontador aux;
     TipoItem item;
+    aux = lista3->primeiro->prox;
     int tam = TamanhoLista(lista3);
     for(int i = 0; i < tam/2; i++){
         item = aux->item;
@@ -257,33 +352,33 @@ void DividirEmDois(TipoLista *lista3, TipoLista *lista4, TipoLista *lista5){
 void ordenarLista(TipoLista *lista){
     Apontador aux, aux2;
     TipoItem item;
-    aux = lista->primeiro->prox;
+    aux = lista->primeiro->prox; //pegar o inicio da lista, para percorre-la
     while(aux != NULL){
-        aux2 = aux->prox;
-        while(aux != NULL){
-            if(aux->item.id > aux->item.id){
-                item = aux->item;
-                aux->item = aux2->item;
-                aux2->item = item;
+        aux2 = aux->prox; // pega o segundo valor que será guardado, e depois altera
+        while(aux2 != NULL){
+            if(aux->item.id > aux2->item.id){ //se o 1° valor for maior que o 2° valor guardado
+                item = aux->item; //você vai pegar esse 1° valor, e guardar ele em item
+                aux->item = aux2->item; //você vai pegar o menor valor, vai guardar no lugar do maior, que está antes dele
+                aux2->item = item; //vai pegar o menor, e guardar o maior valor nele
             }
-            aux2 = aux2->prox;
+            aux2 = aux2->prox; //percorre o menor valor, até achar um menor que ele, para entrar no while e fazer as alterações
         }
-        aux = aux->prox;
+        aux = aux->prox; //percorre o laço que incrementa o maior, e começa o 2°while de novo
     }
 }
 
 void intercalarLista(TipoLista *lista1, TipoLista *lista2, TipoLista * lista6){
     Apontador aux1, aux2;
     TipoItem item;
-    ordenarLista(lista1);
-    ordenarLista(lista2);
-    aux1 = lista1->primeiro->prox;
-    aux2 = lista2->primeiro->prox;
-    while(aux1 != NULL && aux2 != NULL){
-        if(aux1->item.id < aux2->item.id){
-            item = aux1->item;
-            InsereListaUltimo(lista6, &item);
-            aux1 = aux1->prox;
+    ordenarLista(lista1); //ordenar as listas
+    ordenarLista(lista2); //ordenar as listas
+    aux1 = lista1->primeiro->prox; //cada aux, recebe o inicio de uma lista
+    aux2 = lista2->primeiro->prox; 
+    while(aux1 != NULL && aux2 != NULL){ //percorre as duas listas, até chegar no fim
+        if(aux1->item.id < aux2->item.id){ //se o Id da primeira for menor que o da segunda
+            item = aux1->item; //vai guardar esse item
+            InsereListaUltimo(lista6, &item); // e vai inserir na lista
+            aux1 = aux1->prox; //e incrementar
         }
         else{
             item = aux2->item;
@@ -294,7 +389,7 @@ void intercalarLista(TipoLista *lista1, TipoLista *lista2, TipoLista * lista6){
 }
 
 void InverteLista(TipoLista *lista, TipoLista *lista7){ //lista toda
-    Apontador aux, ult;
+    Apontador aux;
     aux = lista->primeiro->prox; //pri recebe a primeira posição
     while (aux != NULL){ //enquanto o primeiro for diferente do ultimo
         InsereListaPrimeiro(lista7, &aux->item);
