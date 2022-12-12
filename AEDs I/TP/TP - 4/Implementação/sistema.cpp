@@ -1,6 +1,6 @@
 #include "sistema.hpp"
 
-void Menu(){
+void menuPrincipal(){
     system("cls");
     cout << "********************************************************" << endl;
     cout << "********************************************************" << endl;
@@ -14,7 +14,7 @@ void Menu(){
     cout << "**                                                    **" << endl;
     cout << "**            2 - MANUTENÇÃO NO SISTEMA               **" << endl;
     cout << "**                                                    **" << endl;
-    cout << "**            3 - SAIR                                **" << endl;
+    cout << "**            0 - SAIR                                **" << endl;
     cout << "**                                                    **" << endl;
     cout << "********************************************************" << endl;
     cout << "**                                                    **" << endl;
@@ -23,7 +23,34 @@ void Menu(){
     cout << "Opção: ";
 }
 
-void Pesquisa(){
+void menuManutencao(){
+        system("cls");
+        cout << "********************************************************" << endl;
+        cout << "********************************************************" << endl;
+        cout << "**                                                    **" << endl;
+        cout << "**              MANUTENÇÃO DO PROGRAMA                **" << endl;
+        cout << "**                                                    **" << endl;
+        cout << "********************************************************" << endl;
+        cout << "********************************************************" << endl;
+        cout << "**                                                    **" << endl;
+        cout << "**           1 - INSERIR UMA LINHA                    **" << endl;
+        cout << "**                                                    **" << endl;
+        cout << "**           2 - INSERIR UMA PARADA                   **" << endl;
+        cout << "**                                                    **" << endl;
+        cout << "**           3 - EDITAR UMA PARADA                    **" << endl;
+        cout << "**                                                    **" << endl;
+        cout << "**           4 - EXCLUIR UMA PARADA                   **" << endl;
+        cout << "**                                                    **" << endl;
+        cout << "**           5 - EXCLUIR UMA LINHA                    **" << endl;
+        cout << "**                                                    **" << endl;
+        cout << "**           0 - SAIR                                 **" << endl;
+        cout << "**                                                    **" << endl;    
+        cout << "********************************************************" << endl;
+        cout << "********************************************************" << endl;
+        cout << "Opção: ";
+}
+
+void menuPesquisa(){
     system("cls");
     cout << "********************************************************" << endl;
     cout << "********************************************************" << endl;
@@ -39,157 +66,289 @@ void Pesquisa(){
     cout << "**                                                    **" << endl;
     cout << "**              0 - VOLTAR                            **" << endl;
     cout << "**                                                    **" << endl;
-    cout << "**                                                    **" << endl;
     cout << "********************************************************" << endl;
     cout << "********************************************************" << endl;
+    cout  << "Opção: ";
 }
 
+void pesquisaLinhaPorOrigemDestino(TipoLista *lista){
+    Apontador aux = lista->primeiro->prox;
+    string origem, destino;
+    bool procuraLinha = false;
 
-void MenuRemocao()
-{
-     cout << "  \n        �������������������������������������";
-     cout << "  \n        �                                                              �";
-     cout << "  \n        �                      2 - EXCLUIR ROTA                        �";
-     cout << "  \n        �                                                              �";
-     cout << "  \n        �������������������������������������";
-     cout << "  \n        �                                                              �";
-     cout << "  \n        � 1 - PRIMEIRO DA LISTA                                        �";
-     cout << "  \n        �                                                              �";
-     cout << "  \n        � 2 - ÚLTIMO DA LISTA                                          �";
-     cout << "  \n        �                                                              �";
-     cout << "  \n        � 3 - POR CÓDIGO                                               �";
-     cout << "  \n        �                                                              �";
-     cout << "  \n        � 4 - VOLTAR                                                   �";
-     cout << "  \n        �                                                              �";
-     cout << "  \n        �������������������������������������\n\n";
-}
-
-void CabecalhoEditar()
-{
-     cout << "  \n        �������������������������������������";
-     cout << "  \n        �                                                              �";
-     cout << "  \n        �                      3 - EDITAR ROTA                         �";
-     cout << "  \n        �                                                              �";
-     cout << "  \n        �������������������������������������";
-}
-
-
-void CabecalhoListagemCompleta()
-{
-     cout << "  \n        �������������������������������������";
-     cout << "  \n        �                                                              �";
-     cout << "  \n        �                    ROTAS CADASTRADAS                     �";
-     cout << "  \n        �                                                              �";
-     cout << "  \n        ��������������������������������������\n\n";
-}
-
-void CabecalhoRemocaoPorCodigo()
-{
-     cout << "  \n        �������������������������������������";
-     cout << "  \n        �                                                              �";
-     cout << "  \n        �                    EXCLUSÃO DE ROTAS                         �";
-     cout << "  \n        �                                                              �";
-     cout << "  \n        �������������������������������������\n";
-}
-
-void CabecalhoPesquisaPorCodigo()
-{
-     cout << "  \n        �������������������������������������";
-     cout << "  \n        �                                                              �";
-     cout << "  \n        �                    PESQUISA POR CÓDIGO                       �";
-     cout << "  \n        �                                                              �";
-     cout << "  \n        �������������������������������������";
-}
-
-void CabecalhoPesquisaPorNome()
-{
-     cout << "  \n        ��������������������������������������";
-     cout << "  \n        �                                                              �";
-     cout << "  \n        �                    PESQUISA POR NOME                         �";
-     cout << "  \n        �                                                                �";
-     cout << "  \n        ��������������������������������������";
-}
-
-
-int CadastraRota(TipoLista *lista){
     system("cls");
     cout << "********************************************************" << endl;
     cout << "********************************************************" << endl;
     cout << "**                                                    **" << endl;
-    cout << "**                   CADASTRA ROTA                    **" << endl;
+    cout << "**            PROCURA LINHA POR ORIGEM/DESTINO        **" << endl;
     cout << "**                                                    **" << endl;
     cout << "********************************************************" << endl;
     cout << "********************************************************" << endl;
-    TipoItem item;
-    cout << "\n\n1. Código da rota: ";
-    cin >> item.id;
+    cout << "Digite a origem: ";
+    getline(cin,origem);
     cin.ignore();
-    cout << "2. Nome Companhia: ";
-    cin.getline(item.companhia, 20);
-    cout << "3. Quntidade de cidades presentes na rota: ";
-    cin >> item.quantCidades;
+    cout << "Digite o destino: ";
+    getline(cin,destino);
 
-    for (int i = 0; i < item.quantCidades; i++){
-        cout << "ID cidade: ";
-        cin >> item.paradas.idCidade;
-        cout << "Nome cidade: ";
-        cin >> item.paradas.Nomeparada;
-        cout << "Hora chegada: ";
-        item.paradas.hora_chegada = valor;
-        cout << "Hora saida: ";
-        item.paradas.hora_saida = valor;
-        cout << "Valor Passagem: ";
-        cin >> item.paradas.valorPassagem;
-        InsereListaUltimo(lista, &item);
+    while(aux != NULL){ //percorre a lista de Cidades
+        ApontadorL auxP = aux->item.cidades.primeiro->prox; //armazena a lista de paradas(cidades) que estão dentro de uma linha, em auxP
+        string chegada, saida;
+        bool dest = false, orig = false;
+        double valor_real = 0;
+
+        while(auxP != aux->item.cidades.primeiro){//percorre a lista de cidades na ida
+            if(auxP->item.nome == destino){ //para achar o destino
+                dest = true;
+                chegada = auxP->item.saida; //insere o horario da chegada
+                while(auxP != aux->item.cidades.primeiro){ //percorre a lista de cidades na volta
+                    valor_real += auxP->item.valor_passagem; //soma ao valor da passagem de cidade em cidade
+                    auxP = auxP->ant;
+                    if(auxP->item.nome == origem){//para achar a origem
+                        orig = true;
+                        saida = auxP->item.saida; //insere o horario da saida
+                        break;
+                    }
+                }
+                break;
+            }
+            auxP = auxP->prox;
+        }
+        if(orig && dest == false) cout << "Nenhuma linha foi encontrada!";
+        Sleep(1500);
+        if(orig && dest) procuraLinha = true;
+        if(procuraLinha){//origem e destino foram encontrados, ele mostra
+            cout << "ID: " << aux->item.id << endl;
+            cout << "Companhia: " << aux->item.companhia << endl;
+            cout << "Chegada/Saída: " << chegada << "/" << saida << endl; 
+            cout << "Valor da Passagem: " << valor_real << endl;
+            system("PAUSE");
+        }
+        aux = aux->prox;
     }
-    InsereListaUltimo(lista, &item);
-    cout << "\nRota cadastrada com sucesso!\n\n";
-    system("pause");
 }
 
-void Edicao(TipoLista *lista, TipoItem item){
-    int escolher;
+//Pesquisa linhas de acordo com o código.
+void pesquisaLinhaPorCodigo(TipoLista *lista){
+    string codigo;
+    system("cls");
+    cout << "********************************************************" << endl;
+    cout << "********************************************************" << endl;
+    cout << "**                                                    **" << endl;
+    cout << "**            PESQUISA DE LINHA POR CÓDIGO            **" << endl;
+    cout << "**                                                    **" << endl;
+    cout << "********************************************************" << endl;
+    cout << "********************************************************" << endl;
+    cout << "Digite o código a ser pesquisado: ";
+    cin >> codigo;
+    cin.ignore();
+    imprimeItem(lista, codigo);
+}
+
+
+//Insere uma nova linha de onibus.
+void insereLinha(TipoLista *lista){
+    TipoLinha parada;
+    TipoRota linha;
+    string comp, id;
+    char op = 's';
+     int i = 0;
+    system("cls");
+    cout << "********************************************************" << endl;
+    cout << "********************************************************" << endl;
+    cout << "**                                                    **" << endl;
+    cout << "**                   CADASTRA LINHA                   **" << endl;
+    cout << "**                                                    **" << endl;
+    cout << "********************************************************" << endl;
+    cout << "********************************************************" << endl;
+    cout << "Digite o id da linha: ";
+    getline(cin, id);
+    cout << "Digite a companhia: ";
+    getline(cin, comp);
+
+    linha.id = id;
+    linha.companhia = comp;
+
+    insereListaUltimo(lista, &linha);
     do{
-        char companhia[30], parada[40];
-        system("cls");
-        cout << "********************************************************" << endl;
-        cout << "********************************************************" << endl;
-        cout << "**                                                    **" << endl;
-        cout << "**             MANUTENÇÃO DO PROGRAMA                 **" << endl;
-        cout << "**                                                    **" << endl;
-        cout << "********************************************************" << endl;
-        cout << "********************************************************" << endl;
-        cout << "**                                                    **" << endl;
-        cout << "**           1 - CADASTRAR                            **" << endl;
-        cout << "**                                                    **" << endl;
-        cout << "**           2 - EXCLUIR ROTA                         **" << endl;
-        cout << "**                                                    **" << endl;
-        cout << "**           3 - EDITAR ROTA                          **" << endl;
-        cout << "**                                                    **" << endl;
-        cout << "**           0 - SAIR                                 **" << endl;
-        cout << "**                                                    **" << endl;    
-        cout << "********************************************************" << endl;
-        cout << "********************************************************" << endl;
-        cout << "Opção: ";
-        cin >> escolher;
-        switch (escolher){
-            case 1:
-                cout << "\nCompanhia: " << item.companhia << " -> ";
-                cin >> companhia;
-                Atualiza(lista, item, companhia, 1);
-                cout << "\nCompanhia atualizada com sucesso!\n";
-                system("PAUSE");
-                break;
-            case 2:
-                cout << "\nParada\n";
-                cout << "Parada: " << item.paradas.Nomeparada << " -> ";
-                cin >> parada;
-                AtualizaParada(lista, item, parada);
-                cout << "\nParada de aniversário atualizada com sucesso!\n";
-                system("PAUSE");
-                break;
-            default:
-                break;
+        string nome, hora;
+        double valor;
+
+        cout << "Digite o nome da " << i <<"ª parada: ";
+        getline(cin,nome);
+        
+        cout << "Digite o valor da passagem da parada: ";
+        cin >> valor;
+        cin.ignore();
+        cout << "Digite o horário de saida da parada(hh:mm): ";
+        getline(cin,hora);
+
+        parada.nome = nome;
+        parada.valor_passagem = valor;
+        parada.saida = hora;
+        parada.id = i + 1;
+
+        cout << "Deseja cadastrar mais paradas?(s/n)";
+        cin >> op;
+        cin.ignore();
+    }while(op == 's');
+}
+
+void incluirParada(TipoListaLinha *lista){
+    string id;
+    system("cls");
+    cout << "********************************************************" << endl;
+    cout << "********************************************************" << endl;
+    cout << "**                                                    **" << endl;
+    cout << "**                   CADASTRA PARADA                  **" << endl;
+    cout << "**                                                    **" << endl;
+    cout << "********************************************************" << endl;
+    cout << "********************************************************" << endl;
+    imprimeLista(lista);
+    cout << "Qual o id da linha que deseja incluir uma parada?";
+    getline(cin, id);
+    Apontador aux = lista->primeiro->prox;
+    while(aux != NULL){
+        if(aux->item.id == id){
+            imprimeListaD(&aux->item.cidades);
+            TipoItemD parada;
+            string nome, hora, pAnterior;
+            double valor;
+
+            cout << "Digite o nome da parada: ";
+            getline(cin, nome);
+            cout << "Digite o valor da passagem da parada: ";
+            cin >> valor;
+            cin.ignore();
+            cout << "Digite o horário de saida da parada(hh:mm): ";
+            getline(cin, hora);
+            cout << "Digite o nome da parada antes da que está sendo adicionada: ";
+            getline(cin, pAnterior);
+
+            int id =  aux->item.cidades.ultimo->item.id + 1;
+            parada.nome = nome;
+            parada.valor_passagem = valor;
+            parada.saida = hora;
+            parada.id = id;
+
+            ApontadorL auxP = aux->item.cidades.primeiro->prox;
+            while(auxP != aux->item.cidades.primeiro){
+                if(auxP->item.nome == pAnterior){
+                    insereItemAposElementoD(&aux->item.cidades,parada,auxP->item.id);
+                    cout << "Parada inserida com sucesso";
+                    Sleep(1800);
+                }
+                auxP = auxP->prox;
+            }
+            cout << "Parada não encontrada!";
+            return;
         }
-    } while (escolher != 0);
+        aux = aux->prox;
+    }
+    cout << "Linha não encontrada";
+    Sleep(1800);
+}
+
+void alterarParada(TipoLista *lista){
+    Apontador aux = lista->primeiro->prox;
+    string id;
+    system("cls");
+    cout << "********************************************************" << endl;
+    cout << "********************************************************" << endl;
+    cout << "**                                                    **" << endl;
+    cout << "**                   EDITAR PARADA                    **" << endl;
+    cout << "**                                                    **" << endl;
+    cout << "********************************************************" << endl;
+    cout << "********************************************************" << endl;
+    cout << "Lista de Linhas" << endl;
+    imprimeLista(lista);
+    cout << "\nQual o id da linha que deseja alterar uma parada?";
+    getline(cin, id);
+    
+    while(aux != NULL){
+        if(aux->item.id == id){
+            ApontadorL auxP = aux->item.cidades.primeiro->prox;
+            string nome;
+            
+            imprimeListaD(&aux->item.cidades);
+            cout << "Qual o nome da parada que deseja alterar?";
+            getline(cin, nome);
+            
+            while(auxP != aux->item.cidades.primeiro){
+                if(auxP->item.nome == nome){
+                    cout << "Insira o novo nome da parada: ";
+                    getline(cin, auxP->item.nome);
+                    cout << "Digite o novo valor da passagem da parada: ";
+                    cin >> auxP->item.valor_passagem;
+                    cin.ignore();
+                    cout << "Digite o novo horário de saida da parada(hh:mm): ";
+                    getline(cin, auxP->item.saida);
+                    cout << "PARADA ALTERADA COM SUCESSO!";
+                    return;
+                }
+                auxP = auxP->prox;
+            }
+            cout << "Parada não encontrada!";
+            return;
+        }
+        aux = aux->prox;
+    }
+    cout << "Linha não encontrada";
+}
+
+//Elimina uma parada de uma linha existente.
+void eliminarParada(TipoLista *lista){
+    Apontador aux = lista->primeiro->prox;
+    string id;
+    system("cls");
+    cout << "********************************************************" << endl;
+    cout << "********************************************************" << endl;
+    cout << "**                                                    **" << endl;
+    cout << "**                   EXCLUIR PARADA                   **" << endl;
+    cout << "**                                                    **" << endl;
+    cout << "********************************************************" << endl;
+    cout << "********************************************************" << endl;
+    cout << "Lista de Linhas" << endl;
+    imprimeLista(lista);
+    cout << "\nQual o id da Linha que deseja excluir uma parada?";
+    getline(cin, id);
+
+    while(aux != NULL){
+        if(aux->item.id == id){
+            ApontadorL auxP = aux->item.cidades.primeiro->prox;
+            string nome;
+
+            imprimeListaD(&aux->item.cidades);
+            cout << "Qual o nome da parada que deseja excluir?";
+            getline(cin, nome);
+            
+            while(auxP != aux->item.cidades.primeiro){
+                if(auxP->item.nome == nome){
+                    retiraItemPorIdD(&aux->item.cidades,auxP->item.id);
+                    cout << "Parada excluída!";
+                    return;
+                }
+                else cout << "Parada não encontrada";
+                auxP = auxP->prox;
+            }
+        }
+        else cout << "Linha não encontrada";
+        aux = aux->prox;
+    }
+}
+
+void eliminarLinha(TipoLista *lista){ //Elimina toda uma linha.
+    string id;
+    system("cls");
+    cout << "********************************************************" << endl;
+    cout << "********************************************************" << endl;
+    cout << "**                                                    **" << endl;
+    cout << "**                   EXCLUIR LINHA                    **" << endl;
+    cout << "**                                                    **" << endl;
+    cout << "********************************************************" << endl;
+    cout << "********************************************************" << endl;
+    cout << "Lista de Linhas" << endl;
+    imprimeLista(lista);
+    cout << "Qual o id da Linha que deseja excluir?";
+    getline(cin, id);
+    removeItemPorId(lista, id);
 }

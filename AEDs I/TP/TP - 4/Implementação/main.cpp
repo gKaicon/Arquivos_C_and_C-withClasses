@@ -1,144 +1,69 @@
-#include <iostream>
-#include <windows.h>
-#include "lista.hpp"
-#include "menus.cpp"
-//#include "funcoes.cpp"
-#include "listaEncadeadaSimples.cpp"
-#include "listaCircularDupEncadeada.cpp"
+#include "sistema.cpp"
 
-using namespace std;
-
-int main()
-{
-    UINT CPAGE_UTF8 = 65001;
-    UINT CPAGE_DEFAULT = GetConsoleOutputCP();
+int main(){
+    UINT CPAGE_UTF8 = 65001;     
+    UINT CPAGE_DEFAULT = GetConsoleOutputCP();     
     SetConsoleOutputCP(CPAGE_UTF8);
+    HANDLE colors = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(colors, 2); // Define a cor verde para o texto
+    
+    TipoListaLinha linhas;
+    string senha, senhaC = "12345";
+    int op, pesq, man;
 
-    TipoLista lista;
-    TipoListaEC listaEC;
-    TipoItem item;
-    TipoLinha itemEC;
-    int opcao;
-    char op;
+    CriaListaVazia(&linhas);
+    cadastraLinhasTeste(&linhas);
+    cin.clear();
 
-    CriaListaVazia(&lista);
-
-    do
-    {
-        system("cls");
-        Menu();
-        cout << "Opção: ";
-        cin >> opcao;
-
-        switch (opcao)
-        {
-        case 1:
-            system("cls");
-            int opcao, codigo;
-            char origem[100], destino[100];
-            Pesquisa();
-            cout << "\nOpção: ";
-            cin >> opcao;
-            switch (opcao)
-            {
+    do{    
+        menuPrincipal();
+        cin >> op;
+        cin.ignore();
+        switch (op){
             case 1:
-                cout << "Digite a origem: ";
-                cin >> origem;
-                if (!PesquisaItem(&lista, origem))
-                {
-                    cout << "Cidade não encontrada!\n";
-                    break;
-                }
-                cout << "Digite o destino: ";
-                cin >> destino;
-                if (!PesquisaItem(&lista, destino))
-                {
-                    cout << "Cidade não encontrada!\n";
-                    break;
-                }
-                cout << endl;
-                //ImprimePassagem(&lista, origem, destino);
-                ImprimeItem(&lista, origem);
-                ImprimeItem(&lista, destino);
-                // Edicao(&lista, item);
-
+                menuPesquisa();
+                cin >> pesq;
+                cin.ignore();
+                if(pesq == 1)pesquisaLinhaPorOrigemDestino(&linhas);
+                if(pesq == 2)pesquisaLinhaPorCodigo(&linhas);
                 break;
             case 2:
-                int senha;
-                cout << "Codigo: ";
-                cin >> codigo;
-                if (PesquisaItemPorId(&lista, codigo))
-                {
-                    cout << endl;
-                    ImprimeItemPorId(&lista, codigo);
-                    system("cls");
-                    do
-                {
-                    cout <<"Senha do Administrador: " << endl;
-                    cin >>senha;
-                } while (senha != 1111);
-                    Edicao(&lista, item);
-                    
+                cout << "Insira a senha de administrador: ";
+                getline(cin, senha);
+                if(senha == senhaC){
+                    do{
+                        menuManutencao();
+                        cin >> man;
+                        switch (man){
+                            case 1:
+                                cin.ignore();
+                                insereLinha(&linhas);
+                                break;
+                            case 2:
+                                cin.ignore();
+                                incluirParada(&linhas);
+                                break;
+                            case 3:
+                                cin.ignore();
+                                alterarParada(&linhas);
+                                break;
+                            case 4:
+                                cin.ignore();
+                                eliminarParada(&linhas);
+                                break;
+                            case 5:
+                                cin.ignore();
+                                eliminarLinha(&linhas);
+                                break;
+                        }
+                    }while(man != 0);
                 }
-                else
-                {
-                    cout << "Codigo não encontrado!\n";
-                }
-
-            default:
+                else cout << "Senha incorreta";
                 break;
-            }
-
-            system("PAUSE");
-
-            break;
-        case 2:
-            system("cls");
-            int quantRotas;
-            int senha;
-            do
-            {
-                cout <<"Senha do Administrador: " << endl;
-                cin >>senha;
-            } while (senha != 1111);
-            Escolher();
-            cout << "\nOpção: ";
-            cin >> opcao;
-            switch (opcao)
-            {
-            case 1:
-                int resposta;
-                do
-                {
-                    CadastraRota(&lista);
-                    cout << "deseja adicionar mais alguma rota? 1-sim 2-nao";
-                    cin >> resposta;
-                } while (resposta != 2);
-
+            case 0:
+                Sleep(1300);
+                cout << "Saindo...";
                 break;
-            case 2:
-                system("PAUSE");
-                break;
-            case 3:
-
-                break;
-            case 4:
-
-            default:
-                break;
-            }
-            system("PAUSE");
-            break;
-        case 3:
-            system("cls");
-
-            system("PAUSE");
-            break;
-        case 4:
-            system("cls");
-
-            system("PAUSE");
-            break;
         }
-    } while (opcao != 0);
+    }while(op != 0);
 }

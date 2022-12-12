@@ -1,190 +1,129 @@
-#include <iostream>
-#include <string.h>
-#include <windows.h>
-#include "listasEncadeada.hpp"
-
-#define MAXTAM 5
+#include "cabecListasEncadeada.hpp"
 
 using namespace std;
 
-void CriaListaVazia(TipoLista *lista){
-    if (!listaCriada){
-        lista->primeiro = new TipoElemento;
-        lista->ultimo = lista->primeiro;
-        lista->ultimo->prox = NULL;
-        listaCriada = true;
-    }
-    else cout << "Lista já existe!";
-    Sleep(1500);
-}
-
-bool VerificaListaVazia(TipoLista *lista){
-    return (lista->primeiro == lista->ultimo);
-}
-
-int TamanhoLista(TipoLista *lista){
-    return lista->tamanho;
-}
-
-void AtualizaUltimo(TipoLista *lista){
-    Apontador aux;
-    aux = lista->primeiro->prox;
-    while (aux->prox != NULL){
-        aux = aux->prox;
-    }
-    lista->ultimo = aux;
-}
-
-void InsereListaUltimo(TipoLista *lista, TipoItem *item){
-    lista->ultimo->prox = new TipoElemento;
-    lista->ultimo = lista->ultimo->prox;
-    lista->ultimo->item = *item;
+/*_______________________________________________________________________________________________________________________________________________________________________________ 
+                                                                                    LISTA ENCADEADA
+  _______________________________________________________________________________________________________________________________________________________________________________*/
+void CriaListaVazia(TipoListaLinha *lista){
+    lista->primeiro = new Elemento;
+    lista->ultimo = lista->primeiro;
     lista->ultimo->prox = NULL;
+}
+
+bool verificaListaVazia(TipoListaLinha lista){
+    return (lista.primeiro->prox == lista.ultimo->prox);
+}
+
+void atualizaUltimo(TipoListaLinha *lista){
+    Apontador ant = lista->primeiro;
+    while(ant->prox != NULL) ant = ant->prox;
+    lista->ultimo=ant;
+}
+
+void insereListaPrimeiro(TipoListaLinha *lista, TipoRota *item){
+    Apontador aux;
+    aux = lista ->primeiro->prox;
+    lista->primeiro->prox = new Elemento;
+    lista -> primeiro -> prox->prox = aux;
+    lista -> primeiro ->prox-> item = *item;
     lista->tamanho++;
-    id++;
-    AtualizaUltimo(lista);
+    atualizaUltimo(lista);
 }
 
-void ImprimeLista(TipoLista lista){
-    if (VerificaListaVazia(&lista)){
-        cout << "Lista vazia!\n";
-        Sleep(1000);
-        return;
-    }
-    Apontador aux;
-    aux = lista.primeiro->prox;
-    while (aux != NULL){
-        cout << "ID: " << aux->item.id << endl;
-        cout << "Companhia: " << aux->item.companhia << endl;
-        cout << "Parada: " << aux->item.paradas.Nomeparada << endl;
-        aux = aux->prox;
-    }
-    system("pause");
+void insereListaUltimo(TipoListaLinha *lista, TipoRota *item){
+    lista->ultimo->prox = new Elemento;
+    lista->ultimo = lista->ultimo->prox;
+    lista->ultimo->prox=NULL;
+    lista->ultimo->item=*item;
+    lista->tamanho++;
 }
 
-bool PesquisaItem(TipoLista *lista, char nome[]){
+void insereListaAposElemento(TipoListaLinha *lista, TipoRota *item, string id){
+    Apontador aux, pAux, x;
+    bool find = false;
+    pAux = lista->primeiro->prox;
+    while (pAux != NULL){
+        if (pAux->item.id == id){
+            find = true;
+            x = pAux;
+            aux = x->prox;
+            x->prox = new Elemento;
+            x->prox->prox = aux;
+            x->prox->item = *item;
+            break;
+        }
+        pAux = pAux->prox;
+    }
+    if (find){
+        atualizaUltimo(lista);
+        lista->tamanho++;
+    }
+    else cout << "Elemento anterior não encontrado na lista.";
+}
+
+void imprimeLista(TipoListaLinha *lista){
+    Apontador anterior = lista->primeiro->prox;
+    do{
+        cout << anterior->item.id << endl;
+        anterior = anterior->prox;
+    }while(anterior != NULL);
+}
+
+string pesquisaItem(TipoListaLinha *lista, string id){
     Apontador aux;
     aux = lista->primeiro->prox;
     while (aux != NULL){
-        if (strcmp(aux->item.paradas.Nomeparada, nome) == 0) return true;
-        aux = aux->prox;
-    }
-    return false;
-}
-
-bool PesquisaItemPorId(TipoLista *lista, int id){
-    Apontador aux;
-    aux = lista->primeiro->prox;
-    while (aux != NULL){
-        if (aux->item.id == id) return true;
-        aux = aux->prox;
-    }
-    return false;
-}
-
-int Atualiza(TipoLista *lista, TipoItem item, char valor[], int campo){
-    Apontador aux;
-    aux = lista->primeiro->prox;
-    while (aux != NULL){
-        if (strcmp(aux->item.companhia, item.companhia) == 0){
-            if (campo == 1){
-                strcpy(aux->item.companhia, valor);
-                return 1;
-            }
+        if (aux->item.id == id){
+            return aux->item.id;
         }
         aux = aux->prox;
     }
-    return 0;
+    return "-1";
 }
 
-/*
-int AtualizaParada(TipoLista *lista, TipoItem item, char parada[40]){
+void imprimeItem(TipoListaLinha *lista, string id){
     Apontador aux;
     aux = lista->primeiro->prox;
     while (aux != NULL){
-        if (strcmp(aux->item.companhia, item.companhia) == 0){
-            //     aux->item.paradas.Nomeparada = parada[40];
-
-            return 1;
-        }
-        aux = aux->prox;
-    }
-    return 0;
-}
-*/
-
-
-void ImprimeItem(TipoLista *lista, char nome[]){
-    Apontador aux;
-    aux = lista->primeiro->prox;
-    while (aux != NULL){
-        if (strcmp(aux->item.paradas.Nomeparada, nome) == 0){
-            // cout << "Nome: " << aux->item.nome << endl;
-            cout << "ID: " << aux->item.id << endl;
+        if (aux->item.id == id){
             cout << "Companhia: " << aux->item.companhia << endl;
-            cout << "Quantidade de Cidades na rota: " << aux->item.quantCidades << endl;
-            cout << "Nome Cidade: " << aux->item.paradas.Nomeparada << endl;
-            //cout << "Hora chegada: " << aux->item.paradas.hora_chegada << endl;
-            //cout << "Hora saida: " << aux->item.paradas.hora_saida << endl;
-            cout << "Valor Passagem: " << aux->item.paradas.valorPassagem << endl;
+            cout << "Paradas: " << endl;
+            imprimeListaD(&aux->item.cidades);
             break;
         }
         aux = aux->prox;
     }
 }
-void ImprimePassagem(TipoLista *lista, char origem[], char destino[]){
+
+void removeListaPrimeiro(TipoListaLinha *lista){
+    if (verificaListaVazia(*lista)) return;
     Apontador aux;
     aux = lista->primeiro->prox;
-    while (aux != NULL){
-        cout << "Nome Compania: " << aux->item.companhia;
-        if (aux->item.paradas.Nomeparada == origem){
-            cout << aux->item.id << "-" << aux->item.paradas.Nomeparada;
-            break;
-        }
-        if (aux->item.paradas.Nomeparada == destino){
-            cout << "-" << aux->item.paradas.Nomeparada << "\n";
-            cout << "Parada: " << aux->item.paradas.Nomeparada
-                 << endl;
-            break;
-        }
-        aux = aux->prox;
-    }
+    lista->primeiro->prox = aux->prox;
+    delete aux;
+    lista->tamanho--;
 }
 
-void ImprimeItemPorId(TipoLista *lista, int id)
-{
-    Apontador aux;
-    aux = lista->primeiro->prox;
-    while (aux != NULL)
-    {
-        if (aux->item.id == id)
-        {
-            cout << "Nome: " << aux->item.companhia << endl;
-            cout << "Parada: " << aux->item.paradas.Nomeparada
-                 << endl;
-            break;
-        }
-        aux = aux->prox;
-    }
+void removeListaUltimo(TipoListaLinha *lista){
+    if (verificaListaVazia(*lista))return;
+
+    Apontador aux, atual;
+    atual = lista->primeiro->prox;
+    aux = lista->ultimo;
+    while (atual->prox != lista->ultimo) atual = atual->prox;
+    atual->prox = NULL;
+    lista->ultimo = atual;
+    delete aux;
+    lista->tamanho--;
 }
 
-void RemoveItemPorId(TipoLista *lista, int id)
-{
-    if (VerificaListaVazia(lista))
-    {
-        return;
-    }
-
+void removeItemPorId(TipoListaLinha *lista, string id){
+    if (verificaListaVazia(*lista))return;
     Apontador aux, anterior, x;
-
-    aux = lista->primeiro->prox;
-
     x = lista->primeiro;
-
-    while (x != NULL)
-    {
-        if (x->prox->item.id == id)
-        {
+    while (x != NULL){
+        if (x->prox->item.id == id){
             anterior = x;
             break;
         }
@@ -196,200 +135,118 @@ void RemoveItemPorId(TipoLista *lista, int id)
     lista->tamanho--;
 }
 
-//_----------------------------------------------------------------------------------------------------------------
+/*_______________________________________________________________________________________________________________________________________________________________________________ 
+                                                                LISTA DUPLAMENTE ENCADEADA
+  _______________________________________________________________________________________________________________________________________________________________________________*/
 
-using namespace std;
 
-void LECCriaListaVazia(TipoListaEC *lista)
-{
-    lista->primeiro = new TipoElementoEC;
+void criaListaVaziaD(TipoListaRota *lista){
+    lista->primeiro = new ElementoL;
     lista->ultimo = lista->primeiro;
-    lista->primeiro->prox = NULL;
-    lista->primeiro->ant = NULL;
+    lista->ultimo->prox = lista->ultimo;
+    lista->ultimo->ant = lista->ultimo;
+    lista->tamanho = 0;
 }
 
-bool LECVerificaListaVazia(TipoListaEC *lista)
-{
-    return (lista->primeiro == lista->ultimo);
+bool listaVaziaD(TipoListaRota *lista){
+    if (lista->tamanho == 0 && lista->ultimo == lista->primeiro) return true;
+    return false;
 }
 
-void LECInsereListaPrimeiro(TipoListaEC *lista, TipoLinha *item)
-{
-    ApontadorEC aux;
-    aux = lista->primeiro->prox;
-    lista->primeiro->prox = new TipoElementoEC;
-    lista->primeiro->prox->prox = aux;
-    lista->primeiro->prox->item = *item;
-    aux->ant = lista->primeiro->prox;
-    lista->primeiro->prox->ant = lista->primeiro;
-    lista->ultimo->prox = lista->primeiro;//circular
-    lista->ultimo->prox->ant = lista->ultimo->prox;//circular
-}
-
-void LECInsereListaAposElemento(TipoListaEC *lista, TipoLinha *item, int idEleX)
-{
-    ApontadorEC aux, x, itemAnterior;
-    x = lista->primeiro; // Célula cabeça
-
-    while (x->prox != NULL)
-    {
-        if (x->prox->item.idCidade == idEleX)
-        {
-            itemAnterior = x->prox;
-            break;
-        }
-        x = x->prox;
-    }
-
-    aux = itemAnterior->prox;
-    itemAnterior->prox = new TipoElementoEC;
-    itemAnterior->prox->item = *item;
-    itemAnterior->prox->prox = aux;
-    aux->ant = itemAnterior->prox;
-    aux->ant->ant = itemAnterior;
-}
-
-void LECInsereListaUltimo(TipoListaEC *lista, TipoLinha *item)
-{
-    ApontadorEC aux;
-    aux = lista->ultimo;
-    lista->ultimo->prox = new TipoElementoEC;
+void insereItemUltimoD(TipoListaRota *lista, TipoLinha item){
+    lista->ultimo->prox = new ElementoL;
+    lista->ultimo->prox->ant = lista->ultimo;
     lista->ultimo = lista->ultimo->prox;
-    lista->ultimo->item = *item;
-    lista->ultimo->prox = NULL;
-    lista->ultimo->ant = aux;
-    lista->ultimo->prox = lista->primeiro;//circular
-   lista->ultimo->prox->ant = lista->ultimo->prox;//circular
+    lista->ultimo->item = item;
+    lista->ultimo->prox = lista->primeiro;
+    lista->primeiro->ant = lista->ultimo;
+    lista->tamanho++;
 }
 
-void LECRemoveListaPrimeiro(TipoListaEC *lista, TipoLinha *item)
-{
-    ApontadorEC aux;
+void insereItemPrimeiroD(TipoListaRota *lista, TipoLinha item){
+    ApontadorL inserido = new ElementoL;
+    inserido->item = item;
+    inserido->prox = lista->primeiro->prox;
+    inserido->ant = lista->primeiro;
+    lista->primeiro->prox->ant = inserido;
+    lista->primeiro->prox = inserido;
+    lista->tamanho++;
+}
 
-    if (LECVerificaListaVazia(lista))
-    {
+ApontadorL localizaItemPorIdD(TipoListaRota *lista, int id){
+    ApontadorL aux = lista->primeiro->prox;
+    while (aux != lista->primeiro){
+        if (aux->item.id == id) return aux;
+        aux = aux->prox;
+    }
+    return NULL;
+}
+
+void insereItemAposElementoD(TipoListaRota *lista, TipoLinha item, int id){
+    ApontadorL atual = localizaItemPorIdD(lista, id);    
+    ApontadorL inserido = new ElementoL;
+    inserido->item = item;
+
+    if (atual == NULL){
+        cout << "Id inexistente!" << endl;
         return;
     }
-    *item = lista->primeiro->prox->item;
-    aux = lista->primeiro->prox;
-    lista->primeiro->prox = aux->prox;
-    lista->primeiro->prox->ant = lista->primeiro;
-    free(aux);
+    if (atual == lista->ultimo){
+        insereItemUltimoD(lista, item);
+    }
+    else{
+        inserido->prox = atual->prox;
+        inserido->ant = atual;
+        inserido->prox->ant = inserido;
+    }
+    atual->prox = inserido;
+    lista->tamanho++;
 }
 
-void LECRemoveListaUltimo(TipoListaEC *lista, TipoLinha *item)
-{
-    ApontadorEC aux, anterior, x;
+TipoLinha retiraItemPorIdD(TipoListaRota *lista, int id){
+    ApontadorL atual = localizaItemPorIdD(lista, id);
+    TipoLinha retorno;
+    retorno.id = -1;
 
-    if (LECVerificaListaVazia(lista))
-    {
+    if (listaVaziaD(lista)) return retorno;
+    if (atual != lista->primeiro){
+        atual->ant->prox = atual->prox;
+        if (atual == lista->ultimo){
+            lista->ultimo = atual->ant;
+            lista->primeiro->ant = lista->ultimo;
+        }
+        else atual->prox->ant = atual->ant;
+        retorno = atual->item;
+        delete atual;
+    }
+    lista->tamanho--;
+    return retorno;
+}
+
+void imprimeItemD(TipoLinha item){
+    if (item.id == -1){
+        cout << "Item inexistente!" << endl;
         return;
     }
-
-    x = lista->primeiro;
-    while (x != NULL)
-    {
-        if (x->prox == lista->ultimo)
-        {
-            anterior = x;
-            break;
-        }
-        x = x->prox;
-    }
-
-    aux = lista->ultimo;
-    lista->ultimo = anterior;
-    *item = aux->item;
-    lista->ultimo->prox = NULL;
-    free(aux);
+    cout << "\tID: " << item.id << endl;
+    cout << "\tCidade: " << item.nome << endl;
+    cout << "\tHorario de Saida: " << item.saida << endl;
+    cout << "\tPreco da passagem: " << item.valor_passagem << endl << endl;
 }
 
-void LECRemoveElementoXbyId(TipoListaEC *lista, TipoLinha *item, int idEle)
-{
-    ApontadorEC aux, anterior, x;
-
-    if (LECVerificaListaVazia(lista))
-    {
-        return;
+void imprimeListaD(TipoListaRota *lista){
+    ApontadorL aux = lista->primeiro->prox;
+    while (aux != lista->primeiro){
+        imprimeItemD(aux->item);
+        aux = aux->prox;
     }
-
-    x = lista->primeiro;
-
-    while (x != NULL)
-    {
-        if (x->prox->item.idCidade == idEle)
-        {
-            anterior = x;
-            break;
-        }
-        x = x->prox;
-    }
-    aux = anterior->prox;
-    anterior->prox = aux->prox;
-    *item = aux->item;
-    free(aux);
+    system("PAUSE");
 }
 
-bool LECPesquisaElementoXbyId(TipoListaEC *lista, TipoLinha *item, int idEle)
-{
-    ApontadorEC x;
-
-    if (LECVerificaListaVazia(lista))
-    {
-        return false;
-    }
-
-    x = lista->primeiro;
-
-    while (x != NULL)
-    {
-        if (x->prox->item.idCidade == idEle)
-        {
-            *item = x->prox->item;
-            return true;
-        }
-        x = x->prox;
-    }
-    return false;
-}
-
-bool LECPesquisaElementoXbyNome(TipoListaEC *lista, TipoLinha *item, char nome[])
-{
-    ApontadorEC x;
-
-    if (LECVerificaListaVazia(lista))
-    {
-        return false;
-    }
-
-    x = lista->primeiro;
-
-    while (x != NULL)
-    {
-        if (strcmpi(x->prox->item.Nomeparada, nome) == 0)
-        {
-            *item = x->prox->item;
-            return true;
-        }
-        x = x->prox;
-    }
-    return false;
-}
-
-void LECImprimeLista(TipoListaEC *lista)
-{
-    ApontadorEC x;
-
-    x = lista->primeiro->prox;
-
-    while (x != NULL)
-    {
-        cout << "Código: " << x->item.idCidade << endl;
-        cout << "Nome Parada: " << x->item.Nomeparada << endl;
-        //cout << "Hora Chegada: " << x->item.hora_chegada << endl;
-        //cout << "Hora Saida: " << x->item.hora_saida << endl;
-        cout << "Valor Passagem: " << x->item.valorPassagem << endl
-             << endl;
-        x = x->prox;
+void imprimeListaReversaD(TipoListaRota *lista){
+    ApontadorL aux = lista->ultimo;
+    while (aux != lista->primeiro){
+        imprimeItemD(aux->item);
+        aux = aux->ant;
     }
 }
